@@ -14,9 +14,9 @@ public class kata {
 //        System.out.println("is addTwoStrings " + addTwoStrings("570242795263255478002508926885006217715327585025","999999999999"));
         //System.out.println("is minus " + minus("9999999999999","999999999999"));
         System.out.println("divide by two " +divideByTwo("50"));
-       // System.out.println(" minusOne" +minusOne("500000000000000000000000000000000000"));
+        System.out.println(" minusOne" +minusOne("5"));
 
-        System.out.println("is floorSqrt " + floorSqrt("570242795263255478002508926885006217715327585025"));
+        System.out.println("is floorSqrt " + floorSqrt("12323309809809534545458098709854808654685688665486860956865654654654324238000980980980"));
         // need to check why the function works only for even number ! :)
         // working for  12 chars
 
@@ -46,38 +46,42 @@ public class kata {
                 answer[index] = '9';
                 index ++;
             }
+            index =0 ;
+            while (answer [index ]=='0'){
+                index ++;
+            }
+            return new String ( Arrays.copyOfRange(answer, index, len));
         }
-        return new String(answer);
+
     }
 
-    public static String floorSqrt(String x)
+    public static String floorSqrt(String a)
     {
-        // Base Cases
-//        if (x == 0 || x == 1)
-//            return x;
+         //Base Cases
+        if (a.equals("0") || a.equals("1"))
+            return a;
 
-        // Do Binary Search for floor(sqrt(x))
-        String start = multiplayByPowerOfTen("1", x.length()/2-1);
-        String end = x;
+        // Do Binary Search for floor(sqrt(a))
+        String start ="1"; //multiplayByPowerOfTen("1", a.length()/2-1);
+        String end = a;
         String ans="0";
         String sum ="0";
-        while (isSmaller(start , end))
+        while (!isSmaller(end , start))
         {
             sum = addTwoStrings(start , end);
             String mid = divideByTwo(sum);
 
-            // If x is a perfect square
-            if (bestMultiply(mid,mid).equals( x))
+            // If a is a perfect square
+            if (bestMultiply(mid,mid).equals( a))
                 return mid;
 
-            // Since we need floor, we update answer when mid*mid is
-            // smaller than x, and move closer to sqrt(x)
-            if (isSmaller(bestMultiply(mid,mid), x))
+
+            if (isSmaller(bestMultiply(mid,mid), a))
             {
-                start = mid + 1;
+                start = addTwoStrings(mid ,"1");
                 ans = mid;
             }
-            else // If mid*mid is greater than x
+            else // If mid*mid is greater than a
                 end = minusOne(mid);
         }
         return ans;
