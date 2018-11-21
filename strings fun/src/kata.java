@@ -7,13 +7,98 @@ public class kata {
 
 
     public static void main ( String [] args ){
-        System.out.println("check ");
-       //System.out.println("is bestMultiply "+ bestMultiply ("3510457208086937291253621317073222057793129","3510457208086937291253621317073222057793129"));
+//        System.out.println("check ");
+//       System.out.println("is bestMultiply "+ bestMultiply ("570242795263255478002508926885006217715327585025","570242795263255478002508926885006217715327585025"));
         //System.out.println("is lesThen " + lesThen("570242795263255478002508926885006217715327585025"));
-        System.out.println("is lesThen " + lesThen("100000000000000000000000"));
+//        System.out.println("is lesThen " + lesThen("10000"));
+//        System.out.println("is addTwoStrings " + addTwoStrings("570242795263255478002508926885006217715327585025","999999999999"));
+        //System.out.println("is minus " + minus("9999999999999","999999999999"));
+        System.out.println("divide by two " +divideByTwo("50"));
+       // System.out.println(" minusOne" +minusOne("500000000000000000000000000000000000"));
+
+        System.out.println("is floorSqrt " + floorSqrt("570242795263255478002508926885006217715327585025"));
         // need to check why the function works only for even number ! :)
         // working for  12 chars
 
+    }
+
+    public static  String minusOne(String a){
+        char [] answer = a.toCharArray();
+        String count = "0";
+        int len = a.length();
+        int index =len-1 ;
+
+        int newVal = Character.getNumericValue(a.charAt(a.length()-1)) - 1;
+        if (len ==1 && newVal>=0) {
+            answer[a.length()-1] = (char)(newVal + '0');
+            return new String(answer);
+        }
+        else {
+                while (answer[index]=='0')
+                {
+                    index --;
+
+                }
+            newVal = Character.getNumericValue(a.charAt(index)) - 1;
+            answer[index] = (char) (newVal + '0');
+            index ++;
+            while (index <len) {
+                answer[index] = '9';
+                index ++;
+            }
+        }
+        return new String(answer);
+    }
+
+    public static String floorSqrt(String x)
+    {
+        // Base Cases
+//        if (x == 0 || x == 1)
+//            return x;
+
+        // Do Binary Search for floor(sqrt(x))
+        String start = multiplayByPowerOfTen("1", x.length()/2-1);
+        String end = x;
+        String ans="0";
+        String sum ="0";
+        while (isSmaller(start , end))
+        {
+            sum = addTwoStrings(start , end);
+            String mid = divideByTwo(sum);
+
+            // If x is a perfect square
+            if (bestMultiply(mid,mid).equals( x))
+                return mid;
+
+            // Since we need floor, we update answer when mid*mid is
+            // smaller than x, and move closer to sqrt(x)
+            if (isSmaller(bestMultiply(mid,mid), x))
+            {
+                start = mid + 1;
+                ans = mid;
+            }
+            else // If mid*mid is greater than x
+                end = minusOne(mid);
+        }
+        return ans;
+    }
+
+    public static String check(String a ){
+        String answer = "2";
+        String count = "1";
+        int index = 0;
+        String subString =a.substring(a.length()-1-index,a.length()-1);
+
+            while (isSmaller(answer,subString)|| index < a.length()-1){
+                index ++;
+                answer = bestMultiply(count,count);
+                count = addTwoStrings(count , "1");
+                subString =a.substring(a.length()-1-index,a.length()-1);
+
+            }
+
+
+        return count;
     }
 
     public static String integerSquareRoot(String n) {
@@ -24,18 +109,7 @@ public class kata {
         return total2;
     }
 
-    public static String cutTheString ( String n){
-        int len = n.length();
-        int numberOfChars =0 ;
-        if (len %2==0){
-            numberOfChars=3; // the location in string  of taking 2 chars is 3
-        }
-        else{
-            numberOfChars=4; // the location in string  of taking 3 chars is 4
-        }
-        String subString = n.substring(0,numberOfChars-1);
-        return subString;
-    }
+
 
     public static String addTwoStrings( String a, String b){
         int theBiggerStringSize = Math.max(a.length(),b.length());
@@ -125,6 +199,7 @@ public class kata {
 
         return answer;
     }
+
     public static String multiplayByPowerOfTen ( String a,int n){
         String answer = a;
         for (int i =0; i<n ; i++){
@@ -218,12 +293,27 @@ public class kata {
     }
 
     public static String divideByTwo(String a){
+        if (a.length()==1){
+            int number =Integer.parseInt(a);
+            number = number /2 ;
+            return ""+number;
+        }
         String multiplyByFive = multiplyLessThenTen(a,5);
-        String result = multiplyByFive.substring(0,a.length()-1);
+        String result = multiplyByFive.substring(0,multiplyByFive.length()-1);
         if (result.equals(""))
             return "0";
         return result;
     }
+
+    public static String minus ( String a, String b){  // return the a-b a is the bigger one !
+        String index="1";
+        while (!a.equals(addTwoStrings(b,index))){
+            index = addTwoStrings(index,"1");
+        }
+        return index;
+
+    }
+
 
     public static String lesThen ( String a){
         String squreNum ="0";
@@ -272,12 +362,13 @@ public class kata {
                     counter = dividedString;
                 }
                 else{
-                    int theFirstDifftentChar = firstIndexIsNotTheSame(a,squreNum);
-                    if ( theFirstDifftentChar==-1){
-                        return "";
-                    }
-                   // counter = addTwoStrings(counter , "1");
-                    counter = addTwoStrings(counter , multiplayByPowerOfTen("1",(theFirstDifftentChar-1)/2));
+//                    int theFirstDifftentChar = firstIndexIsNotTheSame(a,squreNum);
+//                    if ( theFirstDifftentChar==-1){
+//                        return "";
+//                    }
+                   counter = addTwoStrings(counter , "10");
+                    //counter = addTwoStrings(counter , multiplayByPowerOfTen("1",(theFirstDifftentChar-1)/2-1));
+                   // counter = minus(a,squreNum);
                    // maxRange = counter;
                     //counter = divideByTwo(addTwoStrings(minRange,counter));
                 }
