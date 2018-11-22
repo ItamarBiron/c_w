@@ -20,7 +20,7 @@ public class kata {
 //        floorSqrt("23232328323215435345345345343458098856756556809400840980980980980809092343243243243243098799634");
         double startTime = System.nanoTime();
         for (int i = 0; i < 100; i++) {
-            floorSqrt("909021219195367689650359227219536768965035922724869650");
+            System.out.println(floorSqrt("12323309809809534545458098709854808654685688665486860956865654654654324238000980980980"));
             //betterMultiplyLessThenTen("12345",9);
 
         }
@@ -30,7 +30,7 @@ public class kata {
         System.out.println(resultTimeInSec);
 
         System.out.println(betterMinusOne("2000000001000000"));
-        System.out.println(betterMultiplyLessThenTen("423432",2));
+        System.out.println(betterMultiplyLessThenTen("999999999999999",2));
         // need to check why the function works only for even number ! :)
         // working for  12 chars
 
@@ -55,22 +55,27 @@ public class kata {
         int lastLongLength = len % 15;
         String answer = "0";
         int power = 0;
+        int toAdd =0 ;
+
+        if(lastLongLength>0){
+            toAdd =1;
+        }
 
         if (len < 15) {
             return fifteenCharsMultiply(a,num);
         }
-        String [] stringToLongs = new String[a.length()/15];
+        String [] stringToLongs = new String[a.length()/15 +toAdd];
         int i ;
         for( i = 0; i <numOfLongs; i++){
             stringToLongs[i]=a.substring(15*(i) ,15*(i+1));
             power = power+stringToLongs[i].length();
-            answer = addTwoStrings(answer, multiplayByPowerOfTen(stringToLongs[i],len-power));
+            answer = addTwoStrings(answer, multiplayByPowerOfTen(String.valueOf(Long.valueOf(stringToLongs[i])*num),len-power));
         }
 
         if ( lastLongLength>0){
             stringToLongs[i] = a.substring(15*i,a.length());
             power = power+stringToLongs[i].length();
-            answer = addTwoStrings(answer, multiplayByPowerOfTen(stringToLongs[i],len-power));
+            answer = addTwoStrings(answer, multiplayByPowerOfTen(String.valueOf(Long.valueOf(stringToLongs[i])*num),len-power));
 
         }
 
@@ -303,7 +308,7 @@ public class kata {
         String semiMultiply = "0";
         String SemiWithPower = "0";
         for (int i = 0; i < len; i++) {
-            semiMultiply = multiplyLessThenTen(a, Character.getNumericValue(b.charAt(i)));
+            semiMultiply = betterMultiplyLessThenTen(a, Character.getNumericValue(b.charAt(i)));
             SemiWithPower = multiplayByPowerOfTen(semiMultiply, len - 1 - i);
             answer = addTwoStrings(answer, SemiWithPower);
         }
