@@ -1,38 +1,21 @@
 
 import java.lang.*;
-import java.util.Arrays;
 
 
 public class kata {
 
 
     public static void main(String[] args) {
-//
         System.out.println("start");
-        //  System.out.println(" minusOne" +minusOne("23232328323423423423215435345345345343458098856756556809400840980980980980809092343243243243243098799634"));
-//          for (int i =0 ; i <1000000; i++){
-//             // minusOne("23232328323423423423215435345345345343458098856756556809400840980980980980809092343243243243243098799634");
-//          addTwoStrings("1","23232328323423423423215435345345345343458098856756556809400840980980980980809092343243243243243098799634");
-//          } // about 170 tests, 99 in first tests group at leats 55 in the other group
-
-
-//        floorSqrt("12323309809809534545458098709854808654685688665486860956865654654654324238000980980980");
-//        floorSqrt("23232328323215435345345345343458098856756556809400840980980980980809092343243243243243098799634");
         double startTime = System.nanoTime();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1; i++) {
             System.out.println(floorSqrt("12323309809809534545458098709854808654685688665486860956865654654654324238000980980980"));
-            //betterMultiplyLessThenTen("12345",9);
-
         }
         double endTime = System.nanoTime();
         double resultTime = endTime - startTime;
         double resultTimeInSec = resultTime * (100000000);
         System.out.println(resultTimeInSec);
 
-        System.out.println(betterMinusOne("2000000001000000"));
-        System.out.println(betterMultiplyLessThenTen("999999999999999",2));
-        // need to check why the function works only for even number ! :)
-        // working for  12 chars
 
     }
 
@@ -49,7 +32,7 @@ public class kata {
         return String.valueOf(Long.valueOf(str)*num);
     }
 
-    public static String betterMultiplyLessThenTen(String a, int num) {
+    public static String multiplyLessThenTen(String a, int num) {
         int len = a.length();
         int numOfLongs = len/15;
         int lastLongLength = len % 15;
@@ -82,7 +65,7 @@ public class kata {
         return answer;
     }
 
-    public static String betterMinusOne(String a) {
+    public static String minusOne(String a) {
         int len = a.length();
         String answer;
         String newDigit;
@@ -104,40 +87,7 @@ public class kata {
 
     }
 
-    public static String minusOne(String a) {
-        char[] answer = a.toCharArray();
-        String count = "0";
-        int len = a.length();
-        int index = len - 1;
 
-//        if ( len <15){
-//            return String.valueOf(Long.valueOf(a)-1);
-//        }
-
-        int newVal = Character.getNumericValue(a.charAt(a.length() - 1)) - 1;
-        if (len == 1 && newVal >= 0) {
-            answer[a.length() - 1] = (char) (newVal + '0');
-            return new String(answer);
-        } else {
-            while (answer[index] == '0') {
-                index--;
-
-            }
-            newVal = Character.getNumericValue(a.charAt(index)) - 1;
-            answer[index] = (char) (newVal + '0');
-            index++;
-            while (index < len) {
-                answer[index] = '9';
-                index++;
-            }
-            index = 0;
-            while (answer[index] == '0') {
-                index++;
-            }
-            return new String(Arrays.copyOfRange(answer, index, len));
-        }
-
-    }
 
     public static String floorSqrt(String a) {
         //Base Cases
@@ -174,7 +124,7 @@ public class kata {
         int theSmallerStringSize = Math.min(a.length(), b.length());
         int sizeOfStringOfSum = theBiggerStringSize + 1;
         char[] sumInCharArray = new char[sizeOfStringOfSum];
-        int addOne = 0; // if the sums of the 2 digit are grater then 9 we need to remmber add "1"
+        int addOne = 0;
         String resultInString;
         int whoIsBigger;
         String GreaterString;
@@ -211,7 +161,7 @@ public class kata {
             int digit = addOne + Character.getNumericValue(GreaterString.charAt(theBiggerStringSize - 1 - index))
                     + Character.getNumericValue(smallerStringWithZeros[theBiggerStringSize - 1 - index]);
             char c = (char) ((Character.getNumericValue(sumInCharArray[i]) + digit % 10) + '0');
-            //System.out.println(c);
+
 
             sumInCharArray[theBiggerStringSize - index] = (char) ((Character.getNumericValue(sumInCharArray[i]) + digit % 10) + '0');
             if (digit > 9) {
@@ -233,23 +183,7 @@ public class kata {
     }
 
 
-    public static String multiplayTwoStrings(String a, String b) {
-        String multiplication = "0";
-        String index = "1";
-        String counter = "0";
-        while (!counter.equals(a)) {
-            multiplication = addTwoStrings(multiplication, b);
-            counter = addTwoStrings(counter, "1");
-        }
 
-        return multiplication;
-    }
-
-    public static String multiplayByTen(String a) {
-        String answer = a + "0";
-
-        return answer;
-    }
 
     public static String multiplayByPowerOfTen(String a, int n) {
         String answer = a;
@@ -260,46 +194,6 @@ public class kata {
         return answer;
     }
 
-    public static int firstIndexIsNotTheSame(String a, String b) {
-        if (a.length() != b.length()) {
-            System.out.println("a and b are not the same size , firstIndexNotTheSame");
-            System.out.println("a is " + a);
-            System.out.println("b is " + b);
-            return b.length();
-        }
-        int len = a.length() - 1;
-        for (int i = len; i >= 0; i--) {
-            if (!(a.charAt(i) == b.charAt(i))) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    public static String multiplyLessThenTen(String a, int num) {
-        String answer = "0";
-        int index = 0;
-        int len = a.length();
-        int multiplyCurrentDigitByNum;
-        String multiplayInString;
-        int numOfTen = 0;
-        int lessThenTen = 0;
-        String SemiMultiply = "0";
-        String multiplyCurrentDigitInPowerOfTen = "0";
-        for (index = 0; index < len; index++) {
-            multiplyCurrentDigitByNum = Character.getNumericValue(a.charAt(index)) * num;
-            multiplayInString = String.valueOf(multiplyCurrentDigitByNum);
-            if (index == len - 1) {
-                multiplyCurrentDigitInPowerOfTen = multiplayTwoStrings(a.charAt(len - 1) + "", String.valueOf(num));
-            } else {
-                multiplyCurrentDigitInPowerOfTen = multiplayByPowerOfTen(multiplayInString, len - 1 - index);
-
-            }
-            answer = addTwoStrings(answer, multiplyCurrentDigitInPowerOfTen);
-        }
-
-        return answer;
-    }
 
     public static String bestMultiply(String a, String b) {
         String answer = "0";
@@ -308,7 +202,7 @@ public class kata {
         String semiMultiply = "0";
         String SemiWithPower = "0";
         for (int i = 0; i < len; i++) {
-            semiMultiply = betterMultiplyLessThenTen(a, Character.getNumericValue(b.charAt(i)));
+            semiMultiply = multiplyLessThenTen(a, Character.getNumericValue(b.charAt(i)));
             SemiWithPower = multiplayByPowerOfTen(semiMultiply, len - 1 - i);
             answer = addTwoStrings(answer, SemiWithPower);
         }
