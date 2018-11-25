@@ -1,11 +1,14 @@
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("99")));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("3")));
         System.out.println("numOfDigitBefor is " + numOfDigitBefor(Long.valueOf("99")));
-        System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("100101102103",3));
-        System.out.println(numOfDigit((long) 100));
+        System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("9102", 4));
+        System.out.println("isASeries  " + Arrays.toString(isASeries("454455")));
+        System.out.println(getAnswer("3456"));
     }
 
     public static String createStrringUntilNum(Long num) {
@@ -51,43 +54,82 @@ public class Main {
     }
 
 
+    public static boolean isThisStringIsASeriesOfNdigitNumber(String str, int n) {
+        int index = 0;
+        String expectedAns = str.substring(0, n);
+        ;
+        long num = Long.valueOf(str.substring(0, n)) + 1;
 
-    public static int isThisStringIsASeriesOfNdigitNumber(String str, int n) {
-        Long currentSizeOfSubString = (long) 1;
-        Long ans = (long) 0;
-        String currentSubString ;
-        String nextSubString;
-        Long numOfDigit = numOfDigit(Long.valueOf(str));
-        Long numOfNumbers = numOfDigit/n;
+        while (expectedAns.length() < str.length()) {
+            expectedAns = expectedAns + String.valueOf(num);
+            num++;
+        }
+        if (str.equals(expectedAns)) {
+            return true;
+        } else {
+            while (index < str.length()) {
+                if (str.charAt(index) != expectedAns.charAt(index)) {
+                    return false;
+                }
+                index++;
+            }
 
+        }
+        return false;
 
-        for (int i = 0; i <numOfNumbers-1 ; i ++){
-            currentSubString = str.substring(i*n,(i+1)*n);
-            nextSubString = str.substring((i+1)*n,(i+2)*n);
-            boolean firstCondition = Long.valueOf(currentSubString)+1!=Long.valueOf(nextSubString);
-            if( !firstCondition && ((i+2)*n == str.length()-1)){
-                return -1;
+    }
+
+    public static int[] isASeries(String str) {
+        int count = 1;
+        long len = str.length();
+        int counter = 1;
+        int index;
+        int[] answer = new int[2];
+        answer[0] = 0; // contain if there is a series of close numbers
+        answer[1] = -1; // contain the num of digitis of the first number
+
+        while (counter < len) {
+            if (isThisStringIsASeriesOfNdigitNumber(str, counter)) {
+                answer[0] = 1;
+                answer[1] = counter;
             }
-            if( !firstCondition && ((i+2)*n -1== str.length()-1)){
-                return -1 ;
+            counter++;
+
+        }
+        return answer;
+    }
+
+    public static long getAnswer(String str) {
+        int[] indexes = new int[2];
+        int counter = 1;
+        long len = numOfDigit(Long.valueOf(str));
+        long index = 1;
+        long min = Long.valueOf("1"+str);
+        String beforStr = "1";
+        String afterStr = "1";
+        indexes[0] = -1;
+        indexes [1] =-1 ;
+        if ( (isASeries(str))[0]==1){
+            if (Long.valueOf(str.substring(0,(isASeries(str))[1]))<min){
+             min =Long.valueOf(str.substring(0,(isASeries(str))[1]));
             }
-            if ((i+2)*n+1>str.length()-1&&!firstCondition){
-                return i*n;
-            }
-            if( firstCondition && ((i+2)*n -1== str.length()-1)){
-                return i*n;
-            }
-            boolean secondCondition = Long.valueOf(currentSubString)+1!=Long.valueOf(str.substring((i+1)*n,(i+2)*n+1));
-            if (!secondCondition){
-                break;
-            }
-            if(firstCondition&&secondCondition){
-                return i*n;
+        }
+
+        while (beforStr.length() < str.length()) {
+            beforStr = String.valueOf(index);
+            index ++;
+            if ( (isASeries(beforStr+str))[0]==1){
+                if (Long.valueOf((beforStr+str).substring(0,(isASeries(beforStr+str))[1]))<min){
+                    min= Long.valueOf((beforStr+str).substring(0,(isASeries(beforStr+str))[1]));
+                    break;
+                }
+
             }
 
         }
 
-        return -1; // this string is serius of numbers !
+        System.out.println(min);
+        return betterNumOfDigitBefor(min) -1; // need to check when to put minus 1 and when to add 1 !!!
     }
 
 
