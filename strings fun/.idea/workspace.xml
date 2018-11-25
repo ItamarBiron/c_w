@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="233a1585-aca2-4af6-8ccc-49df67478ac2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InfiniteDigitalString/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../InfiniteDigitalString/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InfiniteDigitalString/out/production/InfiniteDigitalString/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InfiniteDigitalString/out/production/InfiniteDigitalString/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InfiniteDigitalString/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../InfiniteDigitalString/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,19 +53,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/kata.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="89" selection-start-line="89" selection-end-line="89" />
+            <state relative-caret-position="-1166">
+              <caret line="64" column="17" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="17" />
               <folding>
                 <element signature="method#main#0;class#kata#0" />
-                <element signature="method#returnNumbertimesNine#0;class#kata#0" />
-                <element signature="method#multiplyLessThenTen#0;class#kata#0" />
-                <element signature="method#minusOne#0;class#kata#0" />
-                <element signature="method#floorSqrt#0;class#kata#0" />
-                <element signature="method#addTwoStrings#0;class#kata#0" />
-                <element signature="method#multiplayByPowerOfTen#0;class#kata#0" />
-                <element signature="method#bestMultiply#0;class#kata#0" />
-                <element signature="method#isSmaller#0;class#kata#0" />
-                <element signature="method#divideByTwo#0;class#kata#0" />
+                <element signature="e#1776#1777#0" expanded="true" />
+                <element signature="e#1834#1835#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,7 +83,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="183" />
     <option name="y" value="59" />
     <option name="width" value="840" />
@@ -121,7 +116,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543165060193" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543166582641" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
@@ -164,7 +159,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26423267" />
@@ -232,19 +227,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/kata.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        <state relative-caret-position="-1166">
+          <caret line="64" column="17" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="17" />
           <folding>
             <element signature="method#main#0;class#kata#0" />
-            <element signature="method#returnNumbertimesNine#0;class#kata#0" />
-            <element signature="method#multiplyLessThenTen#0;class#kata#0" />
-            <element signature="method#minusOne#0;class#kata#0" />
-            <element signature="method#floorSqrt#0;class#kata#0" />
-            <element signature="method#addTwoStrings#0;class#kata#0" />
-            <element signature="method#multiplayByPowerOfTen#0;class#kata#0" />
-            <element signature="method#bestMultiply#0;class#kata#0" />
-            <element signature="method#isSmaller#0;class#kata#0" />
-            <element signature="method#divideByTwo#0;class#kata#0" />
+            <element signature="e#1776#1777#0" expanded="true" />
+            <element signature="e#1834#1835#0" expanded="true" />
           </folding>
         </state>
       </provider>

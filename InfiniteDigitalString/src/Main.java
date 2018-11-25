@@ -2,8 +2,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("10")));
-        System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("100101102",3));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("99")));
+        System.out.println("numOfDigitBefor is " + numOfDigitBefor(Long.valueOf("99")));
+        System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("100101102103",3));
         System.out.println(numOfDigit((long) 100));
     }
 
@@ -28,26 +29,15 @@ public class Main {
     public static Long betterNumOfDigitBefor(Long num) {
         Long numberOfDigit = numOfDigit(num);
         Long ans = (num - (long) Math.pow(10, (double) (numberOfDigit - 1))) * numberOfDigit + 1;
-
+        num = (long) Math.pow(10, (double) (numberOfDigit));
         numberOfDigit--;
-        if(numOfDigit(num)>1){
-            ans = ans - numOfDigit(num) + 2; // need to substruct
-            ans = ans + 9;
-        }
-        //num = (long) Math.pow(10, (double) (numberOfDigit));
-        if( numberOfDigit ==1 ){
-            return ans;
-        }
         while (numberOfDigit > 1) {
             ans = ans + ((long) Math.pow(10, (double) (numberOfDigit)) - (long) Math.pow(10, (double) (numberOfDigit - 1))) * numberOfDigit + 1;
             numberOfDigit--;
         }
-        if(numOfDigit(num)>1){
-            ans = ans - numOfDigit(num) + 2; // need to substruct
-            ans = ans + 9;
-        }
-
-        return ans-1;
+        ans = ans - numOfDigit(num) + 2; // need to substruct
+        ans = ans + 9;
+        return ans;
     }
 
     public static Long numOfDigitBefor(Long num) {
@@ -97,7 +87,7 @@ public class Main {
 
         }
 
-            return -1; // this string is serius of numbers !
+        return -1; // this string is serius of numbers !
     }
 
 
