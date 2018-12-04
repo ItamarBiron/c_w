@@ -4,11 +4,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-       // System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("100")));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("123456789")));
         //System.out.println("numOfDigitBefor is " + numOfDigitBefor(Long.valueOf("99")));
         //System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("9102", 4));
-        //System.out.println("isASeries  " + Arrays.toString(isASeries("10001001100210021004")));
-        System.out.println(getAnswer("9899100101"));
+        System.out.println("isASeries  " + Arrays.toString(isASeries("101102")));
+        System.out.println(reverseString("023023023023023023023023023023023023023023023023023023023"));
+        System.out.println(getAnswer("1234567891"));
     }
 
     public static String createStrringUntilNum(Long num) {
@@ -60,12 +61,12 @@ public class Main {
     public static boolean isThisStringIsASeriesOfNdigitNumber(String str, int n) {
         int index = 0;
         String expectedAns = str.substring(0, n);
-        if (n > str.length() / 2 + 1) {
+        if (n > str.length() / 2 + 1 || str.charAt(0) == '0') {
             return false;
         }
         long num = Long.valueOf(str.substring(0, n)) + 1;
 
-        while (expectedAns.length() < str.length() &&expectedAns.equals(str.substring(0,expectedAns.length()))) {
+        while (expectedAns.length() < str.length() && expectedAns.equals(str.substring(0, expectedAns.length()))) {
             expectedAns = expectedAns + String.valueOf(num);
             num++;
         }
@@ -93,15 +94,37 @@ public class Main {
         answer[0] = 0; // contain if there is a series of close numbers
         answer[1] = -1; // contain the num of digitis of the first number
 
-        while (counter < len) {
+        while (counter <= len/2) {
             if (isThisStringIsASeriesOfNdigitNumber(str, counter)) {
                 answer[0] = 1;
                 answer[1] = counter;
+
             }
+
             counter++;
 
         }
         return answer;
+    }
+
+    public static long contain ( String str ){
+        int [] answer = new int [2];
+        answer = isASeries(str);
+
+        return 1;
+
+    }
+
+    public static String reverseString(String str) {
+        int len = str.length();
+        char[] answer = new char[len];
+
+        for (int i = 0; i < len; i++) {
+            answer [ i] = str.charAt(len-i-1);
+        }
+
+        return String.valueOf(answer);
+
     }
 
     public static long getAnswer(String str) {
@@ -113,10 +136,17 @@ public class Main {
         long min = Long.valueOf("1" + str);
         String beforStr = "1";
         String afterStr = "1";
+        String otherbeforStr = "";
         indexes[0] = -1;
         indexes[1] = -1;
         boolean beforWasMin = false;
         boolean afterWasMin = false;
+
+//        if ( len >3){
+//            if (str.charAt(0)==str.charAt((int)len-1)){
+//                return betterNumOfDigitBefor(Long.valueOf(str.substring(0,(int)len-1)))+1;
+//            }
+//        }
 
         if ((isASeries(str))[0] == 1) {
             if (Long.valueOf(str.substring(0, (isASeries(str))[1])) < min) {
@@ -131,6 +161,7 @@ public class Main {
             if ((isASeries(beforStr + str))[0] == 1) {
                 if (Long.valueOf((beforStr + str).substring(0, (isASeries(beforStr + str))[1])) < min) {
                     min = Long.valueOf((beforStr + str).substring(0, (isASeries(beforStr + str))[1]));
+                    otherbeforStr = beforStr;
                     beforWasMin = true;
                     break;
                 }
@@ -139,9 +170,9 @@ public class Main {
 
         }
         indexBefor = 1;
-        if (!(beforStr.equals("1")&&beforWasMin)){
+        if (!(beforStr.equals("1") && beforWasMin)) {
             while (afterStr.length() < str.length()) {
-                afterStr = String.valueOf(indexBefor);
+                afterStr = reverseString(String.valueOf(indexBefor));
                 indexBefor++;
                 if ((isASeries(str + afterStr))[0] == 1) {
                     if (Long.valueOf((str + afterStr).substring(0, (isASeries(str + afterStr))[1])) < min) {
@@ -157,28 +188,42 @@ public class Main {
 
 
         indexBefor = 1;
-        if (!beforStr.equals("1")){
+        indexAfter = 1;
+        afterStr = "0";
+        beforStr = "1";
+        while (beforStr.length() < str.length()) {
+            beforStr = String.valueOf(indexBefor);
+            indexBefor++;
+            afterStr = "0";
+            indexAfter = 1;
             while (afterStr.length() < str.length()) {
-                afterStr = String.valueOf(indexBefor);
+                afterStr = reverseString(String.valueOf(indexBefor));
                 indexBefor++;
-                if ((isASeries(str + afterStr))[0] == 1) {
-                    if (Long.valueOf((str + afterStr).substring(0, (isASeries(str + afterStr))[1])) < min) {
-                        min = Long.valueOf((str + afterStr).substring(0, (isASeries(str + afterStr))[1]));
-                        afterWasMin = true;
-                        break;
+                if ((isASeries(beforStr + str + afterStr))[0] == 1) {
+                    if (Long.valueOf((beforStr + str + afterStr).substring(0, (isASeries(beforStr + str + afterStr))[1])) < min) {
+                        int[] lenOfEachNumInSeries = isASeries(beforStr + str + afterStr);
+                        min = Long.valueOf((beforStr + str + afterStr).substring(0, lenOfEachNumInSeries[1]));
+                        return betterNumOfDigitBefor(Long.valueOf((beforStr + str + afterStr).substring(0, lenOfEachNumInSeries[1]))) + beforStr.length();
                     }
 
                 }
-
             }
+
         }
 
 
-        System.out.println(beforStr);
+
         if (afterWasMin) {
             return betterNumOfDigitBefor(min);
         }
-        return betterNumOfDigitBefor(min) + beforStr.length(); // need to check when to put minus 1 and when to add 1 !!!
+        if ( beforWasMin){
+            return betterNumOfDigitBefor(min) + otherbeforStr.length(); // need to check when to put minus 1 and when to add 1 !!!
+
+        }
+        if( String.valueOf(min).length()- str.length() ==1){
+            return betterNumOfDigitBefor(min) +1;
+        }
+        return betterNumOfDigitBefor(min) +beforStr.length(); // need to check when to put minus 1 and when to add 1 !!!
     }
 
 
