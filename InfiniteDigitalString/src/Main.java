@@ -9,7 +9,9 @@ public class Main {
         //System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("9102", 4));
         System.out.println("isASeries  " + Arrays.toString(isASeries("99100")));
 //        System.out.println(cutSeries("123456789101113"));
-        System.out.println(("0115455".indexOf("55")));
+        System.out.println(checkFromRight("454"));
+        System.out.println(checkFromLeft("455"));
+
     }
 
     public static String createStrringUntilNum(Long num) {
@@ -120,15 +122,85 @@ public class Main {
 
     }
 
+    /**
+     *
+     * check what is the minimal number that is start of a series that contain str if we start check from right side of the first digit
+     *
+     */
     public static long checkFromRight(String str) {
         String subString = "";
+        String subStringInWhile = "";
         int index = 1;
-        while (subString.length() <= str.length()) {
+        long min = Long.valueOf(str);
+        long val;
+        long i ;
+        while (subString.length() < str.length()) {
             subString = str.substring(0, index);
+            if ( subString.length()==str.length()){
+                break;
+            }
+            int wasContain = subString.indexOf(str);
+            subStringInWhile = subString;
+            val = Long.valueOf(subString);
+            i=1;
+            while (subStringInWhile.length() <= str.length() && wasContain == -1) {
+                subStringInWhile = subStringInWhile + String.valueOf(val+ i);
+                 wasContain = subStringInWhile.indexOf(str);
+                 i++;
 
+            }
+            if( wasContain !=-1) {
+                int lenOfNumber = isASeries(subStringInWhile)[1];
+                String firsNum = subStringInWhile.substring(0, lenOfNumber);
+                if (Long.valueOf(firsNum) < min && wasContain != -1) {
+                    min = Long.valueOf(firsNum);
+                }
+            }
 
             index++;
         }
+        return min;
+    }
+
+
+    /**
+     *
+     * check what is the minimal number that is start of a series that contain str if we start check from left side of the first digit
+     *
+     */
+    public static long checkFromLeft(String str) {
+        String subString = "";
+        String subStringInWhile = "";
+        int index = 1;
+        long min = Long.valueOf(str);
+        long val;
+        long i ;
+        while (subString.length() < str.length()) {
+            subString = str.substring(str.length()-index, str.length());
+            if ( subString.length()==str.length()){
+                break;
+            }
+            int wasContain = subString.indexOf(str);
+            subStringInWhile = subString;
+            val = Long.valueOf(subString);
+            i=1;
+            while (subStringInWhile.length() <= str.length() && wasContain == -1) {
+                subStringInWhile = String.valueOf(val- i)+subStringInWhile ;
+                wasContain = subStringInWhile.indexOf(str);
+                i++;
+
+            }
+            if( wasContain !=-1) {
+                int lenOfNumber = isASeries(subStringInWhile)[1];
+                String firsNum = subStringInWhile.substring(0, lenOfNumber);
+                if (Long.valueOf(firsNum) < min && wasContain != -1) {
+                    min = Long.valueOf(firsNum);
+                }
+            }
+
+            index++;
+        }
+        return min;
     }
 
     public static Long doAll(String str) {
