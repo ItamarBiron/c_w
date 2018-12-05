@@ -4,15 +4,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("98")));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("45")));
         //System.out.println("numOfDigitBefor is " + numOfDigitBefor(Long.valueOf("99")));
         //System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("9102", 4));
         System.out.println("isASeries  " + Arrays.toString(isASeries("99100")));
 //        System.out.println(cutSeries("123456789101113"));
-        System.out.println(checkFromRight("454"));
-        System.out.println(checkFromLeft("455"));
+        System.out.println(checkFromRight("1001"));
+        System.out.println(checkFromLeft("1001"));
         System.out.println(shift("43255"));
-        System.out.println(doAll("123456798"));
+        System.out.println(doAll("0237170164"));
 
     }
 
@@ -175,6 +175,12 @@ public class Main {
         long i;
         while (subString.length() < str.length()) {
             subString = str.substring(str.length() - index, str.length());
+
+            while (subString.charAt(0)=='0'){
+                index++;
+                subString = str.substring(str.length() - index, str.length());
+
+            }
             if (subString.length() == str.length()) {
                 break;
             }
@@ -225,14 +231,41 @@ public class Main {
         String shiftedString;
         long minOfStr;
         long minOfShiftStr;
+        long minOfAll;
+        long addOne =0;
+        int index = str.length()-1;
+        long counter;
+        String allSeries;
+
+        if ( str.charAt(0)=='0'){
+            while (str.charAt(index)=='0' && index >=0){
+                index --;
+            }
+            if (str.charAt(index)=='0'){
+                return betterNumOfDigitBefor(Long.valueOf("1"+str));
+            }
+            str = (str.charAt(index)+"")+str;
+            addOne =1;
+        }
+
         answer = isASeries(str);
         if (answer[0] == 1) {
-            return betterNumOfDigitBefor(Long.valueOf(str.substring(0, answer[1])));
+            return betterNumOfDigitBefor(Long.valueOf(str.substring(0, answer[1])))+addOne;
         }
         shiftedString = shift(str);
-        minOfStr = Math.min(checkFromLeft(str),checkFromLeft(str));
-        minOfShiftStr= Math.min(checkFromLeft(shiftedString),checkFromLeft(shiftedString));
-        return betterNumOfDigitBefor( Math.min(minOfStr,minOfShiftStr));
+        minOfStr = Math.min(checkFromLeft(str),checkFromRight(str));
+        minOfShiftStr= Math.min(checkFromLeft(shiftedString),checkFromRight(shiftedString));
+        minOfAll = Math.min(minOfStr,minOfShiftStr);
+        allSeries = String.valueOf(minOfAll);
+        counter = 1;
+        int indexOf =allSeries.indexOf(str);
+        while ( indexOf==-1){
+            allSeries = allSeries + String.valueOf(minOfAll+counter);
+            indexOf =allSeries.indexOf(str);
+            counter ++;
+        }
+
+        return betterNumOfDigitBefor( minOfAll)+addOne +indexOf;
 
 
     }
