@@ -4,13 +4,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("10")));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("98")));
         //System.out.println("numOfDigitBefor is " + numOfDigitBefor(Long.valueOf("99")));
         //System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("9102", 4));
         System.out.println("isASeries  " + Arrays.toString(isASeries("99100")));
 //        System.out.println(cutSeries("123456789101113"));
         System.out.println(checkFromRight("454"));
         System.out.println(checkFromLeft("455"));
+        System.out.println(shift("43255"));
+        System.out.println(doAll("123456798"));
 
     }
 
@@ -123,9 +125,7 @@ public class Main {
     }
 
     /**
-     *
      * check what is the minimal number that is start of a series that contain str if we start check from right side of the first digit
-     *
      */
     public static long checkFromRight(String str) {
         String subString = "";
@@ -133,23 +133,23 @@ public class Main {
         int index = 1;
         long min = Long.valueOf(str);
         long val;
-        long i ;
+        long i;
         while (subString.length() < str.length()) {
             subString = str.substring(0, index);
-            if ( subString.length()==str.length()){
+            if (subString.length() == str.length()) {
                 break;
             }
             int wasContain = subString.indexOf(str);
             subStringInWhile = subString;
             val = Long.valueOf(subString);
-            i=1;
+            i = 1;
             while (subStringInWhile.length() <= str.length() && wasContain == -1) {
-                subStringInWhile = subStringInWhile + String.valueOf(val+ i);
-                 wasContain = subStringInWhile.indexOf(str);
-                 i++;
+                subStringInWhile = subStringInWhile + String.valueOf(val + i);
+                wasContain = subStringInWhile.indexOf(str);
+                i++;
 
             }
-            if( wasContain !=-1) {
+            if (wasContain != -1) {
                 int lenOfNumber = isASeries(subStringInWhile)[1];
                 String firsNum = subStringInWhile.substring(0, lenOfNumber);
                 if (Long.valueOf(firsNum) < min && wasContain != -1) {
@@ -164,9 +164,7 @@ public class Main {
 
 
     /**
-     *
      * check what is the minimal number that is start of a series that contain str if we start check from left side of the first digit
-     *
      */
     public static long checkFromLeft(String str) {
         String subString = "";
@@ -174,23 +172,23 @@ public class Main {
         int index = 1;
         long min = Long.valueOf(str);
         long val;
-        long i ;
+        long i;
         while (subString.length() < str.length()) {
-            subString = str.substring(str.length()-index, str.length());
-            if ( subString.length()==str.length()){
+            subString = str.substring(str.length() - index, str.length());
+            if (subString.length() == str.length()) {
                 break;
             }
             int wasContain = subString.indexOf(str);
             subStringInWhile = subString;
             val = Long.valueOf(subString);
-            i=1;
+            i = 1;
             while (subStringInWhile.length() <= str.length() && wasContain == -1) {
-                subStringInWhile = String.valueOf(val- i)+subStringInWhile ;
+                subStringInWhile = String.valueOf(val - i) + subStringInWhile;
                 wasContain = subStringInWhile.indexOf(str);
                 i++;
 
             }
-            if( wasContain !=-1) {
+            if (wasContain != -1) {
                 int lenOfNumber = isASeries(subStringInWhile)[1];
                 String firsNum = subStringInWhile.substring(0, lenOfNumber);
                 if (Long.valueOf(firsNum) < min && wasContain != -1) {
@@ -203,14 +201,39 @@ public class Main {
         return min;
     }
 
+    public static String shift(String str) {
+        int minVal = 10;
+        int minIndex = str.length() - 1;
+        int index = 0;
+        String answer = "";
+        while (index < str.length()) {
+            if (str.charAt(index)!='0'&&Character.getNumericValue((str.charAt(index)))<minVal){
+                minIndex = index;
+                minVal = Character.getNumericValue(str.charAt(index));
+            }
+            index ++;
+        }
+        String firstPart = str.substring(minIndex,str.length());
+        String secondPart = str.substring(0,minIndex);
+        answer = firstPart+secondPart;
+        return answer;
+    }
+
     public static Long doAll(String str) {
         int[] answer = new int[2];
         String subString;
+        String shiftedString;
+        long minOfStr;
+        long minOfShiftStr;
         answer = isASeries(str);
         if (answer[0] == 1) {
-            return numOfDigitBefor(Long.valueOf(str.substring(0, answer[1])));
+            return betterNumOfDigitBefor(Long.valueOf(str.substring(0, answer[1])));
         }
-        return (long) 1;
+        shiftedString = shift(str);
+        minOfStr = Math.min(checkFromLeft(str),checkFromLeft(str));
+        minOfShiftStr= Math.min(checkFromLeft(shiftedString),checkFromLeft(shiftedString));
+        return betterNumOfDigitBefor( Math.min(minOfStr,minOfShiftStr));
+
 
     }
 
