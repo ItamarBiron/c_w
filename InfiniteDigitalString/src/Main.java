@@ -4,15 +4,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("45")));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("99")));
         //System.out.println("numOfDigitBefor is " + numOfDigitBefor(Long.valueOf("99")));
         //System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("9102", 4));
-        System.out.println("isASeries  " + Arrays.toString(isASeries("99100")));
+//        System.out.println("isASeries  " + Arrays.toString(isASeries("99100")));
 //        System.out.println(cutSeries("123456789101113"));
-        System.out.println(checkFromRight("1001"));
-        System.out.println(checkFromLeft("1001"));
-        System.out.println(shift("43255"));
-        System.out.println(doAll("0237170164"));
+//        System.out.println(checkFromRight("991001"));
+//        System.out.println(checkFromLeft("455"));
+//        System.out.println(Arrays.toString(addFromLeft("91001")));
+//        System.out.println(shift("43255"));
+        System.out.println(doAll("949225100"));
 
     }
 
@@ -176,7 +177,7 @@ public class Main {
         while (subString.length() < str.length()) {
             subString = str.substring(str.length() - index, str.length());
 
-            while (subString.charAt(0)=='0'){
+            while (subString.charAt(0) == '0') {
                 index++;
                 subString = str.substring(str.length() - index, str.length());
 
@@ -213,15 +214,41 @@ public class Main {
         int index = 0;
         String answer = "";
         while (index < str.length()) {
-            if (str.charAt(index)!='0'&&Character.getNumericValue((str.charAt(index)))<minVal){
+            if (str.charAt(index) != '0' && Character.getNumericValue((str.charAt(index))) < minVal) {
                 minIndex = index;
                 minVal = Character.getNumericValue(str.charAt(index));
             }
-            index ++;
+            index++;
         }
-        String firstPart = str.substring(minIndex,str.length());
-        String secondPart = str.substring(0,minIndex);
-        answer = firstPart+secondPart;
+        String firstPart = str.substring(minIndex, str.length());
+        String secondPart = str.substring(0, minIndex);
+        answer = firstPart + secondPart;
+        return answer;
+    }
+
+    /**
+     * @param str
+     * @return the minimal value for adding digit in the left side of the string
+     */
+    public static long[] addFromLeft(String str) {
+        long [] answer = new long[2];
+        String newString = str;
+        long min = Long.valueOf(str);
+        answer [0] = min;
+        answer [1] = 0 ; // in first we add 0 digit to the number
+        long counter = 1;
+        while (newString.length() < 1.5 * str.length()) { // TODO : check if we need to change 1.5 to other value
+            newString = String.valueOf(counter) + str;
+            long checkFromRightAns = checkFromRight(newString);
+            if (checkFromRightAns < min) {
+                min = checkFromRightAns;
+                answer [0]=min;
+                answer [1] = String.valueOf(counter).length();
+
+            }
+
+            counter++;
+        }
         return answer;
     }
 
@@ -232,40 +259,49 @@ public class Main {
         long minOfStr;
         long minOfShiftStr;
         long minOfAll;
-        long addOne =0;
-        int index = str.length()-1;
+        long addOne = 0;
+        int index = str.length() - 1;
         long counter;
+        long minFromAddToLeft;
+        long numberOfDigitAdded;
+        long [] addFromLeftAnswer = new long[2];
         String allSeries;
 
-        if ( str.charAt(0)=='0'){
-            while (str.charAt(index)=='0' && index >=0){
-                index --;
+        if (str.charAt(0) == '0') {
+            while (str.charAt(index) == '0' && index >= 0) {
+                index--;
             }
-            if (str.charAt(index)=='0'){
-                return betterNumOfDigitBefor(Long.valueOf("1"+str));
+            if (str.charAt(index) == '0') {
+                return betterNumOfDigitBefor(Long.valueOf("1" + str));
             }
-            str = (str.charAt(index)+"")+str;
-            addOne =1;
+            str = (str.charAt(index) + "") + str.substring(0, str.length() - 1);
+            addOne = 1;
         }
 
         answer = isASeries(str);
         if (answer[0] == 1) {
-            return betterNumOfDigitBefor(Long.valueOf(str.substring(0, answer[1])))+addOne;
+            return betterNumOfDigitBefor(Long.valueOf(str.substring(0, answer[1]))) + addOne;
         }
         shiftedString = shift(str);
-        minOfStr = Math.min(checkFromLeft(str),checkFromRight(str));
-        minOfShiftStr= Math.min(checkFromLeft(shiftedString),checkFromRight(shiftedString));
-        minOfAll = Math.min(minOfStr,minOfShiftStr);
-        allSeries = String.valueOf(minOfAll);
+        minOfStr = Math.min(checkFromLeft(str), checkFromRight(str));
+        minOfShiftStr = Math.min(checkFromLeft(shiftedString), checkFromRight(shiftedString));
+        minOfAll = Math.min(minOfStr, minOfShiftStr);
         counter = 1;
-        int indexOf =allSeries.indexOf(str);
-        while ( indexOf==-1){
-            allSeries = allSeries + String.valueOf(minOfAll+counter);
-            indexOf =allSeries.indexOf(str);
-            counter ++;
-        }
+        addFromLeftAnswer = addFromLeft(str);
+        minFromAddToLeft = addFromLeftAnswer[0];
+        numberOfDigitAdded =addFromLeftAnswer[1];
+        minOfAll = Math.min(minOfAll,minFromAddToLeft);
 
-        return betterNumOfDigitBefor( minOfAll)+addOne +indexOf;
+        allSeries = String.valueOf(minOfAll);
+        int indexOf = allSeries.indexOf(str);
+
+
+        while (indexOf == -1) {
+            allSeries = allSeries + String.valueOf(minOfAll + counter);
+            indexOf = allSeries.indexOf(str);
+            counter++;
+        }
+        return betterNumOfDigitBefor(minOfAll) + addOne + indexOf;
 
 
     }
