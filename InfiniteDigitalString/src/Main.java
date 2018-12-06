@@ -4,17 +4,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("66")));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("45")));
         //System.out.println("numOfDigitBefor is " + numOfDigitBefor(Long.valueOf("99")));
         //System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("9102", 4));
 //        System.out.println("isASeries  " + Arrays.toString(isASeries("99100")));
 //        System.out.println(cutSeries("123456789101113"));
 //        System.out.println(checkFromRight("676"));
 //        System.out.println(checkFromLeft("67"));
-        System.out.println(checkFromLeftForShifted("67"));
+//        System.out.println(checkFromLeftForShifted("67"));
+//        System.out.println("shiftFromIndex " + shiftFromIndex("1234",2));
 //        System.out.println(Arrays.toString(addFromLeft("91001")));
 //        System.out.println(shift("43255"));
-         System.out.println(doAll("6752852"));
+        //System.out.println(doAll("05467480"));
+//        System.out.println(doAll("33660"));
+        System.out.println(doAll("454"));
 
 
     }
@@ -219,43 +222,54 @@ public class Main {
         String subStringInWhile = "";
         int index = 1;
         long min = Long.valueOf(str);
-        long val= Long.valueOf(str);
-        long i =1;
+        long val = Long.valueOf(str);
+        long i = 1;
         long wantedIndex;
-        long [] answer = new long[2];
-        answer [0] = min;
-        answer [1] =0; // num of digit to add
-        while (subString.length() < 2*str.length()  ) {
-                subString = Long.valueOf(val-i)+subString;
-                i++;
-                wantedIndex = subString.indexOf(str);
-                if(wantedIndex!=-1)
-                    min = Long.valueOf(subString.substring(0,str.length()));
-                    answer [0] = min;
-                    answer [1] =wantedIndex+1;
-                    break;
-                }
+        long[] answer = new long[2];
+        answer[0] = min;
+        answer[1] = 0; // num of digit to add
+        while (subString.length() < 2 * str.length()) {
+            subString = Long.valueOf(val - i) + subString;
+            i++;
+            wantedIndex = subString.indexOf(str);
+            if (wantedIndex != -1)
+                min = Long.valueOf(subString.substring(0, str.length()));
+            answer[0] = min;
+            answer[1] = wantedIndex + 1;
+            break;
+        }
 
 
         return answer;
     }
 
+    public static String shiftFromIndex(String str, int index) {
+        return str.substring(index, str.length()) + str.substring(0, index);
+    }
+
     public static String shift(String str) {
         int minVal = 10;
-        int minIndex = str.length() - 1;
+        int currentCharVal;
         int index = 0;
         String answer = "";
+        String minialString = str;
+        String mayBeMinimalString = str;
         while (index < str.length()) {
             if (str.charAt(index) != '0' && Character.getNumericValue((str.charAt(index))) < minVal) {
-                minIndex = index;
                 minVal = Character.getNumericValue(str.charAt(index));
             }
             index++;
         }
-        String firstPart = str.substring(minIndex, str.length());
-        String secondPart = str.substring(0, minIndex);
-        answer = firstPart + secondPart;
-        return answer;
+        index = 0;
+        while (index < str.length()) {
+            currentCharVal = Character.getNumericValue(str.charAt(index));
+            mayBeMinimalString = shiftFromIndex(str, index);
+            if (currentCharVal == minVal && Long.valueOf(mayBeMinimalString) < Long.valueOf(minialString)) {
+                minialString = mayBeMinimalString;
+            }
+            index++;
+        }
+        return minialString;
     }
 
     /**
@@ -297,23 +311,31 @@ public class Main {
         long counter;
         long minFromAddToLeft;
         long numberOfDigitAdded;
-        long[] checkFromLeftShiftedAnswer = new long [2];
+        long[] checkFromLeftShiftedAnswer = new long[2];
         long checkFromLeftShiftedMin;
         long checkFromLeftShiftedExtraDigit;
         long[] addFromLeftAnswer = new long[2];
         String allSeries;
 
         if (str.charAt(0) == '0') {
-            while (str.charAt(index) == '0' && index >= 0) {
+            while (index > 0 && str.charAt(index) == '0') {
                 index--;
             }
             if (str.charAt(index) == '0') {
-                return betterNumOfDigitBefor(Long.valueOf("1" + str));
+                return betterNumOfDigitBefor(Long.valueOf("1" + str)) + 1;
             }
+
             String firstPart = str.substring(index, str.length());
             String secondPart = str.substring(0, index);
             str = firstPart + secondPart;
             addSomeDigit = firstPart.length();
+        }
+
+        long powerOfTenLesOne =  (long)Math.pow((double)10, (double)str.length()) - 1;
+        char firstChar = str.charAt(0);
+        char lastChar = str.charAt(str.length() - 1);
+        if ( Long.valueOf(str) !=powerOfTenLesOne&& firstChar ==lastChar ) {
+            str = str.substring(0, str.length()-1);
         }
 
         answer = isASeries(str);
@@ -341,10 +363,10 @@ public class Main {
             indexOf = allSeries.indexOf(str);
             counter++;
             if (allSeries.length() > 2 * str.length()) {
-                if ( minOfStr<checkFromLeftShiftedMin) {
+                if (minOfStr < checkFromLeftShiftedMin) {
                     return betterNumOfDigitBefor(Math.min(minOfStr, checkFromLeftShiftedMin)) + addSomeDigit + indexOf;
                 }
-                return   betterNumOfDigitBefor(checkFromLeftShiftedMin) + addSomeDigit + checkFromLeftShiftedExtraDigit;
+                return betterNumOfDigitBefor(checkFromLeftShiftedMin) + addSomeDigit + checkFromLeftShiftedExtraDigit;
 
             }
         }
