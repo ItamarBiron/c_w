@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421e463f-ccf2-4403-8263-0447cbe15d25" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../strings fun/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../strings fun/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -27,12 +26,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="11927" />
+          <entry key="java" value="12429" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="11927" />
+          <entry key="JAVA" value="12429" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -55,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-288">
-              <caret line="391" column="52" selection-start-line="391" selection-start-column="52" selection-end-line="391" selection-end-column="52" />
+            <state relative-caret-position="365">
+              <caret line="386" column="96" selection-start-line="386" selection-start-column="96" selection-end-line="386" selection-end-column="96" />
             </state>
           </provider>
         </entry>
@@ -91,7 +90,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544234582257" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544242238005" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -148,8 +147,8 @@
       <window_info id="Favorites" order="6" sideWeight="0.5019685" side_tool="true" weight="0.16831683" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32978722" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49938118" weight="0.25768322" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3321513" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49938118" visible="true" weight="0.25768322" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3321513" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -175,13 +174,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>342</line>
+          <line>357</line>
           <properties />
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>375</line>
+          <line>406</line>
           <properties />
           <option name="timeStamp" value="69" />
         </line-breakpoint>
@@ -190,12 +189,6 @@
           <line>22</line>
           <properties />
           <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>21</line>
-          <properties />
-          <option name="timeStamp" value="73" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -210,6 +203,9 @@
         <watch expression="String.valueOf(val - i)" />
         <watch expression="checkFromLeft(str)" />
         <watch expression="checkFromLeft(str)" />
+        <watch expression="String.valueOf(minOfShiftStr)" />
+        <watch expression="checkFromLeftForShifted(String.valueOf(minOfStr))[1]" />
+        <watch expression="betterNumOfDigitBefor(Math.min(minOfStr, checkFromLeftShiftedMin)) " />
       </configuration>
     </watches-manager>
   </component>
@@ -220,8 +216,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-288">
-          <caret line="391" column="52" selection-start-line="391" selection-start-column="52" selection-end-line="391" selection-end-column="52" />
+        <state relative-caret-position="365">
+          <caret line="386" column="96" selection-start-line="386" selection-start-column="96" selection-end-line="386" selection-end-column="96" />
         </state>
       </provider>
     </entry>
