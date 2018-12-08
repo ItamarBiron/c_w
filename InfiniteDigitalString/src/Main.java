@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("45")));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("234567")));
         //System.out.println("numOfDigitBefor is " + numOfDigitBefor(Long.valueOf("99")));
         //System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("9102", 4));
 //        System.out.println("isASeries  " + Arrays.toString(isASeries("99100")));
@@ -17,7 +17,10 @@ public class Main {
 //        System.out.println(shift("43255"));
         //System.out.println(doAll("05467480"));
 //        System.out.println(doAll("33660"));
-        System.out.println(doAll("454"));
+        System.out.println(doAll("234567"));
+        System.out.println(isTheFirstStringIsSeriesOfTheSecondString("121", "11"));
+        System.out.println(doAll("456723"));
+        System.out.println(cutAndCheck("623456723"));
 
 
     }
@@ -299,6 +302,61 @@ public class Main {
         return answer;
     }
 
+    /**
+     * @param str
+     * @param subString
+     * @return ture if the first string is in series of the second string s
+     */
+    public static boolean isTheFirstStringIsSeriesOfTheSecondString(String str, String subString) {
+        long val = Long.valueOf(subString);
+        int index = subString.indexOf(str);
+        long counter = 1;
+        while (index == -1 && subString.length() < 3 * str.length()) {
+            subString = subString + String.valueOf(val + counter);
+            index = subString.indexOf(str);
+            counter++;
+        }
+
+        if (index != -1) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public static long cutAndCheck(String str) {
+        int index = 1;
+        long min = Long.valueOf(str);
+        String minmalString = str;
+        String subString = str;//String.valueOf(Long.valueOf(str.substring(index, str.length()))-1);
+        index++;
+        long subStringLocation;
+        long minimalStringLocation;
+        int firstIndex =0;
+        int secondIndex=0;
+        while (firstIndex < str.length() / 2) {
+            subStringLocation = doAll(subString);
+            minimalStringLocation = doAll(minmalString);
+            if (subStringLocation < minimalStringLocation) {//isTheFirstStringIsSeriesOfTheSecondString(str, subString) &&
+                minmalString = subString;
+                //subString =String.valueOf(Long.valueOf(str.substring(index, str.length()))-1);
+
+            }
+            subString=str.substring(firstIndex,str.length()-secondIndex);
+            System.out.println(subString);
+            secondIndex++;
+            if (secondIndex>=str.length()/2+1){
+                firstIndex++;
+                secondIndex =0;
+            }
+           // index++;
+        }
+
+
+        return doAll(minmalString);
+    }
+
     public static Long doAll(String str) {
         int[] answer = new int[2];
         String subString;
@@ -315,7 +373,14 @@ public class Main {
         long checkFromLeftShiftedMin;
         long checkFromLeftShiftedExtraDigit;
         long[] addFromLeftAnswer = new long[2];
+        boolean didNumberWasCut = false;
         String allSeries;
+
+
+        answer = isASeries(str);
+        if (answer[0] == 1) {
+            return betterNumOfDigitBefor(Long.valueOf(str.substring(0, answer[1]))) + addSomeDigit;
+        }
 
         if (str.charAt(0) == '0') {
             while (index > 0 && str.charAt(index) == '0') {
@@ -331,17 +396,15 @@ public class Main {
             addSomeDigit = firstPart.length();
         }
 
-        long powerOfTenLesOne =  (long)Math.pow((double)10, (double)str.length()) - 1;
+        long powerOfTenLesOne = (long) Math.pow((double) 10, (double) str.length()) - 1;
         char firstChar = str.charAt(0);
         char lastChar = str.charAt(str.length() - 1);
-        if ( Long.valueOf(str) !=powerOfTenLesOne&& firstChar ==lastChar ) {
-            str = str.substring(0, str.length()-1);
-        }
+//        if ( Long.valueOf(str) !=powerOfTenLesOne&& firstChar ==lastChar ) {
+//            str = str.substring(0, str.length()-1);
+//            didNumberWasCut = true;
+//        }
 
-        answer = isASeries(str);
-        if (answer[0] == 1) {
-            return betterNumOfDigitBefor(Long.valueOf(str.substring(0, answer[1]))) + addSomeDigit;
-        }
+
         shiftedString = shift(str);
         minOfStr = Math.min(checkFromLeft(str), checkFromRight(str));
         minOfShiftStr = Math.min(checkFromLeft(shiftedString), checkFromRight(shiftedString));
