@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("234567")));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("2206")));
         //System.out.println("numOfDigitBefor is " + numOfDigitBefor(Long.valueOf("99")));
         //System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("9102", 4));
 //        System.out.println("isASeries  " + Arrays.toString(isASeries("99100")));
@@ -17,10 +17,10 @@ public class Main {
 //        System.out.println(shift("43255"));
         //System.out.println(doAll("05467480"));
 //        System.out.println(doAll("33660"));
-        System.out.println(doAll("234567"));
-        System.out.println(isTheFirstStringIsSeriesOfTheSecondString("121", "11"));
-        System.out.println(doAll("456723"));
-        System.out.println(cutAndCheck("623456723"));
+//        System.out.println(doAll("234567"));
+//        System.out.println(isTheFirstStringIsSeriesOfTheSecondString("623456723", "234566"));
+        System.out.println(doAll("52206"));
+        System.out.println(cutAndCheck("52206"));
 
 
     }
@@ -333,24 +333,23 @@ public class Main {
         index++;
         long subStringLocation;
         long minimalStringLocation;
-        int firstIndex =0;
-        int secondIndex=0;
+        int firstIndex = 0;
+        int secondIndex = 0;
         while (firstIndex < str.length() / 2) {
             subStringLocation = doAll(subString);
             minimalStringLocation = doAll(minmalString);
-            if (subStringLocation < minimalStringLocation) {//isTheFirstStringIsSeriesOfTheSecondString(str, subString) &&
-                minmalString = subString;
+            if (subStringLocation < minimalStringLocation && isTheFirstStringIsSeriesOfTheSecondString(str, String.valueOf( Long.valueOf(subString)-1))) {//isTheFirstStringIsSeriesOfTheSecondString(str, subString) &&
+                minmalString = String.valueOf( Long.valueOf(subString)-1);
                 //subString =String.valueOf(Long.valueOf(str.substring(index, str.length()))-1);
 
             }
-            subString=str.substring(firstIndex,str.length()-secondIndex);
-            System.out.println(subString);
+            subString = str.substring(firstIndex, str.length() - secondIndex);
             secondIndex++;
-            if (secondIndex>=str.length()/2+1){
+            if (secondIndex >= str.length() / 2 + 1) {
                 firstIndex++;
-                secondIndex =0;
+                secondIndex = 0;
             }
-           // index++;
+            // index++;
         }
 
 
