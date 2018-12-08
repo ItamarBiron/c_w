@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421e463f-ccf2-4403-8263-0447cbe15d25" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/out/production/InfiniteDigitalString/Main.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../strings fun/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../strings fun/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -11,6 +12,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/InfiniteDigitalString$Main.ic" NAME="Main Coverage Results" MODIFIED="1544253449783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="983104626">
@@ -26,12 +30,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="12585" />
+          <entry key="java" value="13469" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="12585" />
+          <entry key="JAVA" value="13469" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -54,13 +58,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="35" column="3" lean-forward="true" selection-start-line="35" selection-start-column="3" selection-end-line="500" />
+            <state relative-caret-position="475">
+              <caret line="389" column="49" selection-start-line="389" selection-start-column="49" selection-end-line="389" selection-end-column="49" />
+              <folding>
+                <element signature="method#createStrringUntilNum#0;class#Main#0" />
+                <element signature="method#numOfDigit#0;class#Main#0" />
+                <element signature="method#betterNumOfDigitBefor#0;class#Main#0" />
+                <element signature="method#numOfDigitBefor#0;class#Main#0" />
+                <element signature="method#reverseString#0;class#Main#0" />
+                <element signature="method#checkFromRight#0;class#Main#0" />
+                <element signature="method#checkFromLeft#0;class#Main#0" />
+                <element signature="method#checkFromLeftForShifted#0;class#Main#0" />
+                <element signature="method#maxDigit#0;class#Main#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>betterNumOfDigitBefor</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -90,7 +110,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544245970901" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544255585452" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -174,33 +194,45 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>357</line>
-          <properties />
-          <option name="timeStamp" value="67" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>426</line>
+          <line>477</line>
           <properties />
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>395</line>
-          <properties />
-          <option name="timeStamp" value="77" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>387</line>
-          <properties />
-          <option name="timeStamp" value="78" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>486</line>
+          <line>529</line>
           <properties />
           <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>453</line>
+          <properties />
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>454</line>
+          <properties />
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>8</line>
+          <properties />
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>9</line>
+          <properties />
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>6</line>
+          <properties />
+          <option name="timeStamp" value="102" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -209,11 +241,8 @@
         <watch expression="str" />
         <watch expression="isASeries(str)" />
         <watch expression="(isASeries(str))[1]" />
-        <watch expression=" Math.min(betterNumOfDigitBefor(Long.valueOf(minmalString)), doAll(minmalString))" />
-        <watch expression="betterNumOfDigitBefor(Long.valueOf(minmalString))" />
+        <watch expression="Integer.valueOf(str.charAt(index))" />
         <watch expression="doAll(minmalString)" />
-        <watch expression="doAll(minmalString)" />
-        <watch expression="isTheFirstStringIsSeriesOfTheSecondString(str,String.valueOf(doAll(minmalString)))" />
       </configuration>
     </watches-manager>
   </component>
@@ -224,8 +253,19 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="35" column="3" lean-forward="true" selection-start-line="35" selection-start-column="3" selection-end-line="500" />
+        <state relative-caret-position="475">
+          <caret line="389" column="49" selection-start-line="389" selection-start-column="49" selection-end-line="389" selection-end-column="49" />
+          <folding>
+            <element signature="method#createStrringUntilNum#0;class#Main#0" />
+            <element signature="method#numOfDigit#0;class#Main#0" />
+            <element signature="method#betterNumOfDigitBefor#0;class#Main#0" />
+            <element signature="method#numOfDigitBefor#0;class#Main#0" />
+            <element signature="method#reverseString#0;class#Main#0" />
+            <element signature="method#checkFromRight#0;class#Main#0" />
+            <element signature="method#checkFromLeft#0;class#Main#0" />
+            <element signature="method#checkFromLeftForShifted#0;class#Main#0" />
+            <element signature="method#maxDigit#0;class#Main#0" />
+          </folding>
         </state>
       </provider>
     </entry>
