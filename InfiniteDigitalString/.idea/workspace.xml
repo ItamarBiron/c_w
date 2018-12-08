@@ -26,12 +26,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="12429" />
+          <entry key="java" value="12585" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="12429" />
+          <entry key="JAVA" value="12585" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -54,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="386" column="96" selection-start-line="386" selection-start-column="96" selection-end-line="386" selection-end-column="96" />
+            <state relative-caret-position="260">
+              <caret line="35" column="3" lean-forward="true" selection-start-line="35" selection-start-column="3" selection-end-line="500" />
             </state>
           </provider>
         </entry>
@@ -90,7 +90,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544242238005" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544245970901" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -180,15 +180,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>406</line>
+          <line>426</line>
           <properties />
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>22</line>
+          <line>395</line>
           <properties />
-          <option name="timeStamp" value="71" />
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>387</line>
+          <properties />
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>486</line>
+          <properties />
+          <option name="timeStamp" value="80" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -197,15 +209,11 @@
         <watch expression="str" />
         <watch expression="isASeries(str)" />
         <watch expression="(isASeries(str))[1]" />
-        <watch expression="lastNumberConsecutive.substring(0,lenOfCutNumber-1)" />
-        <watch expression="lastNumberConsecutive.substring(0,lenOfCutNumber+1)" />
-        <watch expression="str.substring(strAfterCut.length(),str.length()-1)" />
-        <watch expression="String.valueOf(val - i)" />
-        <watch expression="checkFromLeft(str)" />
-        <watch expression="checkFromLeft(str)" />
-        <watch expression="String.valueOf(minOfShiftStr)" />
-        <watch expression="checkFromLeftForShifted(String.valueOf(minOfStr))[1]" />
-        <watch expression="betterNumOfDigitBefor(Math.min(minOfStr, checkFromLeftShiftedMin)) " />
+        <watch expression=" Math.min(betterNumOfDigitBefor(Long.valueOf(minmalString)), doAll(minmalString))" />
+        <watch expression="betterNumOfDigitBefor(Long.valueOf(minmalString))" />
+        <watch expression="doAll(minmalString)" />
+        <watch expression="doAll(minmalString)" />
+        <watch expression="isTheFirstStringIsSeriesOfTheSecondString(str,String.valueOf(doAll(minmalString)))" />
       </configuration>
     </watches-manager>
   </component>
@@ -216,8 +224,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="386" column="96" selection-start-line="386" selection-start-column="96" selection-end-line="386" selection-end-column="96" />
+        <state relative-caret-position="260">
+          <caret line="35" column="3" lean-forward="true" selection-start-line="35" selection-start-column="3" selection-end-line="500" />
         </state>
       </provider>
     </entry>

@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("4046")));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("150")));
         //System.out.println("numOfDigitBefor is " + numOfDigitBefor(Long.valueOf("99")));
         //System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("9102", 4));
 //        System.out.println("isASeries  " + Arrays.toString(isASeries("99100")));
@@ -19,8 +19,8 @@ public class Main {
 //        System.out.println(doAll("33660"));
 //        System.out.println(doAll("234567"));
 //        System.out.println(isTheFirstStringIsSeriesOfTheSecondString("623456723", "234566"));
-        System.out.println(doAll("3999589058124"));
-        System.out.println(cutAndCheck("3999589058124"));
+        System.out.println(doAll("99100"));
+        System.out.println(cutAndCheck("99100"));
 
 
     }
@@ -332,7 +332,7 @@ public class Main {
         String subString = str;//String.valueOf(Long.valueOf(str.substring(index, str.length()))-1);
         String subStringMinusOne;
         String subStringShiftedMinusOne;
-        String subStringShifted ;
+        String subStringShifted;
         index++;
         long subStringLocation;
         long minimalStringLocation;
@@ -347,11 +347,11 @@ public class Main {
             if (subStringLocation < minimalStringLocation) {
                 subStringMinusOne = String.valueOf(Long.valueOf(subString) - 1);
 
-                if (isTheFirstStringIsSeriesOfTheSecondString(str, subStringMinusOne) &&doAll(subStringMinusOne)<doAll(subString)) {
+                if (isTheFirstStringIsSeriesOfTheSecondString(str, subStringMinusOne) && doAll(subStringMinusOne) < doAll(subString)) {
                     minmalString = subStringMinusOne;
 
                 }
-                if ( isTheFirstStringIsSeriesOfTheSecondString(str,subString)){
+                if (isTheFirstStringIsSeriesOfTheSecondString(str, subString)) {
                     minmalString = subString;
 
                 }
@@ -362,11 +362,11 @@ public class Main {
             if (shiftedStringLocation < minimalStringLocation) {
                 subStringShiftedMinusOne = String.valueOf(Long.valueOf(subStringShifted) - 1);
 
-                if (isTheFirstStringIsSeriesOfTheSecondString(str, subStringShiftedMinusOne) &&doAll(subStringShiftedMinusOne)<doAll(subStringShifted)) {
+                if (isTheFirstStringIsSeriesOfTheSecondString(str, subStringShiftedMinusOne) && doAll(subStringShiftedMinusOne) < doAll(subStringShifted)) {
                     minmalString = subStringShiftedMinusOne;
 
                 }
-                if ( isTheFirstStringIsSeriesOfTheSecondString(str,subStringShifted)){
+                if (isTheFirstStringIsSeriesOfTheSecondString(str, subStringShifted)) {
                     minmalString = subStringShifted;
 
                 }
@@ -384,7 +384,27 @@ public class Main {
         }
 
 
-        return Math.min(betterNumOfDigitBefor(Long.valueOf(minmalString)),doAll(minmalString));
+
+        if ( doAll(minmalString)<Long.valueOf(minmalString) &&isTheFirstStringIsSeriesOfTheSecondString(str,String.valueOf(doAll(minmalString)))){
+             minmalString= String.valueOf(doAll(minmalString));
+        }
+
+        String allSeries = minmalString;
+        int indexOf = allSeries.indexOf(str);
+        int counter =1;
+
+        while (indexOf == -1) {
+            allSeries = allSeries + String.valueOf(Long.valueOf(minmalString) + counter);
+            indexOf = allSeries.indexOf(str);
+            counter++;
+
+
+            }
+
+
+
+
+        return betterNumOfDigitBefor(Long.valueOf(minmalString))+indexOf;//Math.min(betterNumOfDigitBefor(Long.valueOf(minmalString)), doAll(minmalString)) +index;
     }
 
     public static Long doAll(String str) {
@@ -409,7 +429,7 @@ public class Main {
 
         answer = isASeries(str);
         if (answer[0] == 1) {
-            return betterNumOfDigitBefor(Long.valueOf(str.substring(0, answer[1]))) + addSomeDigit;
+            return (Long.valueOf(str.substring(0, answer[1]))) + addSomeDigit;
         }
 
         if (str.charAt(0) == '0') {
@@ -446,7 +466,7 @@ public class Main {
         addFromLeftAnswer = addFromLeft(str, minOfAll);
         minFromAddToLeft = addFromLeftAnswer[0];
         numberOfDigitAdded = addFromLeftAnswer[1];
-        if (minOfShiftStr < minOfStr  && isTheFirstStringIsSeriesOfTheSecondString(str,String.valueOf(minFromAddToLeft))){
+        if (minOfShiftStr < minOfStr && isTheFirstStringIsSeriesOfTheSecondString(str, String.valueOf(minFromAddToLeft))) {
             minOfAll = minFromAddToLeft;
         }
         //minOfAll = Math.min(minOfAll, minFromAddToLeft);
@@ -464,16 +484,16 @@ public class Main {
             if (allSeries.length() > 2 * str.length()) {
                 if (minOfStr < checkFromLeftShiftedMin) {
                     if (indexOf != -1) {
-                        return betterNumOfDigitBefor(Math.min(minOfStr, checkFromLeftShiftedMin)) + addSomeDigit + indexOf;
+                        return Math.min(minOfStr, checkFromLeftShiftedMin);
 
                     }
-                    return betterNumOfDigitBefor(Math.min(minOfStr, checkFromLeftShiftedMin)) - 2 + checkFromLeftForShifted(String.valueOf(minOfStr))[1];
+                    return (Math.min(minOfStr, checkFromLeftShiftedMin));
                 }
-                return betterNumOfDigitBefor(checkFromLeftShiftedMin) + addSomeDigit + checkFromLeftShiftedExtraDigit -1;
+                return (checkFromLeftShiftedMin);
 
             }
         }
-        return betterNumOfDigitBefor(minOfAll) + addSomeDigit + indexOf ;
+        return (minOfAll);
 
 
     }
