@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421e463f-ccf2-4403-8263-0447cbe15d25" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/out/production/InfiniteDigitalString/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../strings fun/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../strings fun/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -14,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/InfiniteDigitalString$Main.ic" NAME="Main Coverage Results" MODIFIED="1544253449783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/InfiniteDigitalString$Main.ic" NAME="Main Coverage Results" MODIFIED="1544313031863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="983104626">
@@ -30,12 +30,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="13469" />
+          <entry key="java" value="13704" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="13469" />
+          <entry key="JAVA" value="13704" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -58,17 +58,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="389" column="49" selection-start-line="389" selection-start-column="49" selection-end-line="389" selection-end-column="49" />
+            <state relative-caret-position="216">
+              <caret line="424" column="56" selection-start-line="424" selection-start-column="56" selection-end-line="424" selection-end-column="56" />
               <folding>
                 <element signature="method#createStrringUntilNum#0;class#Main#0" />
                 <element signature="method#numOfDigit#0;class#Main#0" />
-                <element signature="method#betterNumOfDigitBefor#0;class#Main#0" />
                 <element signature="method#numOfDigitBefor#0;class#Main#0" />
-                <element signature="method#reverseString#0;class#Main#0" />
-                <element signature="method#checkFromRight#0;class#Main#0" />
-                <element signature="method#checkFromLeft#0;class#Main#0" />
-                <element signature="method#checkFromLeftForShifted#0;class#Main#0" />
                 <element signature="method#maxDigit#0;class#Main#0" />
               </folding>
             </state>
@@ -80,6 +75,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>betterNumOfDigitBefor</find>
+      <find>.out</find>
+      <find>- i</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -110,7 +107,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544255585452" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544313420327" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -167,8 +164,8 @@
       <window_info id="Favorites" order="6" sideWeight="0.5019685" side_tool="true" weight="0.16831683" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32978722" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49938118" visible="true" weight="0.25768322" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3321513" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49938118" weight="0.25768322" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3321513" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -176,6 +173,7 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5006188" side_tool="true" weight="0.25768322" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32978722" />
+      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32982674" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -192,49 +190,46 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>477</line>
-          <properties />
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>529</line>
+          <line>548</line>
           <properties />
           <option name="timeStamp" value="80" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>453</line>
+          <line>472</line>
           <properties />
           <option name="timeStamp" value="89" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>454</line>
+          <line>473</line>
           <properties />
           <option name="timeStamp" value="90" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>8</line>
+          <line>495</line>
           <properties />
-          <option name="timeStamp" value="98" />
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>201</line>
+          <properties />
+          <option name="timeStamp" value="105" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>9</line>
+          <line>360</line>
           <properties />
-          <option name="timeStamp" value="101" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>6</line>
-          <properties />
-          <option name="timeStamp" value="102" />
+          <option name="timeStamp" value="106" />
         </line-breakpoint>
       </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -253,17 +248,12 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="389" column="49" selection-start-line="389" selection-start-column="49" selection-end-line="389" selection-end-column="49" />
+        <state relative-caret-position="216">
+          <caret line="424" column="56" selection-start-line="424" selection-start-column="56" selection-end-line="424" selection-end-column="56" />
           <folding>
             <element signature="method#createStrringUntilNum#0;class#Main#0" />
             <element signature="method#numOfDigit#0;class#Main#0" />
-            <element signature="method#betterNumOfDigitBefor#0;class#Main#0" />
             <element signature="method#numOfDigitBefor#0;class#Main#0" />
-            <element signature="method#reverseString#0;class#Main#0" />
-            <element signature="method#checkFromRight#0;class#Main#0" />
-            <element signature="method#checkFromLeft#0;class#Main#0" />
-            <element signature="method#checkFromLeftForShifted#0;class#Main#0" />
             <element signature="method#maxDigit#0;class#Main#0" />
           </folding>
         </state>
