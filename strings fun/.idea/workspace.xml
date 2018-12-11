@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/../InfiniteDigitalString/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../InfiniteDigitalString/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../InfiniteDigitalString/out/production/InfiniteDigitalString/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InfiniteDigitalString/out/production/InfiniteDigitalString/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../InfiniteDigitalString/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../InfiniteDigitalString/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,23 +18,26 @@
     <session id="-730631754">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.107" value="1" />
+          <entry key="project.open.time.21" value="1" />
+          <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.54" value="1" />
           <entry key="project.open.time.80" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="iml" value="1" />
-          <entry key="java" value="5" />
+          <entry key="java" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="5" />
+          <entry key="JAVA" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -49,16 +53,14 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/kata.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1166">
+            <state relative-caret-position="22">
               <caret line="64" column="17" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="17" />
               <folding>
                 <element signature="method#main#0;class#kata#0" />
-                <element signature="e#1776#1777#0" expanded="true" />
-                <element signature="e#1834#1835#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -95,6 +97,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -111,12 +114,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543283374584" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543285689112" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
@@ -162,7 +164,7 @@
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26423267" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13428217" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -227,12 +229,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/kata.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1166">
+        <state relative-caret-position="22">
           <caret line="64" column="17" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="17" />
           <folding>
             <element signature="method#main#0;class#kata#0" />
-            <element signature="e#1776#1777#0" expanded="true" />
-            <element signature="e#1834#1835#0" expanded="true" />
           </folding>
         </state>
       </provider>

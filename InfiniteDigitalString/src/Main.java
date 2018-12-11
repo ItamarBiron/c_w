@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("89")));
+//        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("44485208")));
         //System.out.println("numOfDigitBefor is " + numOfDigitBefor(Long.valueOf("99")));
 //       System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("106011111", 8));
 //        System.out.println("isASeries  " + Arrays.toString(isASeries("110")));
@@ -18,9 +18,11 @@ public class Main {
         //System.out.println(doAll("05467480"));
 //        System.out.println(doAll("33660"));
 //        System.out.println(doAll("234567"));
-//        System.out.println(isTheFirstStringIsSeriesOfTheSecondString("623456723", "234566"));
-        System.out.println(doAll("99"));
-        System.out.println(cutAndCheck("99"));
+//        System.out.println(isTheFirstStringIsSeriesOfTheSecondString("520844485", "44485208"));
+//        System.out.println(doAll("043111311"));
+        System.out.println(cutAndCheck("455"));
+        System.out.println(findMinOfCuted("336466337336"));
+        // System.out.println(numberFromNumberOfDigits("13034"));
 
 
     }
@@ -40,6 +42,19 @@ public class Main {
             num = num / 10;
         }
         return count;
+    }
+
+
+    public static long numberFromNumberOfDigits(String num) {
+        long counter = (long) Math.pow(10, (double) (num.length() / 10));
+        while (betterNumOfDigitBefor(counter) <= Long.valueOf(num)) {
+            counter++;
+            if (counter % 1000000 == 0) {
+                System.out.println(counter);
+            }
+
+        }
+        return counter;
     }
 
 
@@ -197,7 +212,7 @@ public class Main {
             subStringInWhile = subString;
             val = Long.valueOf(subString);
             i = 1;
-            while (subStringInWhile.length() <= str.length() && wasContain == -1) {
+            while (subStringInWhile.length() <= 16 * 3 && wasContain == -1) {// changed !
                 if (val - i == 0) {
                     break;
                 }
@@ -252,11 +267,25 @@ public class Main {
         return answer;
     }
 
-    public static String shiftFromIndex(String str, int index) {
-        return str.substring(index, str.length()) + str.substring(0, index);
+    public static String shiftFromIndex(String str, int index, boolean wasFirst) {
+        String first = str.substring(index, str.length());
+        String second = str.substring(0, index);
+
+        if (wasFirst) {
+            if (index > 0 && index < str.length() && first.charAt(first.length() - 1) == second.charAt(0)
+                    && isTheFirstStringIsSeriesOfTheSecondString(str, first + second.substring(1, second.length()))) {
+                return first + second.substring(1, second.length());
+
+            }
+
+        }
+
+
+        return first + second;
+
     }
 
-    public static String shift(String str) {
+    public static String shift(String str, boolean wasFirst) {
         int minVal = 10;
         int currentCharVal;
         int index = 0;
@@ -275,7 +304,7 @@ public class Main {
         index = 0;
         while (index < str.length()) {
             currentCharVal = Character.getNumericValue(str.charAt(index));
-            mayBeMinimalString = shiftFromIndex(str, index);
+            mayBeMinimalString = shiftFromIndex(str, index, wasFirst);
             if (currentCharVal == minVal && Long.valueOf(mayBeMinimalString) < Long.valueOf(minialString)) {
                 minialString = mayBeMinimalString;
             }
@@ -356,9 +385,70 @@ public class Main {
         return maxDigit;
     }
 
+    public static long findMinOfCuted(String str) {
+        int index = 0;
+        int len = str.length();
+        long min = cutAndCheck(str);
+        long mayBeMin = min;
+        int minIndex = len-1;
+        int addDigit =0;
+        String minimalString = str;
+
+        String shiftedByIndexString;
+        while (index < len) {
+            shiftedByIndexString = shiftFromIndex(str, index, true);
+            mayBeMin = cutAndCheck(shiftedByIndexString);
+
+            if (betterNumOfDigitBefor(Long.valueOf(shiftedByIndexString)) < betterNumOfDigitBefor(min) && shiftedByIndexString.charAt(0) != '0' &&
+                    isTheFirstStringIsSeriesOfTheSecondString(str,shiftedByIndexString)) {
+                min = Long.valueOf(shiftedByIndexString);
+                minimalString =shiftedByIndexString;
+                minIndex = index;
+                addDigit =0;
+            }
+            if (mayBeMin < min && shiftedByIndexString.charAt(0) != '0' && shiftedByIndexString.length() == len &&
+            isTheFirstStringIsSeriesOfTheSecondString(str,shiftedByIndexString)) {
+                min = mayBeMin;
+                minimalString =shiftedByIndexString;
+                minIndex = index;
+
+            }
+            index++;
+        }
+
+
+
+//        if (Long.valueOf(minimalString)>0){
+//            minimalString =String.valueOf(Long.valueOf(minimalString)-1);
+//        }
+
+        String allSeries = minimalString;
+
+        int indexOf = allSeries.indexOf(str);
+        int counter = 1;
+
+        while (indexOf == -1 && allSeries.length() < 3 * str.length()) {
+            allSeries = allSeries + String.valueOf(Long.valueOf(minimalString) + counter);
+            indexOf = allSeries.indexOf(str);
+            counter++;
+
+
+        }
+
+        if (indexOf == -1) {
+            return betterNumOfDigitBefor(doAll(str));
+        }
+        long ans =betterNumOfDigitBefor(doAll(minimalString) ) + indexOf + addDigit;
+        return ans;
+//        return min +str.length()-minIndex;
+
+    }
+
     public static long cutAndCheck(String originalString) {
 
         int addDigit = 0;
+        boolean wasFirst = true;
+
         String str = originalString;
 
         if (Long.valueOf(originalString) == 0) {
@@ -366,7 +456,9 @@ public class Main {
         }
 
         if (originalString.charAt(0) == '0') {
-            str = shift(originalString);
+            str = shift(originalString, wasFirst);
+            wasFirst = false;
+
 //            str = maxDigit(str) + str;
             // addDigit =1;
         }
@@ -381,10 +473,11 @@ public class Main {
 
         index++;
         long subStringLocation;
-        long minimalStringLocation;
+        long minimalStringDoAllAnswer;
         long shiftedStringLocation;
 
         long subStringMinusOneDoAllAnswer;
+        long subStringShiftedMinusOneDoAllAnswer;
         int firstIndex = 0;
         int secondIndex = 0;
 
@@ -393,51 +486,67 @@ public class Main {
 
 
             subStringLocation = doAll(subString);
-            minimalStringLocation = doAll(minimalString);
-            subStringShifted = shift(subString);
+            minimalStringDoAllAnswer = doAll(minimalString);
+            subStringShifted = shift(subString, wasFirst);
+            if (subString.length() < str.length()) {
+                wasFirst = false;
+
+            }
             shiftedStringLocation = doAll(subStringShifted);
 
-            if (subStringLocation < minimalStringLocation) {
+            if (minimalStringDoAllAnswer < Long.valueOf(minimalString) &&
+                    isTheFirstStringIsSeriesOfTheSecondString(str, String.valueOf(minimalStringDoAllAnswer))) {
+                minimalString = String.valueOf(minimalStringDoAllAnswer);
+            }
 
-                if (Long.valueOf(subString) - 1>=0 ){
+            // if (subStringLocation < Long.valueOf(minimalString)) {
 
-                    subStringMinusOne = String.valueOf(Long.valueOf(subString) - 1);
+//                if (Long.valueOf(subString) - 1 >= 0) {
+//
+//                    subStringMinusOne = String.valueOf(Long.valueOf(subString) - 1);
+//
+//                    subStringMinusOneDoAllAnswer = doAll(subStringMinusOne);
+//
+//                    if (isTheFirstStringIsSeriesOfTheSecondString(str, String.valueOf(subStringMinusOneDoAllAnswer)) && Long.valueOf(subStringMinusOneDoAllAnswer) < Long.valueOf(minimalString)) {
+//                        minimalString = subStringMinusOne;
+//
+//                    }
+//
+//                }
 
-                    subStringMinusOneDoAllAnswer = doAll(subStringMinusOne);
+            if (isTheFirstStringIsSeriesOfTheSecondString(str, String.valueOf(subStringLocation)) && subStringLocation < Long.valueOf(minimalString)) {
+                minimalString = String.valueOf(subStringLocation);
 
-                    if (isTheFirstStringIsSeriesOfTheSecondString(str, subStringMinusOne) && subStringMinusOneDoAllAnswer < doAll(subString)) {
-                        minimalString = subStringMinusOne;
+            }
+            //subString =String.valueOf(Long.valueOf(str.substring(index, str.length()))-1);
 
-                    }
+            //}
 
-                }
+            // if (shiftedStringLocation < minimalStringDoAllAnswer) {
 
-                if (isTheFirstStringIsSeriesOfTheSecondString(str, subString)) {
-                    minimalString = subString;
+//                if (Long.valueOf(subStringShifted) - 1 >= 0) {
+//                    subStringShiftedMinusOne = String.valueOf(Long.valueOf(subStringShifted) - 1);
+//                    subStringShiftedMinusOneDoAllAnswer = doAll(subStringShiftedMinusOne);
+//
+//                    if (isTheFirstStringIsSeriesOfTheSecondString(str, String.valueOf(subStringShiftedMinusOneDoAllAnswer)) &&
+//                            subStringShiftedMinusOneDoAllAnswer < Long.valueOf(minimalString)) {
+//                        minimalString = subStringShiftedMinusOne;
+//
+//                    }
+//                }
 
-                }
-                //subString =String.valueOf(Long.valueOf(str.substring(index, str.length()))-1);
+            if (isTheFirstStringIsSeriesOfTheSecondString(str, String.valueOf(shiftedStringLocation)) && shiftedStringLocation < Long.valueOf(minimalString)) {
+                minimalString = String.valueOf(shiftedStringLocation);
 
             }
 
-            if (shiftedStringLocation < minimalStringLocation) {
-
-                if (Long.valueOf(subStringShifted) - 1>=0 ){
-                    subStringShiftedMinusOne = String.valueOf(Long.valueOf(subStringShifted) - 1);
-
-                    if (isTheFirstStringIsSeriesOfTheSecondString(str, subStringShiftedMinusOne) && doAll(subStringShiftedMinusOne) < doAll(subStringShifted)) {
-                        minimalString = subStringShiftedMinusOne;
-
-                    }
-                }
-
-                if (isTheFirstStringIsSeriesOfTheSecondString(str, subStringShifted)) {
-                    minimalString = subStringShifted;
-
-                }
-                //subString =String.valueOf(Long.valueOf(str.substring(index, str.length()))-1);
+            if (isTheFirstStringIsSeriesOfTheSecondString(str, subStringShifted) && Long.valueOf(subStringShifted) < Long.valueOf(minimalString)) {
+                minimalString = subStringShifted;
 
             }
+            //subString =String.valueOf(Long.valueOf(str.substring(index, str.length()))-1);
+
+            // }
 
             subString = str.substring(firstIndex, str.length() - secondIndex);
             secondIndex++;
@@ -517,12 +626,18 @@ public class Main {
         }
 
 
-        shiftedString = shift(str);
+        //shiftedString = shift(str);
         minOfStr = Math.min(checkFromLeft(str), checkFromRight(str));
-        minOfShiftStr = Math.min(checkFromLeft(shiftedString), checkFromRight(shiftedString));
-//        if (minOfShiftStr < minOfStr) { //&& isTheFirstStringIsSeriesOfTheSecondString(str,String.valueOf(minOfShiftStr))){
-//            minOfAll = minOfShiftStr;
+        minOfShiftStr = minOfStr;
+        //minOfShiftStr = Math.min(checkFromLeft(shiftedString), checkFromRight(shiftedString));
+//        if (checkFromLeft(shiftedString) < minOfShiftStr && isTheFirstStringIsSeriesOfTheSecondString(str, String.valueOf(checkFromLeft(shiftedString)))) {
+//            minOfShiftStr = checkFromLeft(shiftedString);
 //        }
+
+//        if (checkFromRight(shiftedString) < minOfShiftStr && isTheFirstStringIsSeriesOfTheSecondString(str, String.valueOf(checkFromRight(shiftedString)))) {
+//            minOfShiftStr = checkFromRight(shiftedString);
+//        }
+
         minOfAll = Math.min(minOfStr, minOfShiftStr);
         counter = 1;
         addFromLeftAnswer = addFromLeft(str, minOfAll);
@@ -531,30 +646,33 @@ public class Main {
         if (minOfShiftStr < minOfStr && isTheFirstStringIsSeriesOfTheSecondString(str, String.valueOf(minFromAddToLeft))) {
             minOfAll = minFromAddToLeft;
         }
-        //minOfAll = Math.min(minOfAll, minFromAddToLeft);
-        checkFromLeftShiftedAnswer = checkFromLeftForShifted(shiftedString);
-        checkFromLeftShiftedMin = checkFromLeftShiftedAnswer[0];// need to change function
-        checkFromLeftShiftedExtraDigit = checkFromLeftShiftedAnswer[1];
+        minOfAll = Math.min(minOfAll, minFromAddToLeft);
+
+        //checkFromLeftShiftedAnswer = checkFromLeftForShifted(shiftedString);
+        //checkFromLeftShiftedMin = checkFromLeftShiftedAnswer[0];// need to change function
+
+        //checkFromLeftShiftedMin = Math.min(checkFromLeftShiftedMin, addFromLeft(shiftedString, checkFromLeftShiftedMin)[0]);///
+        //checkFromLeftShiftedExtraDigit = checkFromLeftShiftedAnswer[1];
         allSeries = String.valueOf(minOfAll);
         int indexOf = allSeries.indexOf(str);
 
 
-        while (indexOf == -1) {
-            allSeries = allSeries + String.valueOf(minOfAll + counter);
-            indexOf = allSeries.indexOf(str);
-            counter++;
-            if (allSeries.length() > 2 * str.length()) {
-                if (minOfStr < checkFromLeftShiftedMin) {
-                    if (indexOf != -1) {
-                        return Math.min(minOfStr, checkFromLeftShiftedMin);
-
-                    }
-                    return (Math.min(minOfStr, checkFromLeftShiftedMin));
-                }
-                return (checkFromLeftShiftedMin);
-
-            }
-        }
+//        while (indexOf == -1) {
+//            allSeries = allSeries + String.valueOf(minOfAll + counter);
+//            indexOf = allSeries.indexOf(str);
+//            counter++;
+//            if (allSeries.length() > 2 * str.length()) {
+//                if (minOfStr < checkFromLeftShiftedMin) {
+//                    if (indexOf != -1) {
+//                        return Math.min(minOfStr, checkFromLeftShiftedMin);
+//
+//                    }
+//                    return (Math.min(minOfStr, checkFromLeftShiftedMin));
+//                }
+//                return (checkFromLeftShiftedMin);
+//
+//            }
+//        }
         return (minOfAll);
 
 
