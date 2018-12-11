@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("589058123999")));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("14")));
         //System.out.println("numOfDigitBefor is " + numOfDigitBefor(Long.valueOf("99")));
 //       System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("106011111", 8));
 //        System.out.println("isASeries  " + Arrays.toString(isASeries("110")));
@@ -21,8 +21,8 @@ public class Main {
 //        System.out.println(isTheFirstStringIsSeriesOfTheSecondString("520844485", "44485208"));
         System.out.println(doAll("3999589058124"));
         System.out.println(cutAndCheck("3999589058124"));
-        System.out.println(findMinOfCuted("3999589058124"));
-        // System.out.println(numberFromNumberOfDigits("13034"));
+        System.out.println(findMinOfCuted("44"));
+        // System.out.println(numberFromNumberOfDigits("44"));
 
 
     }
@@ -291,9 +291,13 @@ public class Main {
         int index = 0;
         String answer = "";
         String minialString = str;
+        String first;
+        char second;
         if (str.charAt(0) == '0') {
             minialString = "1" + str;
         }
+
+
         String mayBeMinimalString = str;
         while (index < str.length()) {
             if (str.charAt(index) != '0' && Character.getNumericValue((str.charAt(index))) < minVal) {
@@ -399,33 +403,57 @@ public class Main {
 
     }
 
-    public static long findMinOfCuted(String str) {
+    public static long findMinOfCuted(String originalString) {
+
+
         int index = 0;
+        String first;
+        char second;
+        String str =originalString;
+        boolean wasFirst = true;
+        if (originalString.length()>2){
+            while (index < str.length() - 1) {
+                first = String.valueOf(Long.valueOf(str.substring(0, str.length() - index)) + 1);
+                second = str.charAt(str.length() - 1);
+                if (first.charAt(0) == second) {
+                    str = str.substring(0,str.length()-1);
+                    wasFirst = false;
+                    break;
+                }
+                index++;
+            }
+            index = 0;
+
+        }
+
+
+
         int len = str.length();
-        long min = Long.valueOf("1"+str);
+        long min = Long.valueOf("1" + str);
         long mayBeMin = min;
         long ultimateMin = min;
         int minIndex = len - 1;
         int addDigit = 0;
-        int which =0;
+        int which = 0;
         String minimalString = String.valueOf(min);
 
         String shiftedByIndexString;
+        //589058123999
         while (index < len) {
-            shiftedByIndexString = shiftFromIndex(str, index, true);
-            if(cutAndCheck(shiftedByIndexString)<(Long.valueOf(shiftedByIndexString))&&
-                    shiftedByIndexString.length()==len &&
-                    isTheFirstStringIsSeriesOfTheSecondString(str,String.valueOf(cutAndCheck(shiftedByIndexString)))){
+            shiftedByIndexString = shiftFromIndex(str, index, wasFirst);
+            String valueOfCutAndCheck =String.valueOf(cutAndCheck(shiftedByIndexString));
+            boolean condition = isTheFirstStringIsSeriesOfTheSecondString(originalString,valueOfCutAndCheck );
+            if (cutAndCheck(shiftedByIndexString) < (Long.valueOf(shiftedByIndexString)) &&
+                    shiftedByIndexString.length() == len &&condition) {
                 mayBeMin = cutAndCheck(shiftedByIndexString);
-                which =0;
-            }
-            else{
+                which = 0;
+            } else {
                 mayBeMin = Long.valueOf(shiftedByIndexString);
-                which =1;
+                which = 1;
             }
             //mayBeMin = Math.min(cutAndCheck(shiftedByIndexString), betterNumOfDigitBefor(Long.valueOf(shiftedByIndexString)));
-            if (mayBeMin < min && mayBeMin > 0 && isTheFirstStringIsSeriesOfTheSecondString(str, String.valueOf(mayBeMin))&&
-                    shiftedByIndexString.charAt(0)!='0') {
+            if (mayBeMin < min && mayBeMin > 0 && isTheFirstStringIsSeriesOfTheSecondString(originalString, String.valueOf(mayBeMin)) &&
+                    shiftedByIndexString.charAt(0) != '0') {
                 min = mayBeMin;
                 minimalString = String.valueOf(mayBeMin);
             }
@@ -448,18 +476,18 @@ public class Main {
         }
 
         if (doAll(minimalString) < Long.valueOf(minimalString) &&
-                isTheFirstStringIsSeriesOfTheSecondString(str, String.valueOf(doAll(minimalString)))) {
+                isTheFirstStringIsSeriesOfTheSecondString(originalString, String.valueOf(doAll(minimalString)))) {
             minimalString = String.valueOf(doAll(minimalString));
 
         }
         String minimalStringMinosOne = minimalString;
-        if ( Long.valueOf(minimalString) - 1>0){
-             minimalStringMinosOne = String.valueOf(Long.valueOf(minimalString) - 1);
+        if (Long.valueOf(minimalString) - 1 > 0) {
+            minimalStringMinosOne = String.valueOf(Long.valueOf(minimalString) - 1);
         }
 
         int addLen = 0;
 
-        if (isTheFirstStringIsSeriesOfTheSecondString(str, minimalStringMinosOne)) {
+        if (isTheFirstStringIsSeriesOfTheSecondString(originalString, minimalStringMinosOne)) {
             minimalString = minimalStringMinosOne;
             addLen = minimalString.length();
         }
@@ -469,7 +497,7 @@ public class Main {
         int indexOf = allSeries.indexOf(str);
         int counter = 1;
 
-        indexOf = findFirstIndexThatMakeSeries(str, indexOf, minimalString);
+        indexOf = findFirstIndexThatMakeSeries(originalString, indexOf, minimalString);
 
         if (indexOf == -1) {
             return betterNumOfDigitBefor(doAll(str));
