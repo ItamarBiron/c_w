@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="421e463f-ccf2-4403-8263-0447cbe15d25" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InfiniteDigitalString/Main.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../strings fun/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../strings fun/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,12 +29,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="15875" />
+          <entry key="java" value="16944" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="15875" />
+          <entry key="JAVA" value="16944" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -59,13 +57,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="421" column="73" selection-start-line="421" selection-start-column="73" selection-end-line="421" selection-end-column="73" />
+            <state relative-caret-position="205">
+              <caret line="295" column="9" lean-forward="true" selection-start-line="295" selection-start-column="9" selection-end-line="295" selection-end-column="9" />
               <folding>
                 <element signature="method#createStrringUntilNum#0;class#Main#0" />
+                <element signature="method#numOfDigit#0;class#Main#0" />
+                <element signature="method#numberFromNumberOfDigits#0;class#Main#0" />
+                <element signature="method#betterNumOfDigitBefor#0;class#Main#0" />
                 <element signature="method#numOfDigitBefor#0;class#Main#0" />
+                <element signature="method#isThisStringIsASeriesOfNdigitNumber#0;class#Main#0" />
+                <element signature="method#isASeries#0;class#Main#0" />
                 <element signature="method#reverseString#0;class#Main#0" />
+                <element signature="docComment;method#checkFromRight#0;class#Main#0" />
+                <element signature="method#checkFromRight#0;class#Main#0" />
+                <element signature="docComment;method#checkFromLeft#0;class#Main#0" />
+                <element signature="method#checkFromLeft#0;class#Main#0" />
+                <element signature="method#checkFromLeftForShifted#0;class#Main#0" />
+                <element signature="method#shiftFromIndex#0;class#Main#0" />
+                <element signature="method#addFromLeft#0;class#Main#0" />
                 <element signature="method#maxDigit#0;class#Main#0" />
+                <element signature="method#findFirstIndexThatMakeSeries#0;class#Main#0" />
               </folding>
             </state>
           </provider>
@@ -91,7 +102,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="840" />
+    <option name="x" value="256" />
+    <option name="y" value="247" />
     <option name="width" value="840" />
     <option name="height" value="1010" />
   </component>
@@ -107,7 +119,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544487032623" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544501336855" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -164,8 +176,8 @@
       <window_info id="Favorites" order="6" sideWeight="0.5019685" side_tool="true" weight="0.16831683" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32978722" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49938118" weight="0.25768322" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3321513" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49938118" visible="true" weight="0.25768322" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3321513" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -192,13 +204,13 @@
       <breakpoints>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>666</line>
+          <line>703</line>
           <properties />
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>604</line>
+          <line>641</line>
           <properties />
           <option name="timeStamp" value="104" />
         </line-breakpoint>
@@ -216,9 +228,21 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>440</line>
+          <line>473</line>
           <properties />
-          <option name="timeStamp" value="134" />
+          <option name="timeStamp" value="146" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>427</line>
+          <properties />
+          <option name="timeStamp" value="151" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>414</line>
+          <properties />
+          <option name="timeStamp" value="152" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -234,6 +258,10 @@
         <watch expression="doAll(minmalString)" />
         <watch expression="shiftedByIndexString" />
         <watch expression="betterNumOfDigitBefor(doAll(minimalString) )" language="JAVA" />
+        <watch expression="betterNumOfDigitBefor(Long.valueOf(shiftedByIndexString))" />
+        <watch expression="cutAndCheck(shiftedByIndexString)" />
+        <watch expression="betterNumOfDigitBefor(doAll(String.valueOf(Long.valueOf(minimalString))))" />
+        <watch expression="cutAndCheck(str)" />
       </configuration>
     </watches-manager>
   </component>
@@ -253,13 +281,26 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="421" column="73" selection-start-line="421" selection-start-column="73" selection-end-line="421" selection-end-column="73" />
+        <state relative-caret-position="205">
+          <caret line="295" column="9" lean-forward="true" selection-start-line="295" selection-start-column="9" selection-end-line="295" selection-end-column="9" />
           <folding>
             <element signature="method#createStrringUntilNum#0;class#Main#0" />
+            <element signature="method#numOfDigit#0;class#Main#0" />
+            <element signature="method#numberFromNumberOfDigits#0;class#Main#0" />
+            <element signature="method#betterNumOfDigitBefor#0;class#Main#0" />
             <element signature="method#numOfDigitBefor#0;class#Main#0" />
+            <element signature="method#isThisStringIsASeriesOfNdigitNumber#0;class#Main#0" />
+            <element signature="method#isASeries#0;class#Main#0" />
             <element signature="method#reverseString#0;class#Main#0" />
+            <element signature="docComment;method#checkFromRight#0;class#Main#0" />
+            <element signature="method#checkFromRight#0;class#Main#0" />
+            <element signature="docComment;method#checkFromLeft#0;class#Main#0" />
+            <element signature="method#checkFromLeft#0;class#Main#0" />
+            <element signature="method#checkFromLeftForShifted#0;class#Main#0" />
+            <element signature="method#shiftFromIndex#0;class#Main#0" />
+            <element signature="method#addFromLeft#0;class#Main#0" />
             <element signature="method#maxDigit#0;class#Main#0" />
+            <element signature="method#findFirstIndexThatMakeSeries#0;class#Main#0" />
           </folding>
         </state>
       </provider>
