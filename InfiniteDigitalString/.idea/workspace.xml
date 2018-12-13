@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421e463f-ccf2-4403-8263-0447cbe15d25" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,12 +29,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="17414" />
+          <entry key="java" value="19390" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="17414" />
+          <entry key="JAVA" value="19390" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -56,23 +57,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="424" column="22" selection-start-line="424" selection-start-column="22" selection-end-line="424" selection-end-column="22" />
+            <state relative-caret-position="674">
+              <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
               <folding>
-                <element signature="method#createStrringUntilNum#0;class#Main#0" />
                 <element signature="method#numOfDigit#0;class#Main#0" />
                 <element signature="method#numberFromNumberOfDigits#0;class#Main#0" />
                 <element signature="method#betterNumOfDigitBefor#0;class#Main#0" />
                 <element signature="method#numOfDigitBefor#0;class#Main#0" />
                 <element signature="method#isThisStringIsASeriesOfNdigitNumber#0;class#Main#0" />
-                <element signature="method#isASeries#0;class#Main#0" />
                 <element signature="method#reverseString#0;class#Main#0" />
                 <element signature="docComment;method#checkFromRight#0;class#Main#0" />
                 <element signature="method#checkFromRight#0;class#Main#0" />
                 <element signature="docComment;method#checkFromLeft#0;class#Main#0" />
                 <element signature="method#checkFromLeft#0;class#Main#0" />
                 <element signature="method#checkFromLeftForShifted#0;class#Main#0" />
-                <element signature="method#shiftFromIndex#0;class#Main#0" />
                 <element signature="method#addFromLeft#0;class#Main#0" />
                 <element signature="method#maxDigit#0;class#Main#0" />
                 <element signature="method#findFirstIndexThatMakeSeries#0;class#Main#0" />
@@ -118,7 +116,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544505448128" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544670592092" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -175,7 +173,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5019685" side_tool="true" weight="0.16831683" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32978722" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49938118" visible="true" weight="0.25768322" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49938118" weight="0.25768322" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3321513" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -203,45 +201,69 @@
       <breakpoints>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>731</line>
+          <line>799</line>
           <properties />
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>669</line>
+          <line>737</line>
           <properties />
           <option name="timeStamp" value="104" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>216</line>
+          <line>285</line>
           <properties />
           <option name="timeStamp" value="105" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>331</line>
+          <line>400</line>
           <properties />
           <option name="timeStamp" value="107" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>501</line>
+          <line>569</line>
           <properties />
           <option name="timeStamp" value="146" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>409</line>
+          <line>512</line>
           <properties />
-          <option name="timeStamp" value="155" />
+          <option name="timeStamp" value="158" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>478</line>
+          <properties />
+          <option name="timeStamp" value="159" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>482</line>
+          <properties />
+          <option name="timeStamp" value="160" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>683</line>
+          <properties />
+          <option name="timeStamp" value="165" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>444</line>
+          <line>87</line>
           <properties />
-          <option name="timeStamp" value="158" />
+          <option name="timeStamp" value="168" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>32</line>
+          <properties />
+          <option name="timeStamp" value="171" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -255,15 +277,11 @@
         <watch expression="(isASeries(str))[1]" />
         <watch expression="Integer.valueOf(str.charAt(index))" />
         <watch expression="doAll(minmalString)" />
-        <watch expression="shiftedByIndexString" />
-        <watch expression="betterNumOfDigitBefor(doAll(minimalString) )" language="JAVA" />
-        <watch expression="betterNumOfDigitBefor(Long.valueOf(shiftedByIndexString))" />
-        <watch expression="cutAndCheck(shiftedByIndexString)" />
-        <watch expression="betterNumOfDigitBefor(doAll(String.valueOf(Long.valueOf(minimalString))))" />
-        <watch expression="cutAndCheck(str)" />
-        <watch expression="cutAndCheck(shiftedByIndexString)" />
-        <watch expression="isTheFirstStringIsSeriesOfTheSecondString(str, String.valueOf(cutAndCheck(shiftedByIndexString)))" />
-        <watch expression="shiftedByIndexString" />
+        <watch expression="minSeriesThatContain(currentMinSeries)" />
+        <watch expression="minIndex" />
+        <watch expression="minSeries.substring(minIndex, len)" />
+        <watch expression="isASeries(ans)[1]" />
+        <watch expression="ans.substring(0,isASeries(ans)[1])" />
       </configuration>
     </watches-manager>
   </component>
@@ -283,23 +301,20 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="424" column="22" selection-start-line="424" selection-start-column="22" selection-end-line="424" selection-end-column="22" />
+        <state relative-caret-position="674">
+          <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
           <folding>
-            <element signature="method#createStrringUntilNum#0;class#Main#0" />
             <element signature="method#numOfDigit#0;class#Main#0" />
             <element signature="method#numberFromNumberOfDigits#0;class#Main#0" />
             <element signature="method#betterNumOfDigitBefor#0;class#Main#0" />
             <element signature="method#numOfDigitBefor#0;class#Main#0" />
             <element signature="method#isThisStringIsASeriesOfNdigitNumber#0;class#Main#0" />
-            <element signature="method#isASeries#0;class#Main#0" />
             <element signature="method#reverseString#0;class#Main#0" />
             <element signature="docComment;method#checkFromRight#0;class#Main#0" />
             <element signature="method#checkFromRight#0;class#Main#0" />
             <element signature="docComment;method#checkFromLeft#0;class#Main#0" />
             <element signature="method#checkFromLeft#0;class#Main#0" />
             <element signature="method#checkFromLeftForShifted#0;class#Main#0" />
-            <element signature="method#shiftFromIndex#0;class#Main#0" />
             <element signature="method#addFromLeft#0;class#Main#0" />
             <element signature="method#maxDigit#0;class#Main#0" />
             <element signature="method#findFirstIndexThatMakeSeries#0;class#Main#0" />
