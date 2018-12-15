@@ -2,7 +2,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("60")));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("3536")));
         //System.out.println("numOfDigitBefor is " + numOfDigitBefor(Long.valueOf("99")));
 //       System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("106011111", 8));
 //        System.out.println("isASeries  " + Arrays.toString(isASeries("110")));
@@ -21,9 +21,11 @@ public class Main {
 //        System.out.println(cutAndCheck("091"));
 //        System.out.println(findMinOfCuted("091"));
 //        System.out.println(numberFromNumberOfDigits("109"));
-        System.out.println(minSeriesOfLenN("1234123", 4));
-        System.out.println("minSeries " + minSeries("12345123"));
-//        System.out.println(check("12312"));
+//        System.out.println(minSeriesOfLenN("1234123", 4));
+//        System.out.println("minSeries " + minSeries("12345123"));
+        String val = "949225100";
+        System.out.println(check(val));
+        System.out.println(betterNumOfDigitBefor(Long.valueOf(check(val))));
 
 
     }
