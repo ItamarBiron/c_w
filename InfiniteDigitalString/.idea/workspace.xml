@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421e463f-ccf2-4403-8263-0447cbe15d25" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InfiniteDigitalString/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InfiniteDigitalString/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -31,12 +29,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="19607" />
+          <entry key="java" value="20843" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="19607" />
+          <entry key="JAVA" value="20843" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -59,13 +57,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2286">
-              <caret line="134" column="23" selection-start-line="134" selection-start-column="23" selection-end-line="134" selection-end-column="23" />
+            <state relative-caret-position="14">
+              <caret line="32" column="57" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
               <folding>
                 <element signature="method#numOfDigit#0;class#Main#0" />
                 <element signature="method#numberFromNumberOfDigits#0;class#Main#0" />
                 <element signature="method#numOfDigitBefor#0;class#Main#0" />
-                <element signature="method#isThisStringIsASeriesOfNdigitNumber#0;class#Main#0" />
                 <element signature="method#reverseString#0;class#Main#0" />
                 <element signature="docComment;method#checkFromRight#0;class#Main#0" />
                 <element signature="method#checkFromRight#0;class#Main#0" />
@@ -117,7 +114,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544706331511" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544925860246" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -202,69 +199,27 @@
       <breakpoints>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>804</line>
-          <properties />
-          <option name="timeStamp" value="80" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>742</line>
-          <properties />
-          <option name="timeStamp" value="104" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>290</line>
+          <line>390</line>
           <properties />
           <option name="timeStamp" value="105" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>405</line>
+          <line>505</line>
           <properties />
           <option name="timeStamp" value="107" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>574</line>
+          <line>144</line>
           <properties />
-          <option name="timeStamp" value="146" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>517</line>
-          <properties />
-          <option name="timeStamp" value="158" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>483</line>
-          <properties />
-          <option name="timeStamp" value="159" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>487</line>
-          <properties />
-          <option name="timeStamp" value="160" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>688</line>
-          <properties />
-          <option name="timeStamp" value="165" />
+          <option name="timeStamp" value="177" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>89</line>
+          <line>45</line>
           <properties />
-          <option name="timeStamp" value="172" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>57</line>
-          <properties />
-          <option name="timeStamp" value="174" />
+          <option name="timeStamp" value="181" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -283,6 +238,8 @@
         <watch expression="minSeries.substring(minIndex, len)" />
         <watch expression="isASeries(ans)[1]" />
         <watch expression="ans.substring(0,isASeries(ans)[1])" />
+        <watch expression="firstNum.substring(0, i)" />
+        <watch expression="secondNum.charAt(i)" />
       </configuration>
     </watches-manager>
   </component>
@@ -302,13 +259,12 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2286">
-          <caret line="134" column="23" selection-start-line="134" selection-start-column="23" selection-end-line="134" selection-end-column="23" />
+        <state relative-caret-position="14">
+          <caret line="32" column="57" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
           <folding>
             <element signature="method#numOfDigit#0;class#Main#0" />
             <element signature="method#numberFromNumberOfDigits#0;class#Main#0" />
             <element signature="method#numOfDigitBefor#0;class#Main#0" />
-            <element signature="method#isThisStringIsASeriesOfNdigitNumber#0;class#Main#0" />
             <element signature="method#reverseString#0;class#Main#0" />
             <element signature="docComment;method#checkFromRight#0;class#Main#0" />
             <element signature="method#checkFromRight#0;class#Main#0" />
