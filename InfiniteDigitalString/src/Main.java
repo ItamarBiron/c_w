@@ -7,12 +7,8 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("454")));
-        System.out.println("try connect " + connectTowStrings("85", "xx"));
-        String num = "454";
-        String ans = findNLenSeries(num, 2);
-        System.out.println("findNLenSeries " + ans);
-        System.out.println(betterNumOfDigitBefor(Long.valueOf(ans)));
-        System.out.println(goodFindPosition("555899959741198"));
+        System.out.println("connected is " +connectTowStrings("xx","30"));
+        //System.out.println(goodFindPosition("10"));
 //        System.out.println(String.format("%1$" + 1 + "s", "").replace(' ', 'x'));
     }
 
@@ -75,6 +71,7 @@ public class Main {
             } else {
                 if (i == firstNumLen - 1) {
                     if (firstNum.charAt(firstNumLen - 1) == '9') {
+                        addOne =1;
 
                         if (secondNum.charAt(firstNumLen - 1) == 'x') {
                             secondNum = secondNum.substring(0, i) + "0" + secondNum.substring(i + 1, firstNum.length());
@@ -82,6 +79,9 @@ public class Main {
                         }
 
 
+                    }
+                    else{
+                        addOne =0;
                     }
 
 
@@ -99,7 +99,7 @@ public class Main {
 
                     }
                     if (secondNum.charAt(i) == 'x') {
-                        secondNum = secondNum.substring(0, i) + "" + firstNum.charAt(i) + secondNum.substring(i + 1, firstNum.length());
+                        secondNum = secondNum.substring(0, i) + "" +(Character.getNumericValue(firstNum.charAt(i))+addOne) + secondNum.substring(i + 1, firstNum.length());
 
                     }
 
