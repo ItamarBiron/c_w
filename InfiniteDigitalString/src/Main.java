@@ -1,11 +1,15 @@
+import java.io.*;
+import java.util.*;
+
 public class Main {
+
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("273805")));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("454")));
         //System.out.println("numOfDigitBefor is " + numOfDigitBefor(Long.valueOf("99")));
         System.out.println("isThisStringIsASeriesOfNdigitNumber  " + isThisStringIsASeriesOfNdigitNumber("106011111", 8));
-//        System.out.println("isASeries  " + Arrays.toString(isASeries("110")));
+        System.out.println("isASeries  " + Arrays.toString(isASeries("9101")));
 //        System.out.println(cutSeries("123456789101113"));
 //        System.out.println(checkFromRight("676"));
 //        System.out.println(checkFromLeft("99"));
@@ -30,82 +34,101 @@ public class Main {
 
         System.out.println(betterNumOfDigitBefor(Long.valueOf(minNum)) + numToDigit);
 //        System.out.println(findNLenSeries("123",3));
-        System.out.println(connectTowStrings("29","xx"));
+        System.out.println("try connect " + connectTowStrings("85", "xx"));
+        String num = "454";
+        String ans = findNLenSeries(num, 2);
+        System.out.println("findNLenSeries " + ans);
+        System.out.println(betterNumOfDigitBefor(Long.valueOf(ans)));
+        System.out.println(goodFindPosition("457305821867254"));
+//        System.out.println(String.format("%1$" + 1 + "s", "").replace(' ', 'x'));
 
 
     }
-    public static String connectTowStrings ( String firstNum, String secondNum){
+
+    public static String connectTowStrings(String firstNum, String secondNum) {
         int firstNumLen = firstNum.length();
         int secondNumLen = secondNum.length();
         int totalLen = firstNumLen + secondNumLen;
+        int addOne = 0;
 
 
-        if (secondNum.length()>firstNum.length()+1 || firstNumLen>secondNumLen ){
+        if (secondNum.length() > firstNum.length() + 1 || firstNumLen > secondNumLen) {
             return String.format("%1$" + totalLen + "s", "").replace(' ', '0'); // return string of zeros
         }
 
-        if( secondNumLen== firstNumLen +1){
-            for ( int i = 0; i <firstNumLen ; i++){
-                if ( firstNum.charAt(i) =='x'){
-                    firstNum = firstNum.substring(0, i) + "9" + firstNum.substring(i+1, firstNum.length());
 
-                }
-                else {
-                    if ( firstNum.charAt(i) !='9'){
+        // hundle the case to diffrent num size like 9 -> 10 and 999-> 1000 ------------------------
+        if (secondNumLen == firstNumLen + 1) {
+            for (int i = 0; i < firstNumLen; i++) {
+                if (firstNum.charAt(i) == 'x') {
+                    firstNum = firstNum.substring(0, i) + "9" + firstNum.substring(i + 1, firstNum.length());
+
+                } else {
+                    if (firstNum.charAt(i) != '9') {
                         return String.format("%1$" + totalLen + "s", "").replace(' ', '0');
                     }
                 }
             }
 
 
-            if ( secondNum.charAt(0) =='x'){
-                secondNum =  "1" + secondNum.substring(1, secondNum.length());
+            if (secondNum.charAt(0) == 'x') {
+                secondNum = "1" + secondNum.substring(1, secondNum.length());
 
-            }
-            else {
-                if ( secondNum.charAt(0) !='1'){
+            } else {
+                if (secondNum.charAt(0) != '1') {
                     return String.format("%1$" + totalLen + "s", "").replace(' ', '0');
                 }
             }
 
 
+            for (int i = 1; i < secondNumLen; i++) {
+                if (secondNum.charAt(i) == 'x') {
+                    secondNum = secondNum.substring(0, i) + "0" + secondNum.substring(i + 1, secondNum.length());
 
-
-
-            for ( int i = 1; i <secondNumLen ; i++){
-                if ( secondNum.charAt(i) =='x'){
-                    secondNum = secondNum.substring(0, i) + "0" + secondNum.substring(i+1, secondNum.length());
-
-                }
-                else {
-                    if ( secondNum.charAt(i) !='0'){
+                } else {
+                    if (secondNum.charAt(i) != '0') {
                         return String.format("%1$" + totalLen + "s", "").replace(' ', '0');
                     }
                 }
             }
         }
-        for (int i = 0; i < firstNumLen; i++) {
+
+        ////  --------------------------------------------------------------------------------------------
+
+
+        for (int i = firstNumLen - 1; i >= 0; i--) {
             if (firstNum.charAt(i) == 'x' && secondNum.charAt(i) == 'x') {
                 firstNum = firstNum.substring(0, i) + "1" + firstNum.substring(i, firstNum.length());
                 secondNum = secondNum.substring(0, i) + "1" + secondNum.substring(i, firstNum.length());
 
             } else {
-                if (i == firstNumLen-1) {
-                    if (firstNum.charAt(firstNumLen-1) == 'x') {
-                        firstNum = firstNum.substring(0, i) + "" + (Character.getNumericValue(secondNum.charAt(firstNumLen-1)) - 1) + firstNum.substring(i+1, firstNum.length());
+                if (i == firstNumLen - 1) {
+                    if (firstNum.charAt(firstNumLen - 1) == '9') {
+
+                        if (secondNum.charAt(firstNumLen - 1) == 'x') {
+                            secondNum = secondNum.substring(0, i) + "0" + secondNum.substring(i + 1, firstNum.length());
+
+                        }
+
 
                     }
-                    if (secondNum.charAt(firstNumLen-1) == 'x') {
-                        secondNum = secondNum.substring(0, i) + "" + (Character.getNumericValue(firstNum.charAt(firstNumLen-1)) + 1) + secondNum.substring(i+1, firstNum.length());
+
+
+                    if (firstNum.charAt(firstNumLen - 1) == 'x') {
+                        firstNum = firstNum.substring(0, i) + "" + (Character.getNumericValue(secondNum.charAt(firstNumLen - 1)) - 1) + firstNum.substring(i + 1, firstNum.length());
+
+                    }
+                    if (secondNum.charAt(firstNumLen - 1) == 'x') {
+                        secondNum = secondNum.substring(0, i) + "" + (Character.getNumericValue(firstNum.charAt(firstNumLen - 1)) + 1) + secondNum.substring(i + 1, firstNum.length());
 
                     }
                 } else {
                     if (firstNum.charAt(i) == 'x') {
-                        firstNum = firstNum.substring(0, i) + "" + secondNum.charAt(i) + firstNum.substring(i+1, firstNum.length());
+                        firstNum = firstNum.substring(0, i) + "" + secondNum.charAt(i) + firstNum.substring(i + 1, firstNum.length());
 
                     }
                     if (secondNum.charAt(i) == 'x') {
-                        secondNum = secondNum.substring(0, i) + "" + firstNum.charAt(i) + secondNum.substring(i+1, firstNum.length());
+                        secondNum = secondNum.substring(0, i) + "" + firstNum.charAt(i) + secondNum.substring(i + 1, firstNum.length());
 
                     }
 
@@ -114,55 +137,84 @@ public class Main {
             }
 
         }
-        return firstNum+secondNum;
+        return firstNum + secondNum;
     }
 
     public static String findNLenSeries(String str, int n) {
         String firstNum;
         String secondNum;
+        String currentStr;
+        String connectedStr;
+        String min = str;
+        if (str.charAt(0) == '0') {
+            min = "1" + str;
+        }
         String ans = str;
         int numOfNumber = str.length() / n;
-        int counter = 1;
-        while (counter <= str.length() - 1) {
-            firstNum = str.substring(0, n * counter);
-            secondNum = str.substring(n * counter, n * (counter + 1));
-            for (int i = 0; i < n; i++) {
-                if (firstNum.charAt(i) == 'x' && secondNum.charAt(i) == 'x') {
-                    firstNum = firstNum.substring(0, i) + "1" + firstNum.substring(i, firstNum.length());
-                    secondNum = secondNum.substring(0, i) + "1" + secondNum.substring(i, firstNum.length());
+        int counter = 0;
+        int[] isSeriesAns = new int[2];
+        isSeriesAns = isASeries(str);
+
+        if (isSeriesAns[0] == 1) {
+            return str.substring(0, isSeriesAns[1]);
+        }
+
+        while (counter <= n) {
+            if (counter == 0) {
+                currentStr = str + String.format("%1$" + n + "s", "").replace(' ', 'x');
+            } else {
+                if (counter == n) {
+                    currentStr = String.format("%1$" + n + "s", "").replace(' ', 'x') + str;
 
                 } else {
-                    if (i == 0) {
-                        if (firstNum.charAt(0) == 'x') {
-                            firstNum = firstNum.substring(0, i) + "" + (Character.getNumericValue(secondNum.charAt(0)) - 1) + firstNum.substring(i, firstNum.length());
-
-                        }
-                        if (secondNum.charAt(0) == 'x') {
-                            secondNum = secondNum.substring(0, i) + "" + (Character.getNumericValue(firstNum.charAt(0)) + 1) + secondNum.substring(i, firstNum.length());
-
-                        }
-                    } else {
-                        if (firstNum.charAt(0) == 'x') {
-                            firstNum = firstNum.substring(0, i) + "" + secondNum.charAt(i) + firstNum.substring(i, firstNum.length());
-
-                        }
-                        if (secondNum.charAt(0) == 'x') {
-                            secondNum = secondNum.substring(0, i) + "" + firstNum.charAt(i) + secondNum.substring(i, firstNum.length());
-
-                        }
-
-                    }
+                    currentStr = String.format("%1$" + counter + "s", "").replace(' ', 'x') +
+                            str + String.format("%1$" + (n - counter) + "s", "").replace(' ', 'x');
 
                 }
-
             }
-            ans = ans.substring(0,n*(counter-1))+firstNum + secondNum;
+            if (counter < n / 2) {
+                firstNum = currentStr.substring(currentStr.length() - 1 - n - n + 1, currentStr.length() - n);
+                secondNum = currentStr.substring(currentStr.length() - n, currentStr.length());
+                connectedStr = connectTowStrings(firstNum, secondNum);
+
+            } else {
+                firstNum = currentStr.substring(0, n);
+                secondNum = currentStr.substring(n, 2 * n);
+                connectedStr = connectTowStrings(firstNum, secondNum);
+            }
+            isSeriesAns = isASeries(connectedStr);
+            if (isSeriesAns[0] == 1 && Long.valueOf(connectedStr.substring(0, isSeriesAns[1])) < Long.valueOf(min) &&
+                    isTheFirstStringIsSeriesOfTheSecondString(str, connectedStr.substring(0, isSeriesAns[1]))) {
+                min = connectedStr.substring(0, isSeriesAns[1]);
+            }
             counter++;
         }
 
-        return ans;
+        return min;
     }
 
+
+    public static long goodFindPosition(String str) {
+        String minSeriesStartNum = findNLenSeries(str,str.length());
+        int counter =1;
+
+        while ( counter<str.length()){
+            if(Long.valueOf(findNLenSeries(str,counter))<Long.valueOf(minSeriesStartNum)){
+                minSeriesStartNum = findNLenSeries(str,counter);
+            }
+            counter++;
+        }
+        counter =1;
+
+        String allSeries = minSeriesStartNum;
+
+        while (allSeries.indexOf(str)==-1){
+            allSeries = allSeries + String.valueOf(Long.valueOf(minSeriesStartNum)+counter);
+            counter++;
+
+        }
+        return betterNumOfDigitBefor(Long.valueOf(minSeriesStartNum))+allSeries.indexOf(str);
+    }
 
     public static String minSeriesOfLenN(String str, int n) {
         String ans = str.substring(0, n);
@@ -184,6 +236,7 @@ public class Main {
 
 
     }
+
 
     public static String minSeries(String str) {
         int counter = 1;
