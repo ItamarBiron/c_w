@@ -30,25 +30,73 @@ public class Main {
 
         System.out.println(betterNumOfDigitBefor(Long.valueOf(minNum)) + numToDigit);
 //        System.out.println(findNLenSeries("123",3));
-        System.out.println(connectTowStrings("111x","xxx2"));
+        System.out.println(connectTowStrings("29","xx"));
 
 
     }
     public static String connectTowStrings ( String firstNum, String secondNum){
-        int len = firstNum.length();
-        for (int i = 0; i < len; i++) {
+        int firstNumLen = firstNum.length();
+        int secondNumLen = secondNum.length();
+        int totalLen = firstNumLen + secondNumLen;
+
+
+        if (secondNum.length()>firstNum.length()+1 || firstNumLen>secondNumLen ){
+            return String.format("%1$" + totalLen + "s", "").replace(' ', '0'); // return string of zeros
+        }
+
+        if( secondNumLen== firstNumLen +1){
+            for ( int i = 0; i <firstNumLen ; i++){
+                if ( firstNum.charAt(i) =='x'){
+                    firstNum = firstNum.substring(0, i) + "9" + firstNum.substring(i+1, firstNum.length());
+
+                }
+                else {
+                    if ( firstNum.charAt(i) !='9'){
+                        return String.format("%1$" + totalLen + "s", "").replace(' ', '0');
+                    }
+                }
+            }
+
+
+            if ( secondNum.charAt(0) =='x'){
+                secondNum =  "1" + secondNum.substring(1, secondNum.length());
+
+            }
+            else {
+                if ( secondNum.charAt(0) !='1'){
+                    return String.format("%1$" + totalLen + "s", "").replace(' ', '0');
+                }
+            }
+
+
+
+
+
+            for ( int i = 1; i <secondNumLen ; i++){
+                if ( secondNum.charAt(i) =='x'){
+                    secondNum = secondNum.substring(0, i) + "0" + secondNum.substring(i+1, secondNum.length());
+
+                }
+                else {
+                    if ( secondNum.charAt(i) !='0'){
+                        return String.format("%1$" + totalLen + "s", "").replace(' ', '0');
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < firstNumLen; i++) {
             if (firstNum.charAt(i) == 'x' && secondNum.charAt(i) == 'x') {
                 firstNum = firstNum.substring(0, i) + "1" + firstNum.substring(i, firstNum.length());
                 secondNum = secondNum.substring(0, i) + "1" + secondNum.substring(i, firstNum.length());
 
             } else {
-                if (i == len-1) {
-                    if (firstNum.charAt(len-1) == 'x') {
-                        firstNum = firstNum.substring(0, i) + "" + (Character.getNumericValue(secondNum.charAt(len-1)) - 1) + firstNum.substring(i+1, firstNum.length());
+                if (i == firstNumLen-1) {
+                    if (firstNum.charAt(firstNumLen-1) == 'x') {
+                        firstNum = firstNum.substring(0, i) + "" + (Character.getNumericValue(secondNum.charAt(firstNumLen-1)) - 1) + firstNum.substring(i+1, firstNum.length());
 
                     }
-                    if (secondNum.charAt(len-1) == 'x') {
-                        secondNum = secondNum.substring(0, i) + "" + (Character.getNumericValue(firstNum.charAt(len-1)) + 1) + secondNum.substring(i+1, firstNum.length());
+                    if (secondNum.charAt(firstNumLen-1) == 'x') {
+                        secondNum = secondNum.substring(0, i) + "" + (Character.getNumericValue(firstNum.charAt(firstNumLen-1)) + 1) + secondNum.substring(i+1, firstNum.length());
 
                     }
                 } else {
