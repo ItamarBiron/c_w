@@ -6,17 +6,19 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("454")));
-        System.out.println("connected is " +connectTowStrings("xx","30"));
-        //System.out.println(goodFindPosition("10"));
+//        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("454")));
+        System.out.println("connected is " + connectTowStrings("00", "xx"));
+//        System.out.println(betterConncetTowStrings("xxxxx","xxxx"));
+//        System.out.println(goodFindPosition("9100"));
 //        System.out.println(String.format("%1$" + 1 + "s", "").replace(' ', 'x'));
     }
 
-    public static String connectTowStrings(String firstNum, String secondNum) {
+    public static String hundleChangingnumOfDigit(String firstNum, String secondNum) {
         int firstNumLen = firstNum.length();
         int secondNumLen = secondNum.length();
         int totalLen = firstNumLen + secondNumLen;
         int addOne = 0;
+        int minusOne = 0;
 
 
         if (secondNum.length() > firstNum.length() + 1 || firstNumLen > secondNumLen) {
@@ -59,8 +61,55 @@ public class Main {
                 }
             }
         }
+        return "ok";
 
-        ////  --------------------------------------------------------------------------------------------
+    }
+
+    public static String betterConncetTowStrings(String firstNum, String secondNum) {
+        int firstNumLen = firstNum.length();
+        int secondNumLen = secondNum.length();
+        int totalLen = firstNumLen + secondNumLen;
+        int addOne = 0;
+        int minusOne = 0;
+        String hundleAns;
+
+        hundleAns = hundleChangingnumOfDigit(firstNum, secondNum);
+        if (!hundleAns.equals("ok")) {
+            return hundleAns;
+        }
+
+        return "notok";
+    }
+
+    public static String connectTowStrings(String firstNum, String secondNum) {
+        int firstNumLen = firstNum.length();
+        int secondNumLen = secondNum.length();
+        int totalLen = firstNumLen + secondNumLen;
+        int addOne = 0;
+        int minusOne = 0;
+
+        String hundleAns;
+
+        hundleAns = hundleChangingnumOfDigit(firstNum, secondNum);
+        if (!hundleAns.equals("ok")) {
+            return hundleAns;
+        }
+
+        if (firstNum.chars().filter(ch -> ch == 'x').count()==firstNumLen &&
+                secondNum.chars().filter(ch -> ch == 'x').count()==secondNumLen ){
+            return  String.format("%1$" + totalLen + "s", "").replace(' ', '0');
+        }
+
+        if (firstNum.indexOf("x")==-1 && secondNum.chars().filter(ch -> ch == 'x').count()==secondNumLen){
+            return firstNum+String.valueOf(Long.valueOf(firstNum)+1).substring(0,secondNumLen);
+        }
+
+        if (secondNum.indexOf("x")==-1 && firstNum.chars().filter(ch -> ch == 'x').count()==firstNumLen){
+            return String.valueOf(Long.valueOf(secondNum)-1).substring(0,firstNumLen)+secondNum;
+        }
+
+
+
 
 
         for (int i = firstNumLen - 1; i >= 0; i--) {
@@ -71,7 +120,7 @@ public class Main {
             } else {
                 if (i == firstNumLen - 1) {
                     if (firstNum.charAt(firstNumLen - 1) == '9') {
-                        addOne =1;
+                        addOne = 1;
 
                         if (secondNum.charAt(firstNumLen - 1) == 'x') {
                             secondNum = secondNum.substring(0, i) + "0" + secondNum.substring(i + 1, firstNum.length());
@@ -79,14 +128,20 @@ public class Main {
                         }
 
 
-                    }
-                    else{
-                        addOne =0;
+                    } else {
+                        addOne = 0;
                     }
 
 
                     if (firstNum.charAt(firstNumLen - 1) == 'x') {
-                        firstNum = firstNum.substring(0, i) + "" + (Character.getNumericValue(secondNum.charAt(firstNumLen - 1)) - 1) + firstNum.substring(i + 1, firstNum.length());
+                        if (secondNum.charAt(firstNumLen - 1) == '0') {
+                            firstNum = firstNum.substring(0, i) + "9" + firstNum.substring(i + 1, firstNum.length());
+                            minusOne = 1;
+
+                        } else {
+                            firstNum = firstNum.substring(0, i) + "" + (Character.getNumericValue(secondNum.charAt(firstNumLen - 1)) - 1) + firstNum.substring(i + 1, firstNum.length());
+                            minusOne = 0;
+                        }
 
                     }
                     if (secondNum.charAt(firstNumLen - 1) == 'x') {
@@ -94,12 +149,13 @@ public class Main {
 
                     }
                 } else {
-                    if (firstNum.charAt(i) == 'x') {
-                        firstNum = firstNum.substring(0, i) + "" + secondNum.charAt(i) + firstNum.substring(i + 1, firstNum.length());
+                    if (firstNum.charAt(i) == 'x') {//&&(Character.getNumericValue(secondNum.charAt(i))-minusOne)>-1) {
+                        firstNum = firstNum.substring(0, i) + "" + (Character.getNumericValue(secondNum.charAt(i)) - minusOne) + firstNum.substring(i + 1, firstNum.length());
 
                     }
+
                     if (secondNum.charAt(i) == 'x') {
-                        secondNum = secondNum.substring(0, i) + "" +(Character.getNumericValue(firstNum.charAt(i))+addOne) + secondNum.substring(i + 1, firstNum.length());
+                        secondNum = secondNum.substring(0, i) + "" + (Character.getNumericValue(firstNum.charAt(i)) + addOne) + secondNum.substring(i + 1, firstNum.length());
 
                     }
 
@@ -112,6 +168,7 @@ public class Main {
     }
 
     public static String findNLenSeries(String str, int n) {
+//        System.out.println(str);
         String firstNum;
         String secondNum;
         String currentStr;
@@ -166,25 +223,25 @@ public class Main {
 
 
     public static long goodFindPosition(String str) {
-        String minSeriesStartNum = findNLenSeries(str,str.length());
-        int counter =1;
+        String minSeriesStartNum = findNLenSeries(str, str.length());
+        int counter = 1;
 
-        while ( counter<str.length()){
-            if(Long.valueOf(findNLenSeries(str,counter))<Long.valueOf(minSeriesStartNum)){
-                minSeriesStartNum = findNLenSeries(str,counter);
+        while (counter < str.length()) {
+            if (Long.valueOf(findNLenSeries(str, counter)) < Long.valueOf(minSeriesStartNum)) {
+                minSeriesStartNum = findNLenSeries(str, counter);
             }
             counter++;
         }
-        counter =1;
+        counter = 1;
 
         String allSeries = minSeriesStartNum;
 
-        while (allSeries.indexOf(str)==-1){
-            allSeries = allSeries + String.valueOf(Long.valueOf(minSeriesStartNum)+counter);
+        while (allSeries.indexOf(str) == -1) {
+            allSeries = allSeries + String.valueOf(Long.valueOf(minSeriesStartNum) + counter);
             counter++;
 
         }
-        return betterNumOfDigitBefor(Long.valueOf(minSeriesStartNum))+allSeries.indexOf(str);
+        return betterNumOfDigitBefor(Long.valueOf(minSeriesStartNum)) + allSeries.indexOf(str);
     }
 
 
@@ -244,6 +301,7 @@ public class Main {
     }
 
     public static int[] isASeries(String str) {
+        System.out.println(str);
         int count = 1;
         long len = str.length();
         int counter = 1;
@@ -288,9 +346,6 @@ public class Main {
         return false;
 
     }
-
-
-
 
 
 }

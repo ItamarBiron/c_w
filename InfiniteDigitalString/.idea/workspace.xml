@@ -29,12 +29,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="22775" />
+          <entry key="java" value="23433" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="22775" />
+          <entry key="JAVA" value="23433" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -57,15 +57,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-335">
-              <caret line="9" column="65" selection-start-line="9" selection-start-column="65" selection-end-line="9" selection-end-column="65" />
+            <state relative-caret-position="187">
+              <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#hundleChangingnumOfDigit#0;class#Main#0" />
                 <element signature="method#goodFindPosition#0;class#Main#0" />
                 <element signature="method#numOfDigit#0;class#Main#0" />
                 <element signature="method#betterNumOfDigitBefor#0;class#Main#0" />
                 <element signature="method#isThisStringIsASeriesOfNdigitNumber#0;class#Main#0" />
-                <element signature="method#isASeries#0;class#Main#0" />
                 <element signature="docComment;method#isTheFirstStringIsSeriesOfTheSecondString#0;class#Main#0" />
                 <element signature="method#isTheFirstStringIsSeriesOfTheSecondString#0;class#Main#0" />
               </folding>
@@ -92,6 +92,12 @@
       </list>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="256" />
     <option name="y" value="247" />
@@ -110,7 +116,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544945190264" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545090477516" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -167,7 +173,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5019685" side_tool="true" weight="0.16831683" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32978722" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49938118" visible="true" weight="0.25768322" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49938118" visible="true" weight="0.25768322" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3321513" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -183,7 +189,7 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="7" weight="0.32982674" />
       <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32982674" />
     </layout>
   </component>
@@ -195,15 +201,9 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>128</line>
+          <line>84</line>
           <properties />
-          <option name="timeStamp" value="182" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>65</line>
-          <properties />
-          <option name="timeStamp" value="185" />
+          <option name="timeStamp" value="187" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -216,6 +216,8 @@
         <watch expression="currentStr.length() - n" />
         <watch expression="currentStr.length() - 1 - n" />
         <watch expression="currentStr.length() - 1 - n - n + 1" />
+        <watch expression="firstNum.substring(0, i)" />
+        <watch expression="(Character.getNumericValue(secondNum.charAt(i))-minusOne)" />
       </configuration>
     </watches-manager>
   </component>
@@ -235,15 +237,15 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-335">
-          <caret line="9" column="65" selection-start-line="9" selection-start-column="65" selection-end-line="9" selection-end-column="65" />
+        <state relative-caret-position="187">
+          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#hundleChangingnumOfDigit#0;class#Main#0" />
             <element signature="method#goodFindPosition#0;class#Main#0" />
             <element signature="method#numOfDigit#0;class#Main#0" />
             <element signature="method#betterNumOfDigitBefor#0;class#Main#0" />
             <element signature="method#isThisStringIsASeriesOfNdigitNumber#0;class#Main#0" />
-            <element signature="method#isASeries#0;class#Main#0" />
             <element signature="docComment;method#isTheFirstStringIsSeriesOfTheSecondString#0;class#Main#0" />
             <element signature="method#isTheFirstStringIsSeriesOfTheSecondString#0;class#Main#0" />
           </folding>
