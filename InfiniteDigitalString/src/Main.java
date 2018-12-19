@@ -6,11 +6,164 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("454")));
-        System.out.println("connected is " + connectTowStrings("00", "xx"));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("9100")));
+        System.out.println("connected is " + betterConncting("9", "xx"));
+
+//        System.out.println("connected is " + connectTowStrings("xx9", "100x"));
+//        System.out.println(isTheyFit("x9", "99"));
+//        System.out.println( "min is "+minOptionOfSplit("xx9100x"));
 //        System.out.println(betterConncetTowStrings("xxxxx","xxxx"));
 //        System.out.println(goodFindPosition("9100"));
 //        System.out.println(String.format("%1$" + 1 + "s", "").replace(' ', 'x'));
+    }
+
+    public static String betterConncting(String firstNum, String secondNum) {
+        int firstNumIndex = firstNum.length() - 1;
+        int secondNumIndex = secondNum.length() - 1;
+        int firstNumLen = firstNum.length();
+        int secondNumLen = secondNum.length();
+        int totalLen = firstNumLen + secondNumLen;
+        int val;
+        String stringOfZeros = String.format("%1$" + totalLen + "s", "").replace(' ', '0');
+
+
+
+        if(firstNum.charAt(0)=='0' || secondNum.charAt(0)=='0'){
+            return "00";
+        }
+
+        //////////////
+        if (firstNumLen==1 &&secondNumLen==1){
+            if (firstNum.equals("x")&&secondNum.equals("x")||secondNum.charAt(0)=='1'){
+                return "00";
+            }
+            if(!firstNum.equals("x")){
+                return firstNum+String.valueOf(Long.valueOf(firstNum)+1);
+            }
+            return String.valueOf(Long.valueOf(secondNum)-1)+secondNum;
+        }
+
+
+
+        ////////////
+
+
+
+        // check if the num of digit didint fit
+        if (secondNumLen > firstNumLen + 1 || firstNumLen > secondNumLen) {
+            return stringOfZeros;
+        }
+        // hundle case of changin num of digit like 99->100 or 9999->1000 ----------------------
+        if (secondNumLen == firstNumLen + 1) {
+            if (!isTheyFit(firstNum, String.format("%1$" + firstNumLen + "s", "").replace(' ', '9'))) {
+                return stringOfZeros;
+            }
+            if (!isTheyFit(secondNum, "1" + String.format("%1$" + firstNumLen + "s", "").replace(' ', '0'))) {
+                return stringOfZeros;
+            }
+            return String.format("%1$" + firstNumLen + "s", "").replace(' ', '9') +
+                    "1" + String.format("%1$" + firstNumLen + "s", "").replace(' ', '0');
+        }
+//----------------------------------------------------------------------------
+        while (firstNumIndex >= 0) {
+            if (firstNum.charAt(firstNumIndex) == 'x' && secondNum.charAt(secondNumIndex) == 'x') {
+                return stringOfZeros;
+            }
+
+            if (firstNumIndex == firstNumLen - 1) {
+                if (firstNum.charAt(firstNumIndex) == 'x') {
+                    if (secondNum.charAt(secondNumIndex) == '0') {
+                        firstNum = firstNum.substring(0, firstNumIndex) + "9" +
+                                firstNum.substring(firstNumIndex + 1, firstNumLen );
+                    } else {
+                        val = Character.getNumericValue(secondNum.charAt(secondNumIndex)) - 1;
+                        firstNum = firstNum.substring(0, firstNumIndex) + String.valueOf(val) +
+                                firstNum.substring(firstNumIndex + 1, firstNumLen );
+
+                    }
+                } else {
+                    if (firstNum.charAt(firstNumIndex) == '9') {
+                        secondNum = secondNum.substring(0, secondNumIndex) + "0" +
+                                secondNum.substring(secondNumIndex + 1, secondNumLen );
+                    } else {
+                        val = Character.getNumericValue(firstNum.charAt(firstNumIndex)) + 1;
+                        secondNum = secondNum.substring(0, secondNumIndex) + String.valueOf(val) +
+                                secondNum.substring(secondNumIndex + 1, secondNumLen );
+
+                    }
+
+                }
+
+            }
+            else{
+
+            }
+
+
+            firstNumIndex--;
+            secondNumIndex--;
+        }
+        return firstNum + secondNum;
+
+    }
+
+    public static String minOptionOfSplit(String str) {
+        String min = String.format("%1$" + str.length() + "s", "").replace(' ', '9');
+        int len;
+        int firstIndex = 0;
+        int lastIndex = 1;
+        String firstNum;
+        String secondNum;
+        String mayBeMin = min;
+        String mayBeMinWithExtraDigit;
+
+        len = lastIndex - firstIndex;
+        while (lastIndex + len < str.length()) {
+
+            firstNum = str.substring(firstIndex, lastIndex);
+            secondNum = str.substring(lastIndex, lastIndex + len);
+            mayBeMin = connectTowStrings(firstNum, secondNum);
+            if (lastIndex + len + 1 <= str.length()) {
+                firstNum = str.substring(firstIndex, lastIndex);
+                secondNum = str.substring(lastIndex, lastIndex + len + 1);
+                mayBeMinWithExtraDigit = connectTowStrings(firstNum, secondNum);
+                if (Long.valueOf(mayBeMinWithExtraDigit) != 0 && Long.valueOf(mayBeMinWithExtraDigit) <
+                        Long.valueOf(min) && isTheFirstStringIsSeriesOfTheSecondString(mayBeMinWithExtraDigit + str.substring(mayBeMinWithExtraDigit.length(), str.length()), mayBeMinWithExtraDigit)) {
+                    min = mayBeMinWithExtraDigit;
+
+                }
+
+            }
+            if (Long.valueOf(mayBeMin) != 0 && Long.valueOf(mayBeMin) < Long.valueOf(min) &&
+                    isTheFirstStringIsSeriesOfTheSecondString(min + str.substring(mayBeMin.length(), str.length()), mayBeMin)) {
+                min = mayBeMin;
+
+            }
+            lastIndex++;
+            len = lastIndex - firstIndex;
+
+
+        }
+        return min;
+    }
+
+    public static boolean isTheyFit(String firstNum, String secondNum) {
+        int counter = 0;
+        char firstNumChar;
+        char secondNumChar;
+        if (firstNum.length() != secondNum.length()) {
+            return false;
+        }
+        while (counter < firstNum.length()) {
+            firstNumChar = firstNum.charAt(counter);
+            secondNumChar = secondNum.charAt(counter);
+            if (firstNumChar != 'x' && secondNumChar != 'x' && firstNumChar != secondNumChar) {
+                return false;
+
+            }
+            counter++;
+        }
+        return true;
     }
 
     public static String hundleChangingnumOfDigit(String firstNum, String secondNum) {
@@ -65,23 +218,9 @@ public class Main {
 
     }
 
-    public static String betterConncetTowStrings(String firstNum, String secondNum) {
-        int firstNumLen = firstNum.length();
-        int secondNumLen = secondNum.length();
-        int totalLen = firstNumLen + secondNumLen;
-        int addOne = 0;
-        int minusOne = 0;
-        String hundleAns;
-
-        hundleAns = hundleChangingnumOfDigit(firstNum, secondNum);
-        if (!hundleAns.equals("ok")) {
-            return hundleAns;
-        }
-
-        return "notok";
-    }
 
     public static String connectTowStrings(String firstNum, String secondNum) {
+//        System.out.println(firstNum + " " + secondNum);
         int firstNumLen = firstNum.length();
         int secondNumLen = secondNum.length();
         int totalLen = firstNumLen + secondNumLen;
@@ -95,24 +234,47 @@ public class Main {
             return hundleAns;
         }
 
-        if (firstNum.chars().filter(ch -> ch == 'x').count()==firstNumLen &&
-                secondNum.chars().filter(ch -> ch == 'x').count()==secondNumLen ){
-            return  String.format("%1$" + totalLen + "s", "").replace(' ', '0');
+//        if (!isTheyFit(firstNum,String.valueOf(Long.valueOf(firstNum)+1))&&
+//                !isTheyFit(String.valueOf(Long.valueOf(secondNum)-1),secondNum)){
+//            return String.format("%1$" + totalLen + "s", "").replace(' ', '0');
+//
+//        }
+
+
+        if (firstNum.chars().filter(ch -> ch == '0').count() == firstNumLen ||
+                secondNum.chars().filter(ch -> ch == '0').count() == secondNumLen) {
+            return String.format("%1$" + totalLen + "s", "").replace(' ', '0');
         }
 
-        if (firstNum.indexOf("x")==-1 && secondNum.chars().filter(ch -> ch == 'x').count()==secondNumLen){
-            return firstNum+String.valueOf(Long.valueOf(firstNum)+1).substring(0,secondNumLen);
+
+        if (firstNum.chars().filter(ch -> ch == 'x').count() == firstNumLen &&
+                secondNum.chars().filter(ch -> ch == 'x').count() == secondNumLen) {
+            return String.format("%1$" + totalLen + "s", "").replace(' ', '0');
         }
 
-        if (secondNum.indexOf("x")==-1 && firstNum.chars().filter(ch -> ch == 'x').count()==firstNumLen){
-            return String.valueOf(Long.valueOf(secondNum)-1).substring(0,firstNumLen)+secondNum;
+        if (firstNum.indexOf("x") == -1) {
+            if (isTheyFit(String.valueOf(Long.valueOf(firstNum) + 1), secondNum)) {
+                return firstNum + String.valueOf(Long.valueOf(firstNum) + 1).substring(0, secondNumLen);
+            } else {
+                return String.format("%1$" + totalLen + "s", "").replace(' ', '0');
+
+            }
         }
 
 
+        if (secondNum.indexOf("x") == -1) {
+            if (isTheyFit(String.valueOf(Long.valueOf(secondNum) - 1), firstNum)) {
 
+                return String.valueOf(Long.valueOf(secondNum) - 1).substring(0, firstNumLen) + secondNum;
+            } else {
+                return String.format("%1$" + totalLen + "s", "").replace(' ', '0');
 
+            }
+        }
 
-        for (int i = firstNumLen - 1; i >= 0; i--) {
+        for (
+                int i = firstNumLen - 1;
+                i >= 0; i--) {
             if (firstNum.charAt(i) == 'x' && secondNum.charAt(i) == 'x') {
                 firstNum = firstNum.substring(0, i) + "1" + firstNum.substring(i, firstNum.length());
                 secondNum = secondNum.substring(0, i) + "1" + secondNum.substring(i, firstNum.length());
@@ -151,12 +313,13 @@ public class Main {
                 } else {
                     if (firstNum.charAt(i) == 'x') {//&&(Character.getNumericValue(secondNum.charAt(i))-minusOne)>-1) {
                         firstNum = firstNum.substring(0, i) + "" + (Character.getNumericValue(secondNum.charAt(i)) - minusOne) + firstNum.substring(i + 1, firstNum.length());
+                        minusOne = 0;
 
                     }
 
                     if (secondNum.charAt(i) == 'x') {
                         secondNum = secondNum.substring(0, i) + "" + (Character.getNumericValue(firstNum.charAt(i)) + addOne) + secondNum.substring(i + 1, firstNum.length());
-
+                        addOne = 0;
                     }
 
                 }
@@ -171,14 +334,17 @@ public class Main {
 //        System.out.println(str);
         String firstNum;
         String secondNum;
+        String firstNumExtended;
+        String secondNumExtended;
         String currentStr;
         String connectedStr;
         String min = str;
+        long regularConnecting;
+        long extendedConnecting;
         if (str.charAt(0) == '0') {
             min = "1" + str;
         }
         String ans = str;
-        int numOfNumber = str.length() / n;
         int counter = 0;
         int[] isSeriesAns = new int[2];
         isSeriesAns = isASeries(str);
@@ -193,6 +359,8 @@ public class Main {
             } else {
                 if (counter == n) {
                     currentStr = String.format("%1$" + n + "s", "").replace(' ', 'x') + str;
+//                    System.out.println("isssssss   " + currentStr);
+
 
                 } else {
                     currentStr = String.format("%1$" + counter + "s", "").replace(' ', 'x') +
@@ -201,14 +369,27 @@ public class Main {
                 }
             }
             if (counter < n / 2) {
-                firstNum = currentStr.substring(currentStr.length() - 1 - n - n + 1, currentStr.length() - n);
+                firstNum = currentStr.substring(currentStr.length() - n - n, currentStr.length() - n);
                 secondNum = currentStr.substring(currentStr.length() - n, currentStr.length());
+                //firstNumExtended = firstNum;
+                secondNumExtended = secondNum;
+                regularConnecting = Long.valueOf(connectTowStrings(firstNum, secondNum));
+
+//                if (currentStr.length() - n - n - 1 > -1) {
+//                    firstNumExtended = currentStr.substring(currentStr.length() - n - n - 1, currentStr.length() - n);
+//                }
+                //extendedConnecting = Long.valueOf(connectTowStrings(firstNumExtended, secondNum));
+
                 connectedStr = connectTowStrings(firstNum, secondNum);
+//                connectedStr = String.valueOf(Math.min(regularConnecting, extendedConnecting));
+
 
             } else {
                 firstNum = currentStr.substring(0, n);
                 secondNum = currentStr.substring(n, 2 * n);
-                connectedStr = connectTowStrings(firstNum, secondNum);
+
+                regularConnecting = Long.valueOf(connectTowStrings(firstNum, secondNum));
+                connectedStr = String.valueOf(regularConnecting);
             }
             isSeriesAns = isASeries(connectedStr);
             if (isSeriesAns[0] == 1 && Long.valueOf(connectedStr.substring(0, isSeriesAns[1])) < Long.valueOf(min) &&
@@ -301,7 +482,6 @@ public class Main {
     }
 
     public static int[] isASeries(String str) {
-        System.out.println(str);
         int count = 1;
         long len = str.length();
         int counter = 1;
