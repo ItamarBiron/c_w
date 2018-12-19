@@ -7,13 +7,13 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("9100")));
-        System.out.println("connected is " + betterConncting("9", "xx"));
+        System.out.println("connected is " + betterConncting("x9", "100"));
 
 //        System.out.println("connected is " + connectTowStrings("xx9", "100x"));
 //        System.out.println(isTheyFit("x9", "99"));
 //        System.out.println( "min is "+minOptionOfSplit("xx9100x"));
 //        System.out.println(betterConncetTowStrings("xxxxx","xxxx"));
-//        System.out.println(goodFindPosition("9100"));
+        System.out.println(goodFindPosition("9100"));
 //        System.out.println(String.format("%1$" + 1 + "s", "").replace(' ', 'x'));
     }
 
@@ -27,26 +27,23 @@ public class Main {
         String stringOfZeros = String.format("%1$" + totalLen + "s", "").replace(' ', '0');
 
 
-
-        if(firstNum.charAt(0)=='0' || secondNum.charAt(0)=='0'){
+        if (firstNum.charAt(0) == '0' || secondNum.charAt(0) == '0') {
             return "00";
         }
 
         //////////////
-        if (firstNumLen==1 &&secondNumLen==1){
-            if (firstNum.equals("x")&&secondNum.equals("x")||secondNum.charAt(0)=='1'){
+        if (firstNumLen == 1 && secondNumLen == 1) {
+            if (firstNum.equals("x") && secondNum.equals("x") || secondNum.charAt(0) == '1') {
                 return "00";
             }
-            if(!firstNum.equals("x")){
-                return firstNum+String.valueOf(Long.valueOf(firstNum)+1);
+            if (!firstNum.equals("x")) {
+                return firstNum + String.valueOf(Long.valueOf(firstNum) + 1);
             }
-            return String.valueOf(Long.valueOf(secondNum)-1)+secondNum;
+            return String.valueOf(Long.valueOf(secondNum) - 1) + secondNum;
         }
 
 
-
         ////////////
-
 
 
         // check if the num of digit didint fit
@@ -74,28 +71,65 @@ public class Main {
                 if (firstNum.charAt(firstNumIndex) == 'x') {
                     if (secondNum.charAt(secondNumIndex) == '0') {
                         firstNum = firstNum.substring(0, firstNumIndex) + "9" +
-                                firstNum.substring(firstNumIndex + 1, firstNumLen );
+                                firstNum.substring(firstNumIndex + 1, firstNumLen);
                     } else {
                         val = Character.getNumericValue(secondNum.charAt(secondNumIndex)) - 1;
                         firstNum = firstNum.substring(0, firstNumIndex) + String.valueOf(val) +
-                                firstNum.substring(firstNumIndex + 1, firstNumLen );
+                                firstNum.substring(firstNumIndex + 1, firstNumLen);
 
                     }
                 } else {
                     if (firstNum.charAt(firstNumIndex) == '9') {
                         secondNum = secondNum.substring(0, secondNumIndex) + "0" +
-                                secondNum.substring(secondNumIndex + 1, secondNumLen );
+                                secondNum.substring(secondNumIndex + 1, secondNumLen);
                     } else {
                         val = Character.getNumericValue(firstNum.charAt(firstNumIndex)) + 1;
                         secondNum = secondNum.substring(0, secondNumIndex) + String.valueOf(val) +
-                                secondNum.substring(secondNumIndex + 1, secondNumLen );
+                                secondNum.substring(secondNumIndex + 1, secondNumLen);
 
                     }
 
                 }
 
-            }
-            else{
+            } else {
+                if (firstNum.charAt(firstNumIndex) == 'x') {
+                    if (secondNum.charAt(secondNumIndex) == '0') {
+                        firstNum = firstNum.substring(0, firstNumIndex) + "9" +
+                                firstNum.substring(firstNumIndex + 1, firstNumLen);
+                    } else {
+                        if (Math.pow(10, (double) (firstNumLen - firstNumIndex - 1)) - Long.valueOf(firstNum.substring(firstNumIndex + 1, firstNumLen)) == 1) {
+                            val = Character.getNumericValue(secondNum.charAt(secondNumIndex)) - 1;
+                            firstNum = firstNum.substring(0, firstNumIndex) + String.valueOf(val) +
+                                    firstNum.substring(firstNumIndex + 1, firstNumLen);
+                        }
+
+                        else{
+                        firstNum = firstNum.substring(0, firstNumIndex) + secondNum.charAt(secondNumIndex) +
+                                firstNum.substring(firstNumIndex + 1, firstNumLen);
+
+                        }
+
+                    }
+                } else {
+                    if (firstNum.charAt(firstNumIndex) == '9') {
+                        if (secondNum.charAt(secondNumIndex + 1) == '0') {
+                            secondNum = secondNum.substring(0, secondNumIndex) + "0" +
+                                    secondNum.substring(secondNumIndex + 1, secondNumLen);
+                        }
+                    } else {
+                        if (Math.pow(10, (double) (firstNumLen - firstNumIndex - 1)) - Long.valueOf(firstNum.substring(firstNumIndex + 1, firstNumLen)) == 1) {
+                            val = Character.getNumericValue(firstNum.charAt(firstNumIndex)) + 1;
+                            secondNum = secondNum.substring(0, secondNumIndex) + String.valueOf(val) +
+                                    secondNum.substring(secondNumIndex + 1, secondNumLen);
+                        } else {
+                            secondNum = secondNum.substring(0, secondNumIndex) + firstNum.charAt(firstNumIndex) +
+                                    secondNum.substring(secondNumIndex + 1, secondNumLen);
+
+                        }
+                    }
+
+                }
+
 
             }
 
@@ -122,11 +156,11 @@ public class Main {
 
             firstNum = str.substring(firstIndex, lastIndex);
             secondNum = str.substring(lastIndex, lastIndex + len);
-            mayBeMin = connectTowStrings(firstNum, secondNum);
+            mayBeMin = betterConncting(firstNum, secondNum);
             if (lastIndex + len + 1 <= str.length()) {
                 firstNum = str.substring(firstIndex, lastIndex);
                 secondNum = str.substring(lastIndex, lastIndex + len + 1);
-                mayBeMinWithExtraDigit = connectTowStrings(firstNum, secondNum);
+                mayBeMinWithExtraDigit = betterConncting(firstNum, secondNum);
                 if (Long.valueOf(mayBeMinWithExtraDigit) != 0 && Long.valueOf(mayBeMinWithExtraDigit) <
                         Long.valueOf(min) && isTheFirstStringIsSeriesOfTheSecondString(mayBeMinWithExtraDigit + str.substring(mayBeMinWithExtraDigit.length(), str.length()), mayBeMinWithExtraDigit)) {
                     min = mayBeMinWithExtraDigit;
@@ -373,14 +407,14 @@ public class Main {
                 secondNum = currentStr.substring(currentStr.length() - n, currentStr.length());
                 //firstNumExtended = firstNum;
                 secondNumExtended = secondNum;
-                regularConnecting = Long.valueOf(connectTowStrings(firstNum, secondNum));
+                regularConnecting = Long.valueOf(betterConncting(firstNum, secondNum));
 
 //                if (currentStr.length() - n - n - 1 > -1) {
 //                    firstNumExtended = currentStr.substring(currentStr.length() - n - n - 1, currentStr.length() - n);
 //                }
                 //extendedConnecting = Long.valueOf(connectTowStrings(firstNumExtended, secondNum));
 
-                connectedStr = connectTowStrings(firstNum, secondNum);
+                connectedStr = betterConncting(firstNum, secondNum);
 //                connectedStr = String.valueOf(Math.min(regularConnecting, extendedConnecting));
 
 
@@ -388,7 +422,7 @@ public class Main {
                 firstNum = currentStr.substring(0, n);
                 secondNum = currentStr.substring(n, 2 * n);
 
-                regularConnecting = Long.valueOf(connectTowStrings(firstNum, secondNum));
+                regularConnecting = Long.valueOf(betterConncting(firstNum, secondNum));
                 connectedStr = String.valueOf(regularConnecting);
             }
             isSeriesAns = isASeries(connectedStr);
