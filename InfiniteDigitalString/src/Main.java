@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("9100")));
-        System.out.println("connected is " + betterConncting("x9", "100"));
+        System.out.println("connected is " + betterConncting("xxx9", "9000"));
 
 //        System.out.println("connected is " + connectTowStrings("xx9", "100x"));
 //        System.out.println(isTheyFit("x9", "99"));
@@ -114,6 +114,10 @@ public class Main {
                     if (firstNum.charAt(firstNumIndex) == '9') {
                         if (secondNum.charAt(secondNumIndex + 1) == '0') {
                             secondNum = secondNum.substring(0, secondNumIndex) + "0" +
+                                    secondNum.substring(secondNumIndex + 1, secondNumLen);
+                        }
+                        else{
+                            secondNum = secondNum.substring(0, secondNumIndex) + firstNum.charAt(firstNumIndex)+
                                     secondNum.substring(secondNumIndex + 1, secondNumLen);
                         }
                     } else {
@@ -405,25 +409,16 @@ public class Main {
             if (counter < n / 2) {
                 firstNum = currentStr.substring(currentStr.length() - n - n, currentStr.length() - n);
                 secondNum = currentStr.substring(currentStr.length() - n, currentStr.length());
-                //firstNumExtended = firstNum;
-                secondNumExtended = secondNum;
-                regularConnecting = Long.valueOf(betterConncting(firstNum, secondNum));
-
-//                if (currentStr.length() - n - n - 1 > -1) {
-//                    firstNumExtended = currentStr.substring(currentStr.length() - n - n - 1, currentStr.length() - n);
-//                }
-                //extendedConnecting = Long.valueOf(connectTowStrings(firstNumExtended, secondNum));
 
                 connectedStr = betterConncting(firstNum, secondNum);
-//                connectedStr = String.valueOf(Math.min(regularConnecting, extendedConnecting));
 
 
             } else {
                 firstNum = currentStr.substring(0, n);
                 secondNum = currentStr.substring(n, 2 * n);
 
-                regularConnecting = Long.valueOf(betterConncting(firstNum, secondNum));
-                connectedStr = String.valueOf(regularConnecting);
+                connectedStr = betterConncting(firstNum, secondNum);
+
             }
             isSeriesAns = isASeries(connectedStr);
             if (isSeriesAns[0] == 1 && Long.valueOf(connectedStr.substring(0, isSeriesAns[1])) < Long.valueOf(min) &&
