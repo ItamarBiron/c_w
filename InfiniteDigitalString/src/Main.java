@@ -6,12 +6,55 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("58")));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("2578606258")));
+        //24674951477
         System.out.println("connected is " + betterConncting("45", "xx"));
 
 //        System.out.println("min is " + minOptionOfSplit("x23124125"));
-        System.out.println(goodFindPosition("04674440188"));
+        System.out.println(goodFindPosition("2578606258"));
+        System.out.println(minimalShift("58257860625"));
+        System.out.println(clearRepeatDigitInStrat("12345123"));
 //        System.out.println(splitToHalfAndConnect("123456798"));
+    }
+
+
+    public static String shiftFromIndex(String str, int index) {
+        return str.substring(index, str.length()) + str.substring(0, index);
+    }
+
+    public static String clearRepeatDigitInStrat(String str) {
+        String fromStart = "";
+        String fromEnd;
+        String maxString = "";
+        int index = 1;
+        while (fromStart.length() < str.length()-1) {
+            fromStart = str.substring(0, index);
+            fromEnd = str.substring(str.length()-index, str.length());
+            if ( fromStart.equals(fromEnd)){
+                maxString = fromStart;
+            }
+            index ++;
+
+        }
+        return str.substring(maxString.length(),str.length());
+    }
+
+    public static String minimalShift(String str) {
+        str = clearRepeatDigitInStrat(str);
+        int index = 0;
+        String minimalString = str;
+        String shiftedString;
+        if (minimalString.charAt(0) == '0') {
+            minimalString = "1" + minimalString;
+        }
+        while (index < str.length()) {
+            shiftedString = shiftFromIndex(str, index);
+            if (shiftedString.charAt(0) != '0' && Long.valueOf(shiftedString) < Long.valueOf(minimalString)) {
+                minimalString = shiftedString;
+            }
+            index++;
+        }
+        return minimalString;
     }
 
     public static String betterConncting(String firstNum, String secondNum) {
@@ -149,7 +192,7 @@ public class Main {
         return betterConncting(str.substring(0, len / 2), str.substring(len / 2, len));
     }
 
-    public static String minOptionOfSplit(String str, String  originalStr) {
+    public static String minOptionOfSplit(String str, String originalStr) {
         String min = String.format("%1$" + 18 + "s", "").replace(' ', '9');
         String mayBeMin;
         String subString;
@@ -179,13 +222,13 @@ public class Main {
         index = 1;
 
         while (index <= str.length()) {
-            subString = str.substring(str.length()-index, str.length());
+            subString = str.substring(str.length() - index, str.length());
             mayBeMin = splitToHalfAndConnect(subString);
 
             if (mayBeMin.length() < 19 && Long.valueOf(mayBeMin) > 0 && Long.valueOf(mayBeMin) < Long.valueOf(min) && isASeries(mayBeMin)[0] == 1) {
 
-                mayBeMinSubstring = String.valueOf(Long.valueOf(mayBeMin.substring(0, isASeries(mayBeMin)[1]))-originalStr.length()+1);
-                if (isTheFirstStringIsSeriesOfTheSecondString(originalStr ,mayBeMinSubstring )) {
+                mayBeMinSubstring = String.valueOf(Long.valueOf(mayBeMin.substring(0, isASeries(mayBeMin)[1])) - originalStr.length() + 1);
+                if (isTheFirstStringIsSeriesOfTheSecondString(originalStr, mayBeMinSubstring)) {
                     min = mayBeMin;
                 }
 
@@ -434,7 +477,7 @@ public class Main {
 //                connectedStr = minOptionOfSplit(firstNum + secondNum);
 //
 //            }
-            connectedStr = minOptionOfSplit(currentStr ,str);
+            connectedStr = minOptionOfSplit(currentStr, str);
 
             isSeriesAns = isASeries(connectedStr);
             if (isSeriesAns[0] == 1 && Long.valueOf(connectedStr.substring(0, isSeriesAns[1])) < Long.valueOf(min) &&
@@ -459,6 +502,8 @@ public class Main {
             counter++;
         }
         counter = 1;
+
+        
 
         String allSeries = minSeriesStartNum;
 
