@@ -10,7 +10,7 @@ public class Main {
         System.out.println("connected is " + betterConncting("45", "xx"));
 
 //        System.out.println("min is " + minOptionOfSplit("x23124125"));
-        System.out.println(goodFindPosition("331826888138587"));
+        System.out.println(goodFindPosition("1234567891"));
 //        System.out.println(splitToHalfAndConnect("123456798"));
     }
 
@@ -150,7 +150,7 @@ public class Main {
     }
 
     public static String minOptionOfSplit(String str) {
-        String min = String.format("%1$" + str.length() + "s", "").replace(' ', '9');
+        String min = String.format("%1$" + 18 + "s", "").replace(' ', '9');
         String mayBeMin;
         String subString;
         int len;
@@ -161,7 +161,7 @@ public class Main {
         while (index <=str.length()) {
             subString = str.substring(0, index);
             mayBeMin = splitToHalfAndConnect(subString);
-            if (Long.valueOf(mayBeMin) > 0 && Long.valueOf(mayBeMin) < Long.valueOf(min) && isASeries(mayBeMin)[0] == 1) {
+            if (mayBeMin.length()<19&&Long.valueOf(mayBeMin) > 0 && Long.valueOf(mayBeMin) < Long.valueOf(min) && isASeries(mayBeMin)[0] == 1) {
 
                 if (isTheFirstStringIsSeriesOfTheSecondString(mayBeMin + str.substring(mayBeMin.length(), str.length()), mayBeMin.substring(0, isASeries(mayBeMin)[1]))) {
                     min = mayBeMin;
