@@ -6,15 +6,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("9100")));
-        System.out.println("connected is " + betterConncting("xxx9", "9000"));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("58")));
+        System.out.println("connected is " + betterConncting("45", "xx"));
 
-//        System.out.println("connected is " + connectTowStrings("xx9", "100x"));
-//        System.out.println(isTheyFit("x9", "99"));
-//        System.out.println( "min is "+minOptionOfSplit("xx9100x"));
-//        System.out.println(betterConncetTowStrings("xxxxx","xxxx"));
-        System.out.println(goodFindPosition("9100"));
-//        System.out.println(String.format("%1$" + 1 + "s", "").replace(' ', 'x'));
+//        System.out.println("min is " + minOptionOfSplit("x23124125"));
+        System.out.println(goodFindPosition("331826888138587"));
+//        System.out.println(splitToHalfAndConnect("123456798"));
     }
 
     public static String betterConncting(String firstNum, String secondNum) {
@@ -93,7 +90,8 @@ public class Main {
 
             } else {
                 if (firstNum.charAt(firstNumIndex) == 'x') {
-                    if (secondNum.charAt(secondNumIndex) == '0') {
+                    if (secondNum.charAt(secondNumIndex) == '0' &&
+                            Math.pow(10, (double) (firstNumLen - firstNumIndex - 1)) - Long.valueOf(firstNum.substring(firstNumIndex + 1, firstNumLen)) == 1 ) {//maybe need a change !
                         firstNum = firstNum.substring(0, firstNumIndex) + "9" +
                                 firstNum.substring(firstNumIndex + 1, firstNumLen);
                     } else {
@@ -101,11 +99,9 @@ public class Main {
                             val = Character.getNumericValue(secondNum.charAt(secondNumIndex)) - 1;
                             firstNum = firstNum.substring(0, firstNumIndex) + String.valueOf(val) +
                                     firstNum.substring(firstNumIndex + 1, firstNumLen);
-                        }
-
-                        else{
-                        firstNum = firstNum.substring(0, firstNumIndex) + secondNum.charAt(secondNumIndex) +
-                                firstNum.substring(firstNumIndex + 1, firstNumLen);
+                        } else {
+                            firstNum = firstNum.substring(0, firstNumIndex) + secondNum.charAt(secondNumIndex) +
+                                    firstNum.substring(firstNumIndex + 1, firstNumLen);
 
                         }
 
@@ -115,9 +111,8 @@ public class Main {
                         if (secondNum.charAt(secondNumIndex + 1) == '0') {
                             secondNum = secondNum.substring(0, secondNumIndex) + "0" +
                                     secondNum.substring(secondNumIndex + 1, secondNumLen);
-                        }
-                        else{
-                            secondNum = secondNum.substring(0, secondNumIndex) + firstNum.charAt(firstNumIndex)+
+                        } else {
+                            secondNum = secondNum.substring(0, secondNumIndex) + firstNum.charAt(firstNumIndex) +
                                     secondNum.substring(secondNumIndex + 1, secondNumLen);
                         }
                     } else {
@@ -145,40 +140,35 @@ public class Main {
 
     }
 
+
+    public static String splitToHalfAndConnect(String str) {
+        if (str.length() == 1) {
+            return "0";
+        }
+        int len = str.length();
+        return betterConncting(str.substring(0, len / 2), str.substring(len / 2, len));
+    }
+
     public static String minOptionOfSplit(String str) {
         String min = String.format("%1$" + str.length() + "s", "").replace(' ', '9');
+        String mayBeMin;
+        String subString;
         int len;
-        int firstIndex = 0;
+        int index = 1;
         int lastIndex = 1;
-        String firstNum;
-        String secondNum;
-        String mayBeMin = min;
-        String mayBeMinWithExtraDigit;
 
-        len = lastIndex - firstIndex;
-        while (lastIndex + len < str.length()) {
 
-            firstNum = str.substring(firstIndex, lastIndex);
-            secondNum = str.substring(lastIndex, lastIndex + len);
-            mayBeMin = betterConncting(firstNum, secondNum);
-            if (lastIndex + len + 1 <= str.length()) {
-                firstNum = str.substring(firstIndex, lastIndex);
-                secondNum = str.substring(lastIndex, lastIndex + len + 1);
-                mayBeMinWithExtraDigit = betterConncting(firstNum, secondNum);
-                if (Long.valueOf(mayBeMinWithExtraDigit) != 0 && Long.valueOf(mayBeMinWithExtraDigit) <
-                        Long.valueOf(min) && isTheFirstStringIsSeriesOfTheSecondString(mayBeMinWithExtraDigit + str.substring(mayBeMinWithExtraDigit.length(), str.length()), mayBeMinWithExtraDigit)) {
-                    min = mayBeMinWithExtraDigit;
+        while (index <=str.length()) {
+            subString = str.substring(0, index);
+            mayBeMin = splitToHalfAndConnect(subString);
+            if (Long.valueOf(mayBeMin) > 0 && Long.valueOf(mayBeMin) < Long.valueOf(min) && isASeries(mayBeMin)[0] == 1) {
 
+                if (isTheFirstStringIsSeriesOfTheSecondString(mayBeMin + str.substring(mayBeMin.length(), str.length()), mayBeMin.substring(0, isASeries(mayBeMin)[1]))) {
+                    min = mayBeMin;
                 }
 
             }
-            if (Long.valueOf(mayBeMin) != 0 && Long.valueOf(mayBeMin) < Long.valueOf(min) &&
-                    isTheFirstStringIsSeriesOfTheSecondString(min + str.substring(mayBeMin.length(), str.length()), mayBeMin)) {
-                min = mayBeMin;
-
-            }
-            lastIndex++;
-            len = lastIndex - firstIndex;
+            index++;
 
 
         }
@@ -406,20 +396,22 @@ public class Main {
 
                 }
             }
-            if (counter < n / 2) {
-                firstNum = currentStr.substring(currentStr.length() - n - n, currentStr.length() - n);
-                secondNum = currentStr.substring(currentStr.length() - n, currentStr.length());
+//            if (counter < n / 2) {
+////                firstNum = currentStr.substring(currentStr.length() - n - n, currentStr.length() - n);
+////                secondNum = currentStr.substring(currentStr.length() - n, currentStr.length());
+//
+//                connectedStr = minOptionOfSplit(firstNum + secondNum);
+//
+//
+//            } else {
+//                firstNum = currentStr.substring(0, n);
+//                secondNum = currentStr.substring(n, 2 * n);
+//
+//                connectedStr = minOptionOfSplit(firstNum + secondNum);
+//
+//            }
+                            connectedStr = minOptionOfSplit(currentStr);
 
-                connectedStr = betterConncting(firstNum, secondNum);
-
-
-            } else {
-                firstNum = currentStr.substring(0, n);
-                secondNum = currentStr.substring(n, 2 * n);
-
-                connectedStr = betterConncting(firstNum, secondNum);
-
-            }
             isSeriesAns = isASeries(connectedStr);
             if (isSeriesAns[0] == 1 && Long.valueOf(connectedStr.substring(0, isSeriesAns[1])) < Long.valueOf(min) &&
                     isTheFirstStringIsSeriesOfTheSecondString(str, connectedStr.substring(0, isSeriesAns[1]))) {
@@ -436,8 +428,8 @@ public class Main {
         String minSeriesStartNum = findNLenSeries(str, str.length());
         int counter = 1;
 
-        while (counter < str.length()) {
-            if (Long.valueOf(findNLenSeries(str, counter)) < Long.valueOf(minSeriesStartNum)) {
+        while (counter <= str.length()) {
+            if (Long.valueOf(findNLenSeries(str, counter))>0&&Long.valueOf(findNLenSeries(str, counter)) < Long.valueOf(minSeriesStartNum)) {
                 minSeriesStartNum = findNLenSeries(str, counter);
             }
             counter++;
