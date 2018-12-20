@@ -10,7 +10,7 @@ public class Main {
         System.out.println("connected is " + betterConncting("45", "xx"));
 
 //        System.out.println("min is " + minOptionOfSplit("x23124125"));
-        System.out.println(goodFindPosition("1234567891"));
+        System.out.println(goodFindPosition("04674440188"));
 //        System.out.println(splitToHalfAndConnect("123456798"));
     }
 
@@ -91,7 +91,7 @@ public class Main {
             } else {
                 if (firstNum.charAt(firstNumIndex) == 'x') {
                     if (secondNum.charAt(secondNumIndex) == '0' &&
-                            Math.pow(10, (double) (firstNumLen - firstNumIndex - 1)) - Long.valueOf(firstNum.substring(firstNumIndex + 1, firstNumLen)) == 1 ) {//maybe need a change !
+                            Math.pow(10, (double) (firstNumLen - firstNumIndex - 1)) - Long.valueOf(firstNum.substring(firstNumIndex + 1, firstNumLen)) == 1) {//maybe need a change !
                         firstNum = firstNum.substring(0, firstNumIndex) + "9" +
                                 firstNum.substring(firstNumIndex + 1, firstNumLen);
                     } else {
@@ -149,25 +149,49 @@ public class Main {
         return betterConncting(str.substring(0, len / 2), str.substring(len / 2, len));
     }
 
-    public static String minOptionOfSplit(String str) {
+    public static String minOptionOfSplit(String str, String  originalStr) {
         String min = String.format("%1$" + 18 + "s", "").replace(' ', '9');
         String mayBeMin;
         String subString;
+        String mayBeMinSubstring;
         int len;
         int index = 1;
         int lastIndex = 1;
 
 
-        while (index <=str.length()) {
+        while (index <= str.length()) {
             subString = str.substring(0, index);
             mayBeMin = splitToHalfAndConnect(subString);
-            if (mayBeMin.length()<19&&Long.valueOf(mayBeMin) > 0 && Long.valueOf(mayBeMin) < Long.valueOf(min) && isASeries(mayBeMin)[0] == 1) {
+            if (mayBeMin.length() < 19 && Long.valueOf(mayBeMin) > 0 && Long.valueOf(mayBeMin) < Long.valueOf(min) && isASeries(mayBeMin)[0] == 1) {
 
                 if (isTheFirstStringIsSeriesOfTheSecondString(mayBeMin + str.substring(mayBeMin.length(), str.length()), mayBeMin.substring(0, isASeries(mayBeMin)[1]))) {
                     min = mayBeMin;
                 }
 
             }
+
+
+            index++;
+
+
+        }
+
+        index = 1;
+
+        while (index <= str.length()) {
+            subString = str.substring(str.length()-index, str.length());
+            mayBeMin = splitToHalfAndConnect(subString);
+
+            if (mayBeMin.length() < 19 && Long.valueOf(mayBeMin) > 0 && Long.valueOf(mayBeMin) < Long.valueOf(min) && isASeries(mayBeMin)[0] == 1) {
+
+                mayBeMinSubstring = String.valueOf(Long.valueOf(mayBeMin.substring(0, isASeries(mayBeMin)[1]))-originalStr.length()+1);
+                if (isTheFirstStringIsSeriesOfTheSecondString(originalStr ,mayBeMinSubstring )) {
+                    min = mayBeMin;
+                }
+
+            }
+
+
             index++;
 
 
@@ -410,7 +434,7 @@ public class Main {
 //                connectedStr = minOptionOfSplit(firstNum + secondNum);
 //
 //            }
-                            connectedStr = minOptionOfSplit(currentStr);
+            connectedStr = minOptionOfSplit(currentStr ,str);
 
             isSeriesAns = isASeries(connectedStr);
             if (isSeriesAns[0] == 1 && Long.valueOf(connectedStr.substring(0, isSeriesAns[1])) < Long.valueOf(min) &&
@@ -429,7 +453,7 @@ public class Main {
         int counter = 1;
 
         while (counter <= str.length()) {
-            if (Long.valueOf(findNLenSeries(str, counter))>0&&Long.valueOf(findNLenSeries(str, counter)) < Long.valueOf(minSeriesStartNum)) {
+            if (Long.valueOf(findNLenSeries(str, counter)) > 0 && Long.valueOf(findNLenSeries(str, counter)) < Long.valueOf(minSeriesStartNum)) {
                 minSeriesStartNum = findNLenSeries(str, counter);
             }
             counter++;
