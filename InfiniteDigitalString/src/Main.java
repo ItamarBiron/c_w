@@ -1,6 +1,3 @@
-import java.io.*;
-import java.util.*;
-
 public class Main {
 
 
@@ -12,7 +9,10 @@ public class Main {
         System.out.println(findNLenSeries("3999589058124", 11));
 
 //        System.out.println("min is " + minOptionOfSplit("x23124125"));
-        System.out.println("good position is " + goodFindPosition("523623525623506"));
+        for(int i =0 ; i <200 ; i++){
+            goodFindPosition("3999589058124");
+        }
+        System.out.println("good position is " + goodFindPosition("3999589058124"));
 //        System.out.println(minimalShift("58257860625"));
 //        System.out.println(clearRepeatDigitInStrat("12345123"));
 //        System.out.println(splitToHalfAndConnect("123456798"));
@@ -93,10 +93,10 @@ public class Main {
         }
         // hundle case of changin num of digit like 99->100 or 9999->1000 ----------------------
         if (secondNumLen == firstNumLen + 1) {
-            if (!isTheyFit(firstNum, String.format("%1$" + firstNumLen + "s", "").replace(' ', '9'))) {
+            if (!areTheyFit(firstNum, String.format("%1$" + firstNumLen + "s", "").replace(' ', '9'))) {
                 return stringOfZeros;
             }
-            if (!isTheyFit(secondNum, "1" + String.format("%1$" + firstNumLen + "s", "").replace(' ', '0'))) {
+            if (!areTheyFit(secondNum, "1" + String.format("%1$" + firstNumLen + "s", "").replace(' ', '0'))) {
                 return stringOfZeros;
             }
             return String.format("%1$" + firstNumLen + "s", "").replace(' ', '9') +
@@ -105,6 +105,22 @@ public class Main {
 //----------------------------------------------------------------------------
         while (firstNumIndex >= 0) {
             if (firstNum.charAt(firstNumIndex) == 'x' && secondNum.charAt(secondNumIndex) == 'x') {
+                return stringOfZeros;
+            }
+
+
+
+            if(firstNum.indexOf("x")==-1){
+                if (areTheyFit(String.valueOf(Long.valueOf(firstNum)+1),secondNum)){
+                    return firstNum+String.valueOf(Long.valueOf(firstNum)+1);
+                }
+                return stringOfZeros;
+            }
+
+            if(secondNum.indexOf("x")==-1){
+                if (areTheyFit(String.valueOf(Long.valueOf(secondNum)-1),firstNum)){
+                    return String.valueOf(Long.valueOf(secondNum)-1)+secondNum;
+                }
                 return stringOfZeros;
             }
 
@@ -199,6 +215,7 @@ public class Main {
         String subString;
         String mayBeMinSubstring;
         String minimalNum;
+        int [] isSeriesAns = new int [2];
         boolean isFirst;
         int len;
         int index = 1;
@@ -209,14 +226,18 @@ public class Main {
             subString = str.substring(0, index);
             mayBeMin = splitToHalfAndConnect(subString);
 
-            if (isASeries(mayBeMin)[0] == 1) {
+
+            isSeriesAns = isASeries(mayBeMin);
+
+            if (isSeriesAns[0] == 1) {
 
 
 //                mayBeMinSubstring = mayBeMin.substring(0, isASeries(mayBeMin)[1]);
-                minimalNum = mayBeMin.substring(0, isASeries(mayBeMin)[1]);
+                minimalNum = mayBeMin.substring(0, isSeriesAns[1]);
                 isFirst = isTheFirstStringIsSeriesOfTheSecondString(originalStr,minimalNum);
                 if (isFirst&& mayBeMin.charAt(0) != '0' && Long.valueOf(minimalNum) < Long.valueOf(min) ) {
                         min = minimalNum;
+//                        break;
                     }
 
                 }
@@ -233,12 +254,14 @@ public class Main {
         while (index <= str.length()) {
             subString = str.substring(str.length() - index, str.length());
             mayBeMin = splitToHalfAndConnect(subString);
+            isSeriesAns = isASeries(mayBeMin);
 
-            if (mayBeMin.length() < 19 && Long.valueOf(mayBeMin) > 0 && Long.valueOf(mayBeMin) < Long.valueOf(min) && isASeries(mayBeMin)[0] == 1) {
+            if (mayBeMin.length() < 19 && Long.valueOf(mayBeMin) > 0 && Long.valueOf(mayBeMin) < Long.valueOf(min) && isSeriesAns[0] == 1) {
 
-                mayBeMinSubstring = String.valueOf(Long.valueOf(mayBeMin.substring(0, isASeries(mayBeMin)[1])) - originalStr.length() + 1);
+                mayBeMinSubstring = String.valueOf(Long.valueOf(mayBeMin.substring(0, isSeriesAns[1])) - originalStr.length() + 1);
                 if (isTheFirstStringIsSeriesOfTheSecondString(originalStr, mayBeMinSubstring)) {
                     min = mayBeMin;
+//                    break;
                 }
 
             }
@@ -251,7 +274,7 @@ public class Main {
         return min;
     }
 
-    public static boolean isTheyFit(String firstNum, String secondNum) {
+    public static boolean areTheyFit(String firstNum, String secondNum) {
         int counter = 0;
         char firstNumChar;
         char secondNumChar;
@@ -338,8 +361,8 @@ public class Main {
             return hundleAns;
         }
 
-//        if (!isTheyFit(firstNum,String.valueOf(Long.valueOf(firstNum)+1))&&
-//                !isTheyFit(String.valueOf(Long.valueOf(secondNum)-1),secondNum)){
+//        if (!areTheyFit(firstNum,String.valueOf(Long.valueOf(firstNum)+1))&&
+//                !areTheyFit(String.valueOf(Long.valueOf(secondNum)-1),secondNum)){
 //            return String.format("%1$" + totalLen + "s", "").replace(' ', '0');
 //
 //        }
@@ -357,7 +380,7 @@ public class Main {
         }
 
         if (firstNum.indexOf("x") == -1) {
-            if (isTheyFit(String.valueOf(Long.valueOf(firstNum) + 1), secondNum)) {
+            if (areTheyFit(String.valueOf(Long.valueOf(firstNum) + 1), secondNum)) {
                 return firstNum + String.valueOf(Long.valueOf(firstNum) + 1).substring(0, secondNumLen);
             } else {
                 return String.format("%1$" + totalLen + "s", "").replace(' ', '0');
@@ -367,7 +390,7 @@ public class Main {
 
 
         if (secondNum.indexOf("x") == -1) {
-            if (isTheyFit(String.valueOf(Long.valueOf(secondNum) - 1), firstNum)) {
+            if (areTheyFit(String.valueOf(Long.valueOf(secondNum) - 1), firstNum)) {
 
                 return String.valueOf(Long.valueOf(secondNum) - 1).substring(0, firstNumLen) + secondNum;
             } else {
