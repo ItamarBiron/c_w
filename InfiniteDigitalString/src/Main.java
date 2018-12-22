@@ -6,14 +6,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("2578606258")));
-        //24674951477
-        System.out.println("connected is " + betterConncting("45", "xx"));
+        System.out.println("better is " + betterNumOfDigitBefor(Long.valueOf("589058123999")));
+        //6957586376885
+        System.out.println("connected is " + betterConncting("xxxxxxxx3999", "589058124xxx"));
+        System.out.println(findNLenSeries("3999589058124", 11));
 
 //        System.out.println("min is " + minOptionOfSplit("x23124125"));
-        System.out.println(goodFindPosition("2578606258"));
-        System.out.println(minimalShift("58257860625"));
-        System.out.println(clearRepeatDigitInStrat("12345123"));
+        System.out.println("good position is " + goodFindPosition("523623525623506"));
+//        System.out.println(minimalShift("58257860625"));
+//        System.out.println(clearRepeatDigitInStrat("12345123"));
 //        System.out.println(splitToHalfAndConnect("123456798"));
     }
 
@@ -27,16 +28,16 @@ public class Main {
         String fromEnd;
         String maxString = "";
         int index = 1;
-        while (fromStart.length() < str.length()-1) {
+        while (fromStart.length() < str.length() - 1) {
             fromStart = str.substring(0, index);
-            fromEnd = str.substring(str.length()-index, str.length());
-            if ( fromStart.equals(fromEnd)){
+            fromEnd = str.substring(str.length() - index, str.length());
+            if (fromStart.equals(fromEnd)) {
                 maxString = fromStart;
             }
-            index ++;
+            index++;
 
         }
-        return str.substring(maxString.length(),str.length());
+        return str.substring(maxString.length(), str.length());
     }
 
     public static String minimalShift(String str) {
@@ -197,6 +198,8 @@ public class Main {
         String mayBeMin;
         String subString;
         String mayBeMinSubstring;
+        String minimalNum;
+        boolean isFirst;
         int len;
         int index = 1;
         int lastIndex = 1;
@@ -205,13 +208,19 @@ public class Main {
         while (index <= str.length()) {
             subString = str.substring(0, index);
             mayBeMin = splitToHalfAndConnect(subString);
-            if (mayBeMin.length() < 19 && Long.valueOf(mayBeMin) > 0 && Long.valueOf(mayBeMin) < Long.valueOf(min) && isASeries(mayBeMin)[0] == 1) {
 
-                if (isTheFirstStringIsSeriesOfTheSecondString(mayBeMin + str.substring(mayBeMin.length(), str.length()), mayBeMin.substring(0, isASeries(mayBeMin)[1]))) {
-                    min = mayBeMin;
+            if (isASeries(mayBeMin)[0] == 1) {
+
+
+//                mayBeMinSubstring = mayBeMin.substring(0, isASeries(mayBeMin)[1]);
+                minimalNum = mayBeMin.substring(0, isASeries(mayBeMin)[1]);
+                isFirst = isTheFirstStringIsSeriesOfTheSecondString(originalStr,minimalNum);
+                if (isFirst&& mayBeMin.charAt(0) != '0' && Long.valueOf(minimalNum) < Long.valueOf(min) ) {
+                        min = minimalNum;
+                    }
+
                 }
 
-            }
 
 
             index++;
@@ -480,10 +489,18 @@ public class Main {
             connectedStr = minOptionOfSplit(currentStr, str);
 
             isSeriesAns = isASeries(connectedStr);
-            if (isSeriesAns[0] == 1 && Long.valueOf(connectedStr.substring(0, isSeriesAns[1])) < Long.valueOf(min) &&
-                    isTheFirstStringIsSeriesOfTheSecondString(str, connectedStr.substring(0, isSeriesAns[1]))) {
-                min = connectedStr.substring(0, isSeriesAns[1]);
+
+//            if (isSeriesAns[0] == 1 && Long.valueOf(connectedStr.substring(0, isSeriesAns[1])) < Long.valueOf(min) &&
+//                    isTheFirstStringIsSeriesOfTheSecondString(str, connectedStr.substring(0, isSeriesAns[1]))) {
+//                min = connectedStr.substring(0, isSeriesAns[1]);
+//            }
+
+
+            if ( Long.valueOf(connectedStr) < Long.valueOf(min) &&
+                    isTheFirstStringIsSeriesOfTheSecondString(str, connectedStr)) {
+                min = connectedStr;
             }
+
             counter++;
         }
 
@@ -494,8 +511,9 @@ public class Main {
     public static long goodFindPosition(String str) {
         String minSeriesStartNum = findNLenSeries(str, str.length());
         int counter = 1;
+        String shiftedString;
 
-        while (counter <= str.length()) {
+        while (counter <= str.length() + 1) {
             if (Long.valueOf(findNLenSeries(str, counter)) > 0 && Long.valueOf(findNLenSeries(str, counter)) < Long.valueOf(minSeriesStartNum)) {
                 minSeriesStartNum = findNLenSeries(str, counter);
             }
@@ -503,7 +521,10 @@ public class Main {
         }
         counter = 1;
 
-        
+        shiftedString = minimalShift(str);
+        if (isTheFirstStringIsSeriesOfTheSecondString(str, shiftedString) && Long.valueOf(shiftedString) < Long.valueOf(minSeriesStartNum)) {
+            minSeriesStartNum = shiftedString;
+        }
 
         String allSeries = minSeriesStartNum;
 

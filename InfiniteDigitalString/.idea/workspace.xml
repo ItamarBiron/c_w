@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421e463f-ccf2-4403-8263-0447cbe15d25" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/InfiniteDigitalString/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InfiniteDigitalString/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -23,18 +25,19 @@
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.24" value="1" />
+          <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="27886" />
+          <entry key="java" value="28169" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="27886" />
+          <entry key="JAVA" value="28169" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -57,13 +60,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="505" column="8" selection-start-line="505" selection-start-column="8" selection-end-line="505" selection-end-column="8" />
+            <state relative-caret-position="377">
+              <caret line="500" column="34" selection-start-line="500" selection-start-column="34" selection-end-line="500" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#numOfDigit#0;class#Main#0" />
                 <element signature="method#betterNumOfDigitBefor#0;class#Main#0" />
-                <element signature="method#isTheFirstStringIsSeriesOfTheSecondString#0;class#Main#0" />
               </folding>
             </state>
           </provider>
@@ -72,7 +74,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/NumberFormatException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
+            <state relative-caret-position="814">
               <caret line="64" selection-start-line="64" selection-end-line="64" />
             </state>
           </provider>
@@ -81,7 +83,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/Long.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
+            <state relative-caret-position="16940">
               <caret line="802" selection-start-line="802" selection-end-line="802" />
             </state>
           </provider>
@@ -126,13 +128,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545276382011" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545280220762" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunDashboard">
@@ -181,7 +183,7 @@
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4968153" visible="true" weight="0.116336636" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4968153" visible="true" weight="0.11819307" />
       <window_info id="Structure" order="1" sideWeight="0.50318474" side_tool="true" weight="0.08539604" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -190,8 +192,8 @@
       <window_info id="Favorites" order="6" sideWeight="0.5019685" side_tool="true" weight="0.16831683" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32978722" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49938118" visible="true" weight="0.25768322" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3321513" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49938118" weight="0.25768322" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3321513" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -216,17 +218,23 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>331</line>
+          <line>340</line>
           <properties />
           <option name="timeStamp" value="192" />
         </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>215</line>
+          <properties />
+          <option name="timeStamp" value="215" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>27</line>
+          <line>461</line>
           <properties />
-          <option name="timeStamp" value="207" />
+          <option name="timeStamp" value="216" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -239,6 +247,10 @@
         <watch expression="Long.valueOf(firstNum.substring(firstNumIndex + 1, firstNumLen))" />
         <watch expression="subString" />
         <watch expression="betterConncting(str.substring(0, len / 2), str.substring(len / 2, len))" />
+        <watch expression="Long.valueOf(mayBeMin.substring(0, isASeries(mayBeMin)[1]))" />
+        <watch expression="Long.valueOf(minimalNum) &lt; Long.valueOf(min)" />
+        <watch expression="minimalNum" />
+        <watch expression="Long.valueOf(min)" />
       </configuration>
     </watches-manager>
   </component>
@@ -256,30 +268,29 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="500" column="34" selection-start-line="500" selection-start-column="34" selection-end-line="500" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#numOfDigit#0;class#Main#0" />
+            <element signature="method#betterNumOfDigitBefor#0;class#Main#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/NumberFormatException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
+        <state relative-caret-position="814">
           <caret line="64" selection-start-line="64" selection-end-line="64" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/Long.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
+        <state relative-caret-position="16940">
           <caret line="802" selection-start-line="802" selection-end-line="802" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="505" column="8" selection-start-line="505" selection-start-column="8" selection-end-line="505" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#numOfDigit#0;class#Main#0" />
-            <element signature="method#betterNumOfDigitBefor#0;class#Main#0" />
-            <element signature="method#isTheFirstStringIsSeriesOfTheSecondString#0;class#Main#0" />
-          </folding>
         </state>
       </provider>
     </entry>
