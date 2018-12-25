@@ -5,8 +5,8 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello World!");
         System.out.println(height(BigInteger.valueOf(2), BigInteger.valueOf(14)));
-        System.out.println(tryRecursion(4, 20));
-        System.out.println(betterRecursion(6,80));
+        System.out.println(tryRecursion(4, 20000));
+        System.out.println(betterRecursion(4,17));
     }
 
 
@@ -49,6 +49,6 @@ public class Main {
 
 
 
-        return betterRecursion(n,m-1)+betterRecursion(n-1,m) +1;
+        return betterRecursion(n,m-1)+betterRecursion(n-1,m-1) +1;
     }
 }
