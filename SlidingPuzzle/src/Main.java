@@ -20,18 +20,18 @@ public class Main {
             }
         }
 
-        a[0][0] = 4;
-        a[0][1] = 5;
-        a[0][2] = 3;
-        a[1][0] = 7;
+        a[0][0] = 7;
+        a[0][1] = 4;
+        a[0][2] = 6;
+        a[1][0] = 8;
         a[1][1] = 0;
-        a[1][2] = 6;
-        a[2][0] = 1;
-        a[2][1] = 8;
-        a[2][2] = 2;
+        a[1][2] = 3;
+        a[2][0] = 5;
+        a[2][1] = 2;
+        a[2][2] = 1;
 
         System.out.println(howManyDisOrderOverAll(a)+" indexOfRowThatContainzero "+indexOfRowThatContainzero(a));
-        betterSolve(a);
+        System.out.println(betterSolve(a));
     }
 
 
@@ -44,11 +44,11 @@ public class Main {
 //        ans.add(0);
         System.out.println(ans);
 
-        if ((howManyDisOrderOverAll(a)+indexOfRowThatContainzero(a)) % 2 == a[0].length%2) {
+        if (((howManyDisOrderOverAll(a)+indexOfRowThatContainzero(a)-a[0].length) % 2 )== 0) {
 
             return ans;
         }
-
+        System.out.println("return null");
         return null;
     }
 
