@@ -5,19 +5,9 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello World!");
         System.out.println(beterCalculate(4477, 10000)); // need to pass that in less then 1 sec
-        System.out.println(finalCalculate(4477, 10000)); // need to pass that in less then 1 sec
-
-        System.out.println(powerOfTwo(100000));
-        System.out.println(beterCalculate(5, 10)); // need to pass that in less then 1 sec
-        System.out.println(mayBeBetterCalculate(4, 17));
-        System.out.println(mayBeBetterCalculate(5, 10));
-//        System.out.println(betterRecursion(23,30));
-//        System.out.println(muchBetterRecursion(23,29));
-//        System.out.println(beterCalculate(23,29));
-        System.out.println(binomialCoeff(59000, 1000000));
-        System.out.println(BetterBinomialCoeff(59000, 1000000));
-        System.out.println(beterCalculate(19, 17)); // need to pass that in less then 1 sec
-
+        System.out.println("twice is " +twiceBetterCalculate(4477, 10000)); // need to pass that in less then 1 sec
+//        System.out.println(beterCalculate(4, 17)); // need to pass that in less then 1 sec
+//        System.out.println("twice is " +twiceBetterCalculate(4, 17)); // need to pass that in less then 1 sec
 
     }
 
@@ -152,6 +142,31 @@ public class Main {
 
         for (int i = 1; i <= Math.min(n, m); i++) {
             ans = ans.add(binomialCoeff(i, m));
+            if (i % 1000 == 0) {
+                System.out.println(i);
+            }
+        }
+        return ans.subtract(one);
+    }
+
+    private static BigInteger twiceBetterCalculate(int n, int m) {
+        if (m == 1 || n == 1) {
+            return BigInteger.valueOf(m);
+        }
+        if (n == 2) {
+            return BigInteger.valueOf((int) (((m + 1) * m) / 2.0));
+        }
+
+
+        BigInteger one = BigInteger.ONE;
+        BigInteger ans = BigInteger.ONE;
+
+        BigInteger lastBinomial = BigInteger.ONE;
+        lastBinomial = binomialCoeff(1, m);
+        for (int i = 1; i <= Math.min(n, m); i++) {
+            ans = ans.add(lastBinomial);
+            lastBinomial = lastBinomial.multiply(BigInteger.valueOf(m - i ));
+            lastBinomial = lastBinomial.divide(BigInteger.valueOf(i+1));
             if (i % 1000 == 0) {
                 System.out.println(i);
             }
