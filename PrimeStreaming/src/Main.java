@@ -13,10 +13,13 @@ public class Main {
 
         // Displaying the sequential ordered stream
         stream.forEach(
-                value-> {
-                    if(String.valueOf(value).length()%6==0){
+                value -> {
+                    if (index > 100 && index < 110) {
                         System.out.println(value);
                     }
+//                    if(String.valueOf(value).length()%7==0){
+//                        System.out.println(value);
+//                    }
                 });
     }
 
@@ -28,8 +31,9 @@ public class Main {
     public static int getPrime() {
         int maybyPrime = lastPrime + 2;
         while (true) {
-            if (simpleIsPrime(maybyPrime)) {
+            if (isPrime(maybyPrime,300)) {
                 lastPrime = maybyPrime;
+                index++;
                 return maybyPrime;
             }
             maybyPrime += 2;
