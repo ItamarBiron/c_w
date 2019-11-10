@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6fb8d79f-a26a-4cca-8d0a-7ecc33c5e0d3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HammingNumbers/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HammingNumbers/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +70,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>72</line>
+          <line>66</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
